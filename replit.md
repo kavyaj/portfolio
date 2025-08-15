@@ -1,78 +1,84 @@
-# Overview
+# Kavya.wiki Portfolio Recreation
 
-This is an exact recreation of the Kavya.wiki personal portfolio website using pure HTML/CSS/JS. The project recreates the complete design, layout, and content of the original site with precise typography matching using Big Shoulders Display font, exact color scheme (#fd5183 primary pink), and all interactive elements. Built as a static website for easy hosting on Replit with clean, semantic code structure.
+## Overview
 
-# User Preferences
+This is an exact recreation of the Kavya.wiki personal portfolio website using pure HTML/CSS/JS. The project recreates the complete design, layout, and content of the original site with precise typography matching using Big Shoulders Display font for main headings, DM Sans for body text, exact color scheme (#fd5183 primary pink), and all interactive elements.
 
-Preferred communication style: Simple, everyday language.
+Built as a static website with clean, semantic code structure for easy hosting on Replit.
 
-# System Architecture
+## Project Structure
 
-## Frontend Architecture
-- **Framework**: React 18 with TypeScript and Vite for build tooling
-- **Routing**: Wouter for lightweight client-side routing
-- **State Management**: TanStack Query (React Query) for server state management
-- **UI Components**: shadcn/ui component library built on Radix UI primitives
-- **Styling**: Tailwind CSS with CSS variables for theming
-- **Form Handling**: React Hook Form with Zod validation integration
+**Simple 3-file structure:**
+- `index.html` - Complete HTML structure with semantic markup
+- `style.css` - Complete CSS styling with modular typography system
+- `script.js` - JavaScript functionality for interactivity and animations
 
-## Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **API Pattern**: RESTful API with /api prefix for all endpoints
-- **Request Processing**: Express middleware for JSON parsing, URL encoding, and request logging
-- **Error Handling**: Centralized error handling middleware
-- **Development**: Hot reload with tsx for TypeScript execution
+## User Preferences
 
-## Database & ORM
-- **Database**: PostgreSQL with connection through environment variable
-- **ORM**: Drizzle ORM for type-safe database queries
-- **Schema Management**: Shared schema definitions between frontend and backend
-- **Migrations**: Drizzle Kit for database schema migrations
-- **Validation**: Drizzle-Zod integration for runtime schema validation
+- **Communication style**: Simple, everyday language
+- **Code structure**: Pure HTML/CSS/JS with three linked files only
+- **Typography**: Modular and reusable classes for consistent styling across website
+- **Design**: Exact recreation matching original Kavya.wiki design
 
-## Data Storage Strategy
-- **Production**: PostgreSQL database (configured for Neon serverless)
-- **Development**: In-memory storage with interface-based abstraction
-- **Storage Interface**: Abstracted storage layer allowing easy switching between implementations
-- **Session Management**: PostgreSQL session store with connect-pg-simple
+## Typography System
 
-## Build & Development
-- **Frontend Build**: Vite with React plugin and TypeScript support
-- **Backend Build**: esbuild for production bundling
-- **Development Server**: Integrated Vite dev server with Express API proxy
-- **Static Assets**: Served through Vite in development, static files in production
-- **Hot Reload**: Full stack hot reload in development environment
+**Font Families:**
+- **Big Shoulders Display**: Main headings (H1, H2), section titles, statistics
+- **DM Sans**: Body text, smaller headings (H3, H4), links, forms
 
-# External Dependencies
+**Color Scheme:**
+- **Primary Pink**: #fd5183 (main headings, links, accents)
+- **Black**: #121212 (H3 headings, body text)
+- **Grey**: Various shades for H4 headings and secondary text
 
-## Database Services
-- **Neon Database**: Serverless PostgreSQL hosting (@neondatabase/serverless)
-- **PostgreSQL**: Primary database with session storage support
+**Modular Classes:**
+- `.display-heading-large` & `.display-heading-medium` - For main titles
+- `.content-heading-large` & `.content-heading-small` - For content sections
+- `.body-text` & `.body-text-small` - For paragraph text
+- `.link-primary` - For styled links
+- `.tagline` - For hero subtitle styling
+- Job, education, writing, and stats specific classes for consistent styling
 
-## UI & Component Libraries
-- **Radix UI**: Comprehensive primitive component library
-- **Lucide React**: Icon library for consistent iconography
-- **Embla Carousel**: Carousel/slider functionality
-- **Vaul**: Drawer component implementation
+## Features
 
-## Development & Build Tools
-- **Vite**: Frontend build tool with React support
-- **esbuild**: Backend production bundling
-- **PostCSS**: CSS processing with Tailwind and Autoprefixer
-- **tsx**: TypeScript execution for development
+**Complete website sections:**
+- Hero section with profile image and introduction
+- About section with work allocation percentages
+- Projects showcase with interactive cards
+- Experience timeline with job details
+- Education background
+- Writing/blog posts section
+- Contact form with validation
+- Responsive design for all devices
 
-## Styling & Design
-- **Tailwind CSS**: Utility-first CSS framework
-- **Class Variance Authority**: Component variant management
-- **clsx**: Conditional className utility
+**Interactive functionality:**
+- Smooth scrolling navigation
+- Mobile menu toggle
+- Animated progress bars
+- Contact form validation
+- Scroll animations and parallax effects
+- Statistics counter animation
+- Easter egg (Konami code)
+- Typing animation for hero tagline
 
-## Form & Validation
-- **React Hook Form**: Form state management
-- **Zod**: Schema validation library
-- **@hookform/resolvers**: Integration between React Hook Form and Zod
+## Technical Specifications
 
-## Utility Libraries
-- **date-fns**: Date manipulation and formatting
-- **cmdk**: Command palette functionality
-- **nanoid**: Unique ID generation
+- **Pure HTML5** with semantic markup
+- **CSS3** with modern features (flexbox, grid, animations)
+- **Vanilla JavaScript** with ES6+ features
+- **Google Fonts** integration (Big Shoulders Display + DM Sans)
+- **Responsive design** with mobile-first approach
+- **Cross-browser compatibility**
+- **Optimized performance** with efficient CSS and JS
+
+## Recent Changes
+
+- **December 2024**: Complete typography overhaul
+  - Updated body text from Big Shoulders Display to DM Sans
+  - Refined heading hierarchy: H1/H2 (Big Shoulders Display, pink), H3 (DM Sans, 20px, black), H4 (DM Sans, 14px, grey)
+  - Hero tagline now uses DM Sans font family
+  - Added comprehensive modular typography class system
+  - Updated both React version and standalone HTML/CSS/JS files
+  - Cleaned up project structure to only 3 essential files
+
+- **Project cleanup**: Removed React/full-stack structure, consolidated to standalone HTML/CSS/JS
