@@ -154,6 +154,16 @@ header {
     text-decoration: none;
 }
 
+.nav-logo {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
+}
+
 .nav-menu {
     display: flex;
     gap: 2rem;
