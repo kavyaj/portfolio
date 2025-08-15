@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack web application built with Express.js backend and React frontend using TypeScript. The project follows a modern full-stack architecture with database integration through Drizzle ORM and PostgreSQL. The frontend leverages shadcn/ui components for a polished user interface, while the backend provides RESTful API endpoints. The application includes development tooling for hot reload and production build capabilities.
+This is an exact recreation of the Kavya.wiki personal portfolio website using pure HTML/CSS/JS. The project recreates the complete design, layout, and content of the original site with precise typography matching using Big Shoulders Display font, exact color scheme (#fd5183 primary pink), and all interactive elements. Built as a static website for easy hosting on Replit with clean, semantic code structure.
 
 # User Preferences
 
