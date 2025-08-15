@@ -44,14 +44,14 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white text-black font-sans">
+    <div className="bg-kavya-white text-kavya-black">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <button 
               onClick={() => scrollToSection('home')} 
-              className="font-bold text-lg"
+              className="nav-brand"
               data-testid="nav-logo"
             >
               KAVYA
@@ -59,42 +59,42 @@ export default function Home() {
             <div className="hidden md:flex space-x-8">
               <button 
                 onClick={() => scrollToSection('about')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-about"
               >
                 ABOUT
               </button>
               <button 
                 onClick={() => scrollToSection('projects')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-projects"
               >
                 PROJECTS
               </button>
               <button 
                 onClick={() => scrollToSection('experience')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-experience"
               >
                 EXPERIENCE
               </button>
               <button 
                 onClick={() => scrollToSection('education')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-education"
               >
                 EDUCATION
               </button>
               <button 
                 onClick={() => scrollToSection('writing')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-writing"
               >
                 WRITING
               </button>
               <button 
                 onClick={() => scrollToSection('contact')} 
-                className="hover:text-gray-600 transition-colors"
+                className="nav-link"
                 data-testid="nav-contact"
               >
                 CONTACT
@@ -112,7 +112,7 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex flex-col justify-center items-center px-6 pt-20">
         <div className="text-center max-w-4xl mx-auto">
-          <p className="font-mono text-sm md:text-base mb-8 tracking-wide" data-testid="hero-tagline">
+          <p className="hero-tagline mb-8 tracking-wide" data-testid="hero-tagline">
             CRAFTINGDIGITALGOODSSINCE—Y:2019
           </p>
           
@@ -126,7 +126,7 @@ export default function Home() {
             />
           </div>
           
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight" data-testid="hero-name">
+          <h1 data-testid="hero-name">
             KAVYA<br />
             JAHAGIRDAR
           </h1>
@@ -153,7 +153,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" data-testid="about-title">ABOUT</h2>
+          <h2 className="section-title" data-testid="about-title">ABOUT</h2>
           
           <div className="space-y-6 text-lg leading-relaxed">
             <p data-testid="about-intro">
@@ -175,7 +175,7 @@ export default function Home() {
             <div data-testid="skill-marketing">
               <div className="flex justify-between items-center mb-2">
                 <h4 className="font-semibold">Marketing</h4>
-                <span className="text-2xl font-bold">50%</span>
+                <span className="allocation-percentage">50%</span>
               </div>
               <p className="text-gray-600 mb-3">SEO, Social Media, Email Outreach</p>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -186,7 +186,7 @@ export default function Home() {
             <div data-testid="skill-business">
               <div className="flex justify-between items-center mb-2">
                 <h4 className="font-semibold">New Business Ideas</h4>
-                <span className="text-2xl font-bold">30%</span>
+                <span className="allocation-percentage">30%</span>
               </div>
               <p className="text-gray-600 mb-3">Finding different and lucrative problems to solve</p>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -197,7 +197,7 @@ export default function Home() {
             <div data-testid="skill-learning">
               <div className="flex justify-between items-center mb-2">
                 <h4 className="font-semibold">Learning & Writing</h4>
-                <span className="text-2xl font-bold">20%</span>
+                <span className="allocation-percentage">20%</span>
               </div>
               <p className="text-gray-600 mb-3">Keeping up with the changes in the industry and upskilling</p>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -211,7 +211,7 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12" data-testid="projects-title">PROJECTS</h2>
+          <h2 className="section-title" data-testid="projects-title">PROJECTS</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="project-card bg-white rounded-lg overflow-hidden hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300" data-testid="project-logo-design">
@@ -264,13 +264,13 @@ export default function Home() {
       {/* Experience Section */}
       <section id="experience" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12" data-testid="experience-title">EXPERIENCE</h2>
+          <h2 className="section-title" data-testid="experience-title">EXPERIENCE</h2>
           
           <div className="space-y-12">
             <div className="border-l-2 border-gray-200 pl-6" data-testid="job-resumey">
-              <h3 className="text-xl font-bold mb-2">Co-founder, Marketing</h3>
-              <p className="text-gray-600 mb-2">Resumey.Pro | Singapore</p>
-              <p className="text-sm text-gray-500 mb-4">2021 — Present</p>
+              <h3 className="job-title">Co-founder, Marketing</h3>
+              <p className="job-company mb-2">Resumey.Pro | Singapore</p>
+              <p className="job-period mb-4">2021 — Present</p>
               <p>Working on everything related to marketing and revenue generation. Also ideating new avenues for business growth.</p>
             </div>
             
@@ -313,15 +313,15 @@ export default function Home() {
           {/* Statistics */}
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div data-testid="stat-projects">
-              <h3 className="text-4xl font-bold mb-2">380+</h3>
+              <h3 className="stat-number mb-2">380+</h3>
               <p className="text-gray-600">Projects Completed</p>
             </div>
             <div data-testid="stat-clients">
-              <h3 className="text-4xl font-bold mb-2">420+</h3>
+              <h3 className="stat-number mb-2">420+</h3>
               <p className="text-gray-600">Satisfied Clients</p>
             </div>
             <div data-testid="stat-reviews">
-              <h3 className="text-4xl font-bold mb-2">2K+</h3>
+              <h3 className="stat-number mb-2">2K+</h3>
               <p className="text-gray-600">Positive Reviews</p>
             </div>
           </div>
