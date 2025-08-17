@@ -335,7 +335,7 @@ document.head.appendChild(style);
 
 // Letter Explosion Animation - Vanilla JS Implementation
 function initLetterExplosion() {
-    const titleElement = document.getElementById('hero-title');
+    const titleElement = document.getElementById('hero-animated-text');
     if (!titleElement) return;
     
     // Split words into individual letters

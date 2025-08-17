@@ -92,4 +92,13 @@ Built as a static website with clean, semantic code structure for easy hosting o
   - Modular classes: .footer-minimal, .footer-dark, .footer-light
   - Responsive design for all screen sizes
 
+- **Hero Section Redesign (Bettina Sosa Style)**:
+  - Replicated Bettina Sosa's portfolio hero section design
+  - Large animated text: "Building is my craft, storytelling is my passion"
+  - Individual letter explosion animations with scroll effects
+  - Clean layout with KAVYA JAHAGIRDAR tagline and detailed description
+  - Minimalist scroll indicator
+  - "About me" call-to-action button
+  - Fully responsive design for all devices
+
 - **Project cleanup**: Removed React/full-stack structure, consolidated to standalone HTML/CSS/JS
