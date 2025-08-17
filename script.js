@@ -384,32 +384,72 @@ function animateLettersIn() {
 function animateLettersOnScroll(scrollY) {
     const letters = document.querySelectorAll('.letter');
     const windowHeight = window.innerHeight;
-    const scrollProgress = Math.min(scrollY / (windowHeight * 0.8), 1);
+    const heroSection = document.querySelector('.hero-section');
     
-    letters.forEach(letter => {
-        if (letter.classList.contains('animate-in')) {
-            const speed = parseFloat(letter.getAttribute('data-speed') || '1');
-            const scrollRotation = parseFloat(letter.getAttribute('data-scroll-rotation') || '0');
+    if (!heroSection) return;
+    
+    const heroRect = heroSection.getBoundingClientRect();
+    const heroVisible = heroRect.bottom > 0 && heroRect.top < windowHeight;
+    
+    // Calculate scroll progress based on hero section visibility
+    const scrollProgress = Math.max(0, Math.min(1, (windowHeight - heroRect.top) / (windowHeight + heroRect.height)));
+    
+    letters.forEach((letter, index) => {
+        const speed = parseFloat(letter.getAttribute('data-speed') || '1');
+        const scrollRotation = parseFloat(letter.getAttribute('data-scroll-rotation') || '0');
+        
+        if (heroVisible) {
+            // Continuous animation based on scroll position
+            const intensity = Math.sin(scrollProgress * Math.PI); // Creates wave-like intensity
+            const baseRotation = scrollRotation * scrollProgress * 2; // More dramatic rotation
+            const randomOffset = Math.sin((scrollY * 0.01) + (index * 0.5)) * 20; // Continuous floating
             
-            // Calculate transform values based on scroll
-            const driftY = (1 - speed) * scrollProgress * 200; // Max 200px drift
-            const rotation = scrollRotation * scrollProgress;
-            const opacity = Math.max(0.3, 1 - scrollProgress * 0.7);
-            const scale = Math.max(0.8, 1 - scrollProgress * 0.2);
+            // Calculate transform values with continuous movement
+            const driftY = ((1 - speed) * scrollProgress * 300) + randomOffset; // More dramatic drift + floating
+            const rotation = baseRotation + (Math.sin(scrollY * 0.005 + index) * 15); // Continuous rotation
+            const scale = 0.9 + (intensity * 0.3); // Pulsing scale effect
+            const opacity = Math.max(0.4, 1 - (scrollProgress * 0.6)); // Better visibility
             
-            // Apply transforms
+            // Add wave-like horizontal movement
+            const waveX = Math.sin((scrollY * 0.008) + (index * 0.3)) * 30 * intensity;
+            
+            // Apply transforms with continuous animation
             letter.style.setProperty('--scroll-y', `${driftY}px`);
+            letter.style.setProperty('--scroll-x', `${waveX}px`);
             letter.style.setProperty('--rotation', `${rotation}deg`);
             letter.style.setProperty('--opacity', opacity);
             letter.style.setProperty('--scale', scale);
             
             letter.classList.add('animate-scroll');
+        } else {
+            // Reset when hero is out of view
+            letter.style.setProperty('--scroll-y', '0px');
+            letter.style.setProperty('--scroll-x', '0px');
+            letter.style.setProperty('--rotation', '0deg');
+            letter.style.setProperty('--opacity', '1');
+            letter.style.setProperty('--scale', '1');
         }
     });
 }
 
-// Enhanced scroll listener for letter animation
+// Enhanced scroll listener for continuous letter animation
+let ticking = false;
+
+function updateLetterAnimation() {
+    const scrolled = window.pageYOffset;
+    animateLettersOnScroll(scrolled);
+    ticking = false;
+}
+
 window.addEventListener('scroll', function() {
+    if (!ticking) {
+        requestAnimationFrame(updateLetterAnimation);
+        ticking = true;
+    }
+});
+
+// Also trigger animation on resize
+window.addEventListener('resize', function() {
     const scrolled = window.pageYOffset;
     animateLettersOnScroll(scrolled);
 });

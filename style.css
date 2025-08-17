@@ -274,8 +274,9 @@ header {
 }
 
 .letter.animate-scroll {
-    transform: translateY(var(--scroll-y, 0)) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
+    transform: translateX(var(--scroll-x, 0)) translateY(var(--scroll-y, 0)) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
     opacity: var(--opacity, 1);
+    transition: none; /* Remove transition for smooth continuous animation */
 }
 
 /* Letter explosion keyframes */
