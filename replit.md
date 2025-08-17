@@ -101,4 +101,10 @@ Built as a static website with clean, semantic code structure for easy hosting o
   - "About me" call-to-action button
   - Fully responsive design for all devices
 
+- **Experience Section 2-Column Layout**:
+  - Implemented 2-column grid layout matching original Kavya.wiki design
+  - Experience items now display in structured grid format
+  - Proper spacing and responsive design for mobile (single column)
+  - Maintained all existing content and styling
+
 - **Project cleanup**: Removed React/full-stack structure, consolidated to standalone HTML/CSS/JS
