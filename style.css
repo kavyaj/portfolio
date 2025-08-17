@@ -589,8 +589,8 @@ section {
 }
 
 .social-icon {
-    width: 128px;
-    height: 128px;
+    width: 64px;
+    height: 64px;
     fill: var(--black);
     transition: fill 0.3s ease;
 }
@@ -606,8 +606,8 @@ section {
     }
 
     .social-icon {
-        width: 112px;
-        height: 112px;
+        width: 56px;
+        height: 56px;
     }
 }
 
