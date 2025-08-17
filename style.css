@@ -571,7 +571,6 @@ section {
 .social-links {
     display: flex;
     gap: 2rem;
-    justify-content: center;
     align-items: center;
     margin-top: 2rem;
 }
