@@ -365,20 +365,59 @@ function initLetterExplosion() {
         });
     });
     
-    // Trigger entrance animation
-    setTimeout(() => {
-        animateLettersIn();
-    }, 800);
+    // Initialize letters with hidden state (will be revealed on scroll)
+    const letters = titleElement.querySelectorAll('.letter');
+    letters.forEach(letter => {
+        letter.style.transform = 'translateY(100px) rotate(0deg) scale(0.8)';
+        letter.style.opacity = '0';
+    });
 }
 
-function animateLettersIn() {
+// Scroll-triggered letter explosion (only triggers once)
+let hasTriggered = false;
+
+function checkScrollTrigger() {
+    const titleElement = document.getElementById('hero-animated-text');
+    if (!titleElement || hasTriggered) return;
+    
+    const rect = titleElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const triggerPoint = windowHeight * 0.8; // Trigger when 80% visible
+    
+    // Trigger animation when text enters viewport
+    if (rect.top < triggerPoint) {
+        hasTriggered = true;
+        triggerLetterExplosion();
+    }
+}
+
+function triggerLetterExplosion() {
     const letters = document.querySelectorAll('.letter');
     
     letters.forEach((letter, index) => {
+        // Add staggered delay for explosion effect
         setTimeout(() => {
-            letter.classList.add('animate-in');
-        }, index * 120); // Stagger the animation
+            const randomRotation = (Math.random() - 0.5) * 60; // -30 to 30 degrees
+            const randomScale = 0.9 + Math.random() * 0.3; // 0.9 to 1.2
+            
+            // Set initial explosion state
+            letter.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            letter.style.transform = `translateY(-20px) rotate(${randomRotation}deg) scale(${randomScale})`;
+            letter.style.opacity = '1';
+            
+            // Settle to final position
+            setTimeout(() => {
+                letter.style.transform = 'translateY(0) rotate(0deg) scale(1)';
+                letter.classList.add('exploded');
+            }, 400);
+            
+        }, index * 30); // Stagger animation across letters
     });
+}
+
+function animateLettersIn() {
+    // This function is now replaced by scroll-triggered explosion
+    // Keep for backward compatibility but functionality moved to triggerLetterExplosion
 }
 
 function animateLettersOnScroll(scrollY) {
@@ -391,44 +430,31 @@ function animateLettersOnScroll(scrollY) {
     const heroRect = heroSection.getBoundingClientRect();
     const heroVisible = heroRect.bottom > 0 && heroRect.top < windowHeight;
     
-    // Calculate scroll progress based on hero section visibility
-    const scrollProgress = Math.max(0, Math.min(1, (windowHeight - heroRect.top) / (windowHeight + heroRect.height)));
+    // Only animate when scrolling within hero section viewport
+    if (!heroVisible) return;
+    
+    // Calculate scroll progress based on document scroll
+    const maxScroll = Math.max(document.body.scrollHeight - windowHeight, windowHeight);
+    const scrollProgress = Math.min(1, scrollY / windowHeight);
     
     letters.forEach((letter, index) => {
         const speed = parseFloat(letter.getAttribute('data-speed') || '1');
         const scrollRotation = parseFloat(letter.getAttribute('data-scroll-rotation') || '0');
         
-        if (heroVisible) {
-            // Continuous animation based on scroll position
-            const intensity = Math.sin(scrollProgress * Math.PI); // Creates wave-like intensity
-            const baseRotation = scrollRotation * scrollProgress * 2; // More dramatic rotation
-            const randomOffset = Math.sin((scrollY * 0.01) + (index * 0.5)) * 20; // Continuous floating
-            
-            // Calculate transform values with continuous movement
-            const driftY = ((1 - speed) * scrollProgress * 300) + randomOffset; // More dramatic drift + floating
-            const rotation = baseRotation + (Math.sin(scrollY * 0.005 + index) * 15); // Continuous rotation
-            const scale = 0.9 + (intensity * 0.3); // Pulsing scale effect
-            const opacity = Math.max(0.4, 1 - (scrollProgress * 0.6)); // Better visibility
-            
-            // Add wave-like horizontal movement
-            const waveX = Math.sin((scrollY * 0.008) + (index * 0.3)) * 30 * intensity;
-            
-            // Apply transforms with continuous animation
-            letter.style.setProperty('--scroll-y', `${driftY}px`);
-            letter.style.setProperty('--scroll-x', `${waveX}px`);
-            letter.style.setProperty('--rotation', `${rotation}deg`);
-            letter.style.setProperty('--opacity', opacity);
-            letter.style.setProperty('--scale', scale);
-            
-            letter.classList.add('animate-scroll');
-        } else {
-            // Reset when hero is out of view
-            letter.style.setProperty('--scroll-y', '0px');
-            letter.style.setProperty('--scroll-x', '0px');
-            letter.style.setProperty('--rotation', '0deg');
-            letter.style.setProperty('--opacity', '1');
-            letter.style.setProperty('--scale', '1');
-        }
+        // Scroll-triggered movement based on GSAP ScrollTrigger approach
+        // y-offset = fraction of total scroll distance
+        const driftY = (1 - speed) * scrollY * 0.5; // Less dramatic than continuous
+        const rotation = scrollRotation + (scrollProgress * 30); // Controlled rotation
+        const opacity = Math.max(0.3, 1 - (scrollProgress * 0.7));
+        
+        // Apply subtle scroll-based transforms
+        letter.style.setProperty('--scroll-y', `${driftY}px`);
+        letter.style.setProperty('--scroll-x', '0px');
+        letter.style.setProperty('--rotation', `${rotation}deg`);
+        letter.style.setProperty('--opacity', opacity);
+        letter.style.setProperty('--scale', '1');
+        
+        letter.classList.add('animate-scroll');
     });
 }
 
@@ -443,7 +469,10 @@ function updateLetterAnimation() {
 
 window.addEventListener('scroll', function() {
     if (!ticking) {
-        requestAnimationFrame(updateLetterAnimation);
+        requestAnimationFrame(() => {
+            checkScrollTrigger(); // Check if we need to trigger the explosion
+            updateLetterAnimation(); // Continue scroll-based movement
+        });
         ticking = true;
     }
 });
@@ -452,4 +481,14 @@ window.addEventListener('scroll', function() {
 window.addEventListener('resize', function() {
     const scrolled = window.pageYOffset;
     animateLettersOnScroll(scrolled);
+});
+
+// Initialize the letter explosion on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initLetterExplosion();
+    
+    // Also check trigger immediately in case already scrolled
+    setTimeout(() => {
+        checkScrollTrigger();
+    }, 100);
 });
