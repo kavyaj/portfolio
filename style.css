@@ -382,30 +382,6 @@ section {
     font-size: 1rem;
 }
 
-/* Statistics */
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin: 4rem 0;
-    text-align: center;
-}
-
-.stat-item {
-    padding: 2rem 1rem;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    color: var(--gray-medium);
-    font-size: 1rem;
-}
-
 /* Values Section */
 .values-section {
     margin: 4rem 0;
@@ -714,11 +690,6 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .stats-section {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
     
     
     .values-content span {
@@ -740,10 +711,6 @@ footer {
     }
     
     
-    
-    .stat-number {
-        font-size: 2rem;
-    }
     
     .personal-stat-number {
         font-size: 2rem;
