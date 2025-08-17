@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initContactForm();
     initScrollAnimations();
+    initLetterExplosion();
 });
 
 // Smooth scrolling for navigation links
@@ -331,3 +332,84 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Letter Explosion Animation - Vanilla JS Implementation
+function initLetterExplosion() {
+    const titleElement = document.getElementById('hero-title');
+    if (!titleElement) return;
+    
+    // Split words into individual letters
+    const words = titleElement.querySelectorAll('.letter-word');
+    
+    words.forEach(wordElement => {
+        const text = wordElement.getAttribute('data-word');
+        wordElement.innerHTML = '';
+        
+        // Create individual letter spans
+        text.split('').forEach((letter, index) => {
+            const letterSpan = document.createElement('span');
+            letterSpan.textContent = letter === ' ' ? '\u00A0' : letter;
+            letterSpan.className = 'letter';
+            
+            // Add random rotation for animation
+            const randomRotation = (Math.random() - 0.5) * 60; // ±30 degrees
+            letterSpan.style.setProperty('--random-rotation', `${randomRotation}deg`);
+            
+            // Add random values for scroll animation
+            const randomSpeed = 0.8 + Math.random() * 0.7; // 0.8 to 1.5
+            const randomScrollRotation = (Math.random() - 0.5) * 30; // ±15 degrees
+            letterSpan.setAttribute('data-speed', randomSpeed);
+            letterSpan.setAttribute('data-scroll-rotation', randomScrollRotation);
+            
+            wordElement.appendChild(letterSpan);
+        });
+    });
+    
+    // Trigger entrance animation
+    setTimeout(() => {
+        animateLettersIn();
+    }, 800);
+}
+
+function animateLettersIn() {
+    const letters = document.querySelectorAll('.letter');
+    
+    letters.forEach((letter, index) => {
+        setTimeout(() => {
+            letter.classList.add('animate-in');
+        }, index * 120); // Stagger the animation
+    });
+}
+
+function animateLettersOnScroll(scrollY) {
+    const letters = document.querySelectorAll('.letter');
+    const windowHeight = window.innerHeight;
+    const scrollProgress = Math.min(scrollY / (windowHeight * 0.8), 1);
+    
+    letters.forEach(letter => {
+        if (letter.classList.contains('animate-in')) {
+            const speed = parseFloat(letter.getAttribute('data-speed') || '1');
+            const scrollRotation = parseFloat(letter.getAttribute('data-scroll-rotation') || '0');
+            
+            // Calculate transform values based on scroll
+            const driftY = (1 - speed) * scrollProgress * 200; // Max 200px drift
+            const rotation = scrollRotation * scrollProgress;
+            const opacity = Math.max(0.3, 1 - scrollProgress * 0.7);
+            const scale = Math.max(0.8, 1 - scrollProgress * 0.2);
+            
+            // Apply transforms
+            letter.style.setProperty('--scroll-y', `${driftY}px`);
+            letter.style.setProperty('--rotation', `${rotation}deg`);
+            letter.style.setProperty('--opacity', opacity);
+            letter.style.setProperty('--scale', scale);
+            
+            letter.classList.add('animate-scroll');
+        }
+    });
+}
+
+// Enhanced scroll listener for letter animation
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    animateLettersOnScroll(scrolled);
+});
