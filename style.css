@@ -555,7 +555,6 @@ section {
 /* Contact Section */
 .contact-section {
     background-color: var(--gray-light);
-    text-align: center;
 }
 
 .contact-content {
