@@ -555,6 +555,7 @@ section {
 /* Contact Section */
 .contact-section {
     background-color: var(--gray-light);
+    text-align: center;
 }
 
 .contact-content {
@@ -592,8 +593,8 @@ section {
 }
 
 .social-icon {
-    width: 64px;
-    height: 64px;
+    width: 128px;
+    height: 128px;
     fill: var(--black);
     transition: fill 0.3s ease;
 }
@@ -609,8 +610,8 @@ section {
     }
     
     .social-icon {
-        width: 56px;
-        height: 56px;
+        width: 112px;
+        height: 112px;
     }
 }
 
