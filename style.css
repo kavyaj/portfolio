@@ -568,60 +568,82 @@ section {
     line-height: 1.6;
 }
 
+/* Social Media Links */
 .social-links {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .social-link {
-    padding: 1rem 2rem;
-    background-color: var(--black);
-    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: var(--white);
+    color: var(--black);
     text-decoration: none;
-    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
 }
 
 .social-link:hover {
+    border-color: var(--primary-pink);
     background-color: var(--primary-pink);
     color: var(--white);
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(253, 81, 131, 0.3);
     text-decoration: none;
 }
 
-.twitter-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 60px;
-}
-
-.twitter-icon {
+.social-icon {
     width: 24px;
     height: 24px;
-    fill: #121212;
+    fill: currentColor;
     transition: fill 0.3s ease;
 }
 
-.twitter-link:hover .twitter-icon {
-    fill: var(--primary-pink);
+.linkedin-link:hover .social-icon {
+    fill: var(--white);
 }
 
-@media (max-width: 480px) {
+.twitter-link:hover .social-icon {
+    fill: var(--white);
+}
+
+/* Responsive Design for Social Links */
+@media (max-width: 768px) {
     .social-links {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     .social-link {
-        width: 100%;
-        text-align: center;
+        min-width: 180px;
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-link {
+        min-width: 160px;
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
     }
 }
 
