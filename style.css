@@ -458,30 +458,6 @@ section {
     font-size: 1rem;
 }
 
-/* Personal Stats */
-.personal-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-    text-align: center;
-}
-
-.personal-stat {
-    padding: 1.5rem 1rem;
-}
-
-.personal-stat-number {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-}
-
-.personal-stat-label {
-    color: var(--gray-medium);
-    font-size: 0.9rem;
-}
-
 /* Writing Section */
 .writing-content {
     max-width: 800px;
@@ -707,12 +683,6 @@ footer {
     }
     
     .section-title {
-        font-size: 2rem;
-    }
-    
-    
-    
-    .personal-stat-number {
         font-size: 2rem;
     }
 }
