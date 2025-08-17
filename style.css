@@ -595,6 +595,24 @@ section {
     text-decoration: none;
 }
 
+.twitter-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+}
+
+.twitter-icon {
+    width: 24px;
+    height: 24px;
+    fill: #121212;
+    transition: fill 0.3s ease;
+}
+
+.twitter-link:hover .twitter-icon {
+    fill: var(--primary-pink);
+}
+
 @media (max-width: 480px) {
     .social-links {
         flex-direction: column;
