@@ -554,64 +554,7 @@ section {
     font-size: 1.1rem;
 }
 
-/* Contact Section */
-.contact-section {
-    background-color: var(--gray-light);
-}
 
-.contact-content {
-    max-width: 600px;
-}
-
-.contact-intro {
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-}
-
-/* Social Media Links */
-.social-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    transform: translateY(-2px);
-    text-decoration: none;
-}
-
-.social-icon {
-    width: 64px;
-    height: 64px;
-    fill: var(--black);
-    transition: fill 0.3s ease;
-}
-
-.social-link:hover .social-icon {
-    fill: var(--primary-pink);
-}
-
-/* Responsive Design for Social Icons */
-@media (max-width: 480px) {
-    .social-links {
-        gap: 1.5rem;
-    }
-
-    .social-icon {
-        width: 56px;
-        height: 56px;
-    }
-}
 
 /* Footer - Modular Component */
 .main-footer {
@@ -637,15 +580,49 @@ section {
 }
 
 .footer-logo-img {
-    height: 60px;
+    height: 80px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
-    transition: filter 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .footer-logo-img:hover {
-    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(320deg) brightness(1.2);
+    transform: scale(1.05);
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-social .social-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-social .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-social .social-link:hover {
+    transform: translateY(-2px);
+}
+
+.footer-social .social-icon {
+    width: 48px;
+    height: 48px;
+    fill: var(--white);
+    transition: fill 0.3s ease;
+}
+
+.footer-social .social-link:hover .social-icon {
+    fill: var(--primary-pink);
 }
 
 .footer-text {
@@ -671,7 +648,16 @@ section {
     }
     
     .footer-logo-img {
-        height: 50px;
+        height: 60px;
+    }
+    
+    .footer-social .social-links {
+        gap: 1.5rem;
+    }
+    
+    .footer-social .social-icon {
+        width: 40px;
+        height: 40px;
     }
     
     .footer-copyright {
