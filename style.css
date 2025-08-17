@@ -602,12 +602,12 @@ section {
     fill: var(--primary-pink);
 }
 
-/* Responsive Design for Social Links */
+/* Responsive Design for Social Icons */
 @media (max-width: 480px) {
     .social-links {
         gap: 1.5rem;
     }
-    
+
     .social-icon {
         width: 112px;
         height: 112px;
@@ -632,38 +632,38 @@ footer {
     .nav-menu {
         display: none;
     }
-    
+
     .nav-mobile-toggle {
         display: flex;
     }
-    
+
     .hero-section {
         padding: 6rem 1rem 4rem;
     }
-    
+
     .profile-image {
         width: 150px;
         height: 150px;
     }
-    
+
     .hero-description {
         font-size: 1.1rem;
     }
-    
+
     section {
         padding: 4rem 1rem;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
-    
-    
+
+
+
     .values-content span {
         font-size: 1.5rem;
     }
-    
+
     .nav-container {
         padding: 1rem;
     }
@@ -673,7 +673,7 @@ footer {
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
