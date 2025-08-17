@@ -559,6 +559,7 @@ section {
 
 .contact-content {
     max-width: 600px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -591,8 +592,8 @@ section {
 }
 
 .social-icon {
-    width: 32px;
-    height: 32px;
+    width: 64px;
+    height: 64px;
     fill: var(--black);
     transition: fill 0.3s ease;
 }
@@ -608,8 +609,8 @@ section {
     }
     
     .social-icon {
-        width: 28px;
-        height: 28px;
+        width: 56px;
+        height: 56px;
     }
 }
 
