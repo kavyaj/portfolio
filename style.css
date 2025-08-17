@@ -172,7 +172,7 @@ header {
 
 .nav-link {
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--black);
     text-decoration: none;
@@ -613,17 +613,104 @@ section {
     }
 }
 
-/* Footer */
-footer {
+/* Footer - Modular Component */
+.main-footer {
     background-color: var(--black);
     color: var(--white);
+    padding: 3rem 2rem 2rem;
     text-align: center;
-    padding: 2rem;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(320deg) brightness(1.2);
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-copyright {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Footer Responsive Design */
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 2rem 1rem 1.5rem;
+    }
+    
+    .footer-content {
+        gap: 1.5rem;
+    }
+    
+    .footer-logo-img {
+        height: 50px;
+    }
+    
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+}
+
+/* Modular Footer Classes for Reuse */
+.footer-minimal {
+    padding: 1.5rem 2rem;
+}
+
+.footer-minimal .footer-content {
+    gap: 1rem;
+}
+
+.footer-minimal .footer-logo-img {
+    height: 40px;
+}
+
+.footer-dark {
+    background-color: var(--gray-dark);
+}
+
+.footer-light {
+    background-color: var(--gray-light);
+    color: var(--black);
+}
+
+.footer-light .footer-logo-img {
+    filter: brightness(0) invert(0);
+}
+
+.footer-light .footer-logo-img:hover {
+    filter: brightness(0) invert(0) sepia(1) saturate(5) hue-rotate(320deg) brightness(1.2);
+}
+
+.footer-light .footer-copyright {
+    color: rgba(0, 0, 0, 0.7);
 }
 
 /* Responsive Design */
