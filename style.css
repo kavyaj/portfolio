@@ -171,8 +171,9 @@ header {
 }
 
 .nav-link {
+    font-family: 'Big Shoulders Display', sans-serif;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--black);
     text-decoration: none;
     text-transform: uppercase;
