@@ -108,3 +108,9 @@ Built as a static website with clean, semantic code structure for easy hosting o
   - Maintained all existing content and styling
 
 - **Project cleanup**: Removed React/full-stack structure, consolidated to standalone HTML/CSS/JS
+
+- **August 2025**: Reverted to static HTML portfolio
+  - Simplified project structure back to original 3-file HTML/CSS/JS setup
+  - Removed Node.js/React dependencies and complexity
+  - Added Express server for local development serving static files
+  - Maintained all original design, typography, and interactive features

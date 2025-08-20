@@ -4,7 +4,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite"
+    "dev": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -38,5 +38,5 @@
     "wouter": "^3.7.1",
     "zod": "^4.0.17"
   },
-  "type": "module"
+  "type": "commonjs"
 }
