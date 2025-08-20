@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post - Kavya Jahagirdar</title>
+    <title>Writing - Kavya Jahagirdar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@
 </head>
 <body>
     <main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
-        <a href="/blog.html" class="back-to-blog">← Back to Blog</a>
+        <a href="/blog.html" class="back-to-blog">← Back to Writings</a>
         
         <article id="blog-post">
             <div style="text-align: center; padding: 2rem;">
@@ -107,13 +107,31 @@
                     throw new Error('No post slug provided');
                 }
 
-                const response = await fetch(`/api/blog/posts/${slug}`);
+                const response = await fetch('/posts.json');
+                const data = await response.json();
+                const post = data.posts.find(p => p.slug === slug && p.published);
                 
-                if (!response.ok) {
+                if (!post) {
                     throw new Error('Post not found');
                 }
                 
-                const post = await response.json();
+                // Simple markdown parser for basic formatting
+                function parseMarkdown(text) {
+                    return text
+                        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                        .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                        .replace(/^(\d+)\. (.*$)/gim, '<li>$1. $2</li>')
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        .replace(/\n\n/g, '</p><p>')
+                        .replace(/^(?!<[hl])/gm, '<p>')
+                        .replace(/(<\/[hl][1-6]>)\s*<p>/g, '$1')
+                        .replace(/<p>\s*(<[hl][1-6]>)/g, '$1')
+                        .replace(/<p>\s*(<li>)/g, '<ul>$1')
+                        .replace(/(<\/li>)\s*<p>/g, '$1</ul>');
+                }
                 
                 // Update page title
                 document.title = `${post.title} - Kavya Jahagirdar`;
@@ -122,6 +140,18 @@
                 document.getElementById('blog-post').innerHTML = `
                     <div class="post-meta">
                         <h1 class="post-title">${post.title}</h1>
+                        <div class="post-date">
+                            ${new Date(post.created_at).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        ${parseMarkdown(post.content)}
+                    </div>
+                `;1>
                         <div class="post-date">
                             Published on ${new Date(post.created_at).toLocaleDateString('en-US', {
                                 year: 'numeric',

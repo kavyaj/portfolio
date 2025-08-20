@@ -200,8 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load blog posts for the writing section
 async function loadWritingPosts() {
     try {
-        const response = await fetch('/api/blog/posts');
-        const posts = await response.json();
+        const response = await fetch('/posts.json');
+        const data = await response.json();
+        const posts = data.posts.filter(post => post.published);
         
         const writingGrid = document.getElementById('writing-grid');
         

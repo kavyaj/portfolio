@@ -1,0 +1,32 @@
+
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Building Resumey.Pro: Lessons from My First SaaS",
+      "slug": "building-resumey-pro-lessons",
+      "excerpt": "After quitting my job to build a resume builder, here are the key lessons I learned about product development, user feedback, and entrepreneurship.",
+      "content": "# Building Resumey.Pro: Lessons from My First SaaS\n\nAfter spending years in traditional design roles, I made the leap to build my own product. Resumey.Pro started as a simple idea: what if creating a professional resume could be as easy as filling out a form?\n\n## The Journey\n\nThe development process taught me several key lessons:\n\n### 1. Start with the Problem\nI spent too much time on features nobody asked for. The real breakthrough came when I started talking to users daily.\n\n### 2. Design Systems Matter\nBuilding a consistent design system from day one saved countless hours later in development.\n\n### 3. User Feedback is Gold\nEvery piece of feedback, positive or negative, helped shape the product into something people actually wanted to use.\n\n## What's Next\n\nBuilding Resumey.Pro was just the beginning. The experience has opened my eyes to the possibilities of combining design thinking with entrepreneurial spirit.",
+      "created_at": "2024-01-15T10:00:00Z",
+      "published": true
+    },
+    {
+      "id": 2,
+      "title": "The Art of Design Systems",
+      "slug": "art-of-design-systems",
+      "excerpt": "Design systems are more than just component libraries. They're the foundation that enables teams to build consistent, scalable user experiences.",
+      "content": "# The Art of Design Systems\n\nDesign systems have become the backbone of modern product development. But what makes a design system truly effective?\n\n## More Than Components\n\nA good design system is:\n- **Consistent**: Visual and interaction patterns that users can predict\n- **Scalable**: Components that work across different contexts\n- **Accessible**: Built with inclusivity in mind from the start\n- **Living**: Continuously evolving based on team needs\n\n## Building for the Future\n\nThe best design systems I've worked with treat documentation as a first-class citizen. When developers can understand the 'why' behind design decisions, magic happens.\n\n## Key Takeaways\n\n1. Start small and grow organically\n2. Invest in tooling and automation\n3. Make adoption easy for your team\n4. Measure success through usage, not just completion",
+      "created_at": "2024-02-03T14:30:00Z",
+      "published": true
+    },
+    {
+      "id": 3,
+      "title": "From Corporate to Startup: A Designer's Perspective",
+      "slug": "corporate-to-startup-designer",
+      "excerpt": "The transition from big company design to startup hustle taught me more about product thinking than any course could.",
+      "content": "# From Corporate to Startup: A Designer's Perspective\n\nMoving from a large corporation to the startup world was like learning to design all over again.\n\n## Corporate vs Startup Design\n\n### Corporate\n- Extensive research phases\n- Multiple stakeholder approvals\n- Risk-averse decision making\n- Resource abundance\n\n### Startup\n- Ship first, research later\n- Direct access to users\n- Comfortable with uncertainty\n- Resource constraints breed creativity\n\n## What I Learned\n\nThe biggest shift was learning to embrace uncertainty. In corporate environments, I was used to having all the answers before starting. In startups, you learn as you build.\n\n## The Sweet Spot\n\nThe ideal approach combines the best of both worlds:\n- Corporate's emphasis on research and process\n- Startup's speed and user proximity\n\nThis hybrid approach has made me a more well-rounded designer and product thinker.",
+      "created_at": "2024-03-10T09:15:00Z",
+      "published": true
+    }
+  ]
+}

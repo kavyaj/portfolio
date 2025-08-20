@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Kavya Jahagirdar</title>
+    <title>Writings - Kavya Jahagirdar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
@@ -18,8 +18,9 @@
             transition: all 0.3s ease;
         }
         .blog-post-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(253, 81, 131, 0.15);
+            border-color: #fd5183;
         }
         .blog-post-title {
             font-family: 'Big Shoulders Display', sans-serif;
@@ -60,7 +61,7 @@
         <a href="/" class="back-to-portfolio">← Back to Portfolio</a>
         
         <header style="text-align: center; margin-bottom: 3rem;">
-            <h1 class="display-heading-large">Blog</h1>
+            <h1 class="display-heading-large">Writings</h1>
             <p class="tagline">Thoughts on design, development, and digital storytelling</p>
         </header>
 
@@ -74,18 +75,26 @@
     <script>
         async function loadBlogPosts() {
             try {
-                const response = await fetch('/api/blog/posts');
-                const posts = await response.json();
+                const response = await fetch('/posts.json');
+                const data = await response.json();
+                const posts = data.posts.filter(post => post.published);
                 
                 const blogPostsContainer = document.getElementById('blog-posts');
                 
                 if (posts.length === 0) {
                     blogPostsContainer.innerHTML = `
                         <div style="text-align: center; padding: 3rem;">
-                            <p class="body-text">No blog posts yet. Check back soon!</p>
+                            <p class="body-text">No writings yet. Check back soon!</p>
                         </div>
                     `;
                     return;
+                }
+
+                function estimateReadingTime(content) {
+                    const wordsPerMinute = 200;
+                    const wordCount = content.split(' ').length;
+                    const readingTime = Math.ceil(wordCount / wordsPerMinute);
+                    return readingTime;
                 }
 
                 blogPostsContainer.innerHTML = posts.map(post => `
@@ -98,16 +107,16 @@
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric'
-                            })}
+                            })} • ${estimateReadingTime(post.content)} min read
                         </div>
                         <p class="blog-post-excerpt">${post.excerpt}</p>
                     </article>
                 `).join('');
             } catch (error) {
-                console.error('Error loading blog posts:', error);
+                console.error('Error loading writings:', error);
                 document.getElementById('blog-posts').innerHTML = `
                     <div style="text-align: center; padding: 2rem;">
-                        <p class="body-text">Error loading posts. Please try again later.</p>
+                        <p class="body-text">Error loading writings. Please try again later.</p>
                     </div>
                 `;
             }
