@@ -377,6 +377,19 @@ header {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+    
+    /* Projects section responsive */
+    .project-item:hover {
+        transform: translateX(0.5rem);
+    }
+    
+    .project-name {
+        font-size: 1.3rem;
+    }
+    
+    .project-description {
+        font-size: 0.9rem;
+    }
 }
 
 
@@ -417,41 +430,47 @@ section {
     background-color: var(--gray-light);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.projects-list {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.project-card {
+.project-item {
     display: block;
-    background-color: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gray-divider);
     text-decoration: none;
     color: inherit;
+    transition: all 0.3s ease;
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: inherit;
+.project-item:last-child {
+    border-bottom: none;
 }
 
-.project-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+.project-item:hover {
+    transform: translateX(1rem);
+    color: var(--primary-pink);
 }
 
-.project-title {
-    padding: 1.5rem;
-    font-size: 1.3rem;
-    font-weight: 700;
+.project-item:hover .project-name {
+    color: var(--primary-pink);
+}
+
+.project-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--black);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: var(--gray-medium);
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Experience Section */
