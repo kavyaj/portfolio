@@ -424,16 +424,21 @@ section {
 }
 
 .project-card {
+    display: block;
     background-color: var(--white);
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-image {
@@ -446,6 +451,7 @@ section {
     padding: 1.5rem;
     font-size: 1.3rem;
     font-weight: 700;
+    color: var(--black);
 }
 
 /* Experience Section */
