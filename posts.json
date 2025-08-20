@@ -27,6 +27,15 @@
       "content": "# From Corporate to Startup: A Designer's Perspective\n\nMoving from a large corporation to the startup world was like learning to design all over again.\n\n## Corporate vs Startup Design\n\n### Corporate\n- Extensive research phases\n- Multiple stakeholder approvals\n- Risk-averse decision making\n- Resource abundance\n\n### Startup\n- Ship first, research later\n- Direct access to users\n- Comfortable with uncertainty\n- Resource constraints breed creativity\n\n## What I Learned\n\nThe biggest shift was learning to embrace uncertainty. In corporate environments, I was used to having all the answers before starting. In startups, you learn as you build.\n\n## The Sweet Spot\n\nThe ideal approach combines the best of both worlds:\n- Corporate's emphasis on research and process\n- Startup's speed and user proximity\n\nThis hybrid approach has made me a more well-rounded designer and product thinker.",
       "created_at": "2024-03-10T09:15:00Z",
       "published": true
+    },
+    {
+      "id": 4,
+      "title": "Your New Post Title",
+      "slug": "your-new-post-title",
+      "excerpt": "A brief description of your new blog post that will appear on the blog listing page.",
+      "content": "# Your New Post Title\n\nWrite your blog post content here using Markdown formatting.\n\n## Subheadings\n\nUse ## for subheadings.\n\n### Smaller headings\n\nUse ### for smaller headings.\n\n**Bold text** and *italic text* are supported.\n\n- Bullet points\n- Are also supported\n\n1. As are numbered lists\n2. Like this one",
+      "created_at": "2024-03-15T10:00:00Z",
+      "published": true
     }
   ]
 }
