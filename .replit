@@ -50,3 +50,6 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "echo \"y\" | npx http-server . -p 5000 -c-1"
+
+[agent]
+integrations = ["javascript_database==1.0.0", "javascript_log_in_with_replit==1.0.0"]

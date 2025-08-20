@@ -875,6 +875,26 @@ section {
     color: rgba(0, 0, 0, 0.7);
 }
 
+/* Blog integration styles */
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: var(--primary-pink);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-pink);
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--primary-pink);
+    transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {

@@ -197,17 +197,66 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Add click handlers for writing items
-document.addEventListener('DOMContentLoaded', function() {
-    const writingItems = document.querySelectorAll('.writing-item');
-    
-    writingItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const title = this.querySelector('.writing-title').textContent;
-            
-            // In a real implementation, this would navigate to blog post pages
-            console.log(`Clicked on article: ${title}`);
+// Load blog posts for the writing section
+async function loadWritingPosts() {
+    try {
+        const response = await fetch('/api/blog/posts');
+        const posts = await response.json();
+        
+        const writingGrid = document.getElementById('writing-grid');
+        
+        if (posts.length === 0) {
+            writingGrid.innerHTML = `
+                <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
+                    <p>No posts yet. Check back soon!</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Show only the latest 5 posts on the homepage
+        const latestPosts = posts.slice(0, 5);
+        
+        writingGrid.innerHTML = latestPosts.map(post => `
+            <article class="writing-item" onclick="window.open('/post.html?slug=${post.slug}', '_blank')">
+                <h3 class="writing-title">${post.title}</h3>
+                <div class="writing-meta">
+                    <span class="writing-date">${new Date(post.created_at).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                    })}</span>
+                    <span class="writing-category">BLOG</span>
+                </div>
+            </article>
+        `).join('');
+        
+        // Add click handlers for new items
+        const writingItems = document.querySelectorAll('.writing-item');
+        writingItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
         });
-    });
+        
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        document.getElementById('writing-grid').innerHTML = `
+            <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
+                <p>Error loading posts. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load blog posts when page loads
+    loadWritingPosts();
 });
 
 // Parallax effect for hero section

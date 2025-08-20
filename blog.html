@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Kavya Jahagirdar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-post-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .blog-post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post-title {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fd5183;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+        }
+        .blog-post-title:hover {
+            text-decoration: underline;
+        }
+        .blog-post-date {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        .blog-post-excerpt {
+            font-family: 'DM Sans', sans-serif;
+            color: #374151;
+            line-height: 1.6;
+        }
+        .back-to-portfolio {
+            display: inline-flex;
+            align-items: center;
+            color: #fd5183;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .back-to-portfolio:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <a href="/" class="back-to-portfolio">← Back to Portfolio</a>
+        
+        <header style="text-align: center; margin-bottom: 3rem;">
+            <h1 class="display-heading-large">Blog</h1>
+            <p class="tagline">Thoughts on design, development, and digital storytelling</p>
+        </header>
+
+        <div id="blog-posts">
+            <div style="text-align: center; padding: 2rem;">
+                <p>Loading posts...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function loadBlogPosts() {
+            try {
+                const response = await fetch('/api/blog/posts');
+                const posts = await response.json();
+                
+                const blogPostsContainer = document.getElementById('blog-posts');
+                
+                if (posts.length === 0) {
+                    blogPostsContainer.innerHTML = `
+                        <div style="text-align: center; padding: 3rem;">
+                            <p class="body-text">No blog posts yet. Check back soon!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                blogPostsContainer.innerHTML = posts.map(post => `
+                    <article class="blog-post-card">
+                        <a href="/post.html?slug=${post.slug}" class="blog-post-title">
+                            ${post.title}
+                        </a>
+                        <div class="blog-post-date">
+                            ${new Date(post.created_at).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}
+                        </div>
+                        <p class="blog-post-excerpt">${post.excerpt}</p>
+                    </article>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                document.getElementById('blog-posts').innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <p class="body-text">Error loading posts. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadBlogPosts);
+    </script>
+</body>
+</html>
