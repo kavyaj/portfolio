@@ -1,0 +1,213 @@
+// Register GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Letter Explosion Animation - Bettina Sosa Style
+function initLetterExplosion() {
+    const lines = [
+        'Building is my craft',
+        'storytelling is my passion'
+    ];
+    
+    const container = document.querySelector('.letter-explosion-container');
+    if (!container) return;
+    
+    // Clear existing content
+    container.innerHTML = '';
+    
+    // Create letter elements
+    lines.forEach((line, lineIndex) => {
+        const lineDiv = document.createElement('div');
+        lineDiv.classList.add('letter-line');
+        
+        const words = line.split(' ');
+        words.forEach((word, wordIndex) => {
+            // Create letters for each word
+            word.split('').forEach((char, charIndex) => {
+                const letterDiv = document.createElement('div');
+                letterDiv.classList.add('letter');
+                letterDiv.textContent = char;
+                letterDiv.dataset.speed = (0.8 + Math.random() * 0.7).toString();
+                letterDiv.dataset.word = word;
+                letterDiv.dataset.line = lineIndex.toString();
+                lineDiv.appendChild(letterDiv);
+            });
+            
+            // Add space between words
+            if (wordIndex < words.length - 1) {
+                const spaceDiv = document.createElement('div');
+                spaceDiv.classList.add('letter', 'space');
+                spaceDiv.innerHTML = '&nbsp;';
+                spaceDiv.dataset.speed = (0.8 + Math.random() * 0.7).toString();
+                lineDiv.appendChild(spaceDiv);
+            }
+        });
+        
+        container.appendChild(lineDiv);
+    });
+    
+    // Animate letters on scroll
+    const letters = container.querySelectorAll('.letter');
+    letters.forEach(letter => {
+        const speed = parseFloat(letter.dataset.speed || '1');
+        const randomRotation = Math.random() * 60 - 30;
+        
+        gsap.to(letter, {
+            y: (1 - speed) * window.innerHeight * 0.5,
+            rotation: randomRotation,
+            ease: 'power2.out',
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: 0,
+                end: window.innerHeight,
+                scrub: 0.5,
+                invalidateOnRefresh: true
+            }
+        });
+    });
+    
+    // Animate hero info appearance after scroll
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        }
+    })
+    .to('.hero-info', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out'
+    }, 0.5)
+    .to('.scroll-indicator', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out'
+    }, 0.7);
+}
+
+// Load blog posts for the writing section
+async function loadWritingPosts() {
+    try {
+        const response = await fetch('/api/blog/posts');
+        const posts = await response.json();
+        
+        const writingGrid = document.getElementById('writing-grid');
+        
+        if (posts.length === 0) {
+            writingGrid.innerHTML = `
+                <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
+                    <p>No posts yet. Check back soon!</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Show only the latest 5 posts on the homepage
+        const latestPosts = posts.slice(0, 5);
+        
+        writingGrid.innerHTML = latestPosts.map(post => `
+            <article class="writing-item" onclick="window.open('/post.html?slug=${post.slug}', '_blank')">
+                <h3 class="writing-title">${post.title}</h3>
+                <div class="writing-meta">
+                    <span class="writing-date">${new Date(post.created_at).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                    })}</span>
+                    <span class="writing-category">BLOG</span>
+                </div>
+            </article>
+        `).join('');
+        
+        // Add click handlers for new items
+        const writingItems = document.querySelectorAll('.writing-item');
+        writingItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        document.getElementById('writing-grid').innerHTML = `
+            <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
+                <p>Error loading posts. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const mobileToggle = document.querySelector('.nav-mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+    }
+}
+
+// Smooth scrolling for navigation links
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Header scroll effect
+function initHeaderScrollEffect() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+    });
+}
+
+// Initialize all functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize letter explosion animation
+    initLetterExplosion();
+    
+    // Load blog posts when page loads
+    loadWritingPosts();
+    
+    // Initialize other functionality
+    toggleMobileMenu();
+    initSmoothScrolling();
+    initHeaderScrollEffect();
+});
+
+// Refresh ScrollTrigger on window resize
+window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+});

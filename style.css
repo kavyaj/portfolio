@@ -200,7 +200,7 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Hero Section - Bettina Sosa Style */
+/* Hero Section - Letter Explosion Style */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -208,23 +208,26 @@ header {
     justify-content: space-between;
     padding: 2rem;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-/* Animated Text Display */
+/* Letter Explosion Container */
 .hero-animated-text {
-    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 800;
-    line-height: 0.9;
-    font-family: 'Big Shoulders Display', cursive;
-    color: var(--black);
-    margin-left: 2rem;
-    text-transform: lowercase;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.letter-explosion-container {
+    width: 100%;
 }
 
 .letter-line {
@@ -233,68 +236,108 @@ header {
     margin-bottom: 1rem;
 }
 
-.letter-word {
-    display: inline-flex;
-    margin-right: 1.5rem;
-    position: relative;
-}
-
 .letter {
     display: inline-block;
-    position: relative;
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 0.9;
+    margin-right: 0.1em;
     transform-origin: center;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform, opacity;
+    will-change: transform;
 }
 
-/* Letter animation states */
-.letter.animate-in {
-    animation: letterExplosion 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.letter.space {
+    width: 0.5em;
 }
 
-.letter.animate-scroll {
-    transform: translateX(var(--scroll-x, 0)) translateY(var(--scroll-y, 0)) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
-    opacity: var(--opacity, 1);
-    transition: none;
+/* Hero Info Section */
+.hero-info {
+    position: absolute;
+    bottom: 8rem;
+    left: 2rem;
+    right: 2rem;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(2rem);
 }
 
-/* Letter explosion keyframes */
-@keyframes letterExplosion {
-    0% {
-        transform: translateY(100px) rotate(0deg) scale(0.8);
-        opacity: 0;
-    }
+.hero-name {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--black);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
 
-    50% {
-        transform: translateY(-20px) rotate(var(--random-rotation, 0deg)) scale(1.1);
-        opacity: 1;
-    }
+.hero-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gray-dark);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
 
-    100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 1;
-    }
+.hero-cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: transparent;
+    color: var(--black);
+    text-decoration: none;
+    border: 2px solid var(--black);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-cta:hover {
+    background-color: var(--black);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    right: 2rem;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(1rem);
 }
 
 .scroll-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: var(--black);
-    opacity: 0.6;
-    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.scroll-arrow {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
 }
 
 /* Hero Content */
