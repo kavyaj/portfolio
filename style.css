@@ -248,9 +248,9 @@ header.visible {
 .letter {
     display: inline-block;
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: clamp(4rem, 12vw, 14rem); /* Even larger letters for maximum impact */
-    font-weight: 800;
-    color: var(--primary-pink); /* Changed to primary pink */
+    font-size: clamp(3rem, 10vw, 10rem); /* Reduced font size */
+    font-weight: 900; /* Increased to 900 */
+    color: var(--primary-pink);
     line-height: 0.85;
     margin-right: 0.05em;
     transform-origin: center center;
