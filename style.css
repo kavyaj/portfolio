@@ -200,126 +200,138 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Hero Section - Letter Explosion Style */
+/* Hero Section - Enhanced Letter Explosion Style */
 .hero-section {
-    min-height: 100vh;
+    min-height: 300vh; /* Extended scroll space like Bettina's */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
+    justify-content: flex-start;
+    padding: 0;
     position: relative;
     overflow-x: hidden;
 }
 
 /* Letter Explosion Container */
 .hero-animated-text {
-    position: absolute;
+    position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 2rem 4rem;
     z-index: 1;
 }
 
 .letter-explosion-container {
     width: 100%;
+    max-width: 1400px;
 }
 
 .letter-line {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    justify-content: flex-start;
 }
 
 .letter {
     display: inline-block;
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: clamp(3rem, 8vw, 8rem);
+    font-size: clamp(4rem, 12vw, 12rem); /* Larger letters for more impact */
     font-weight: 800;
     color: var(--black);
-    line-height: 0.9;
-    margin-right: 0.1em;
-    transform-origin: center;
-    will-change: transform;
+    line-height: 0.85;
+    margin-right: 0.05em;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transition: none;
 }
 
 .letter.space {
-    width: 0.5em;
+    width: 0.3em;
 }
 
-/* Hero Info Section */
+/* Hero Info Section - Positioned after letter explosion */
 .hero-info {
-    position: absolute;
-    bottom: 8rem;
-    left: 2rem;
-    right: 2rem;
+    position: relative;
+    top: -50vh;
+    left: 0;
+    right: 0;
+    padding: 4rem;
     z-index: 2;
     opacity: 0;
-    transform: translateY(2rem);
+    transform: translateY(4rem);
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.95) 20%, white 50%);
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero-name {
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-weight: 600;
     color: var(--black);
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
 }
 
 .hero-description {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--gray-dark);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 700px;
 }
 
 .hero-cta {
     display: inline-block;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2.5rem;
     background-color: transparent;
     color: var(--black);
     text-decoration: none;
     border: 2px solid var(--black);
     border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    align-self: flex-start;
 }
 
 .hero-cta:hover {
     background-color: var(--black);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     right: 2rem;
     text-align: center;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--gray-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
-    z-index: 3;
-    opacity: 0;
-    transform: translateY(1rem);
+    z-index: 10;
+    opacity: 0.8;
+    mix-blend-mode: difference;
 }
 
 .scroll-text {
     margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .scroll-arrow {

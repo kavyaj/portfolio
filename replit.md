@@ -109,8 +109,10 @@ Built as a static website with clean, semantic code structure for easy hosting o
 
 - **Project cleanup**: Removed React/full-stack structure, consolidated to standalone HTML/CSS/JS
 
-- **August 2025**: Reverted to static HTML portfolio
-  - Simplified project structure back to original 3-file HTML/CSS/JS setup
-  - Removed Node.js/React dependencies and complexity
-  - Added Express server for local development serving static files
-  - Maintained all original design, typography, and interactive features
+- **August 2025**: Enhanced Hero Section with Letter Explosion Animation
+  - Implemented dramatic GSAP-powered letter explosion animation inspired by Bettina Sosa
+  - Extended hero section to 300vh for prolonged scroll interaction
+  - Letters scatter with random speeds, rotations, and opacity changes
+  - Enhanced scroll distance with more pronounced movement effects
+  - Added sticky positioning for smooth letter animation experience
+  - Maintained blog system integration and all existing functionality

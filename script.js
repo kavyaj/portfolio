@@ -1,7 +1,7 @@
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// Letter Explosion Animation - Bettina Sosa Style
+// Letter Explosion Animation - Enhanced Bettina Sosa Style
 function initLetterExplosion() {
     const lines = [
         'Building is my craft',
@@ -26,7 +26,8 @@ function initLetterExplosion() {
                 const letterDiv = document.createElement('div');
                 letterDiv.classList.add('letter');
                 letterDiv.textContent = char;
-                letterDiv.dataset.speed = (0.8 + Math.random() * 0.7).toString();
+                // More varied speed range for dramatic effect
+                letterDiv.dataset.speed = (0.3 + Math.random() * 1.4).toString();
                 letterDiv.dataset.word = word;
                 letterDiv.dataset.line = lineIndex.toString();
                 lineDiv.appendChild(letterDiv);
@@ -37,7 +38,7 @@ function initLetterExplosion() {
                 const spaceDiv = document.createElement('div');
                 spaceDiv.classList.add('letter', 'space');
                 spaceDiv.innerHTML = '&nbsp;';
-                spaceDiv.dataset.speed = (0.8 + Math.random() * 0.7).toString();
+                spaceDiv.dataset.speed = (0.3 + Math.random() * 1.4).toString();
                 lineDiv.appendChild(spaceDiv);
             }
         });
@@ -45,48 +46,52 @@ function initLetterExplosion() {
         container.appendChild(lineDiv);
     });
     
-    // Animate letters on scroll
+    // Enhanced scroll-based animation with more dramatic movement
     const letters = container.querySelectorAll('.letter');
-    letters.forEach(letter => {
+    const maxScroll = ScrollTrigger.maxScroll(window);
+    
+    letters.forEach((letter, index) => {
         const speed = parseFloat(letter.dataset.speed || '1');
-        const randomRotation = Math.random() * 60 - 30;
+        const randomRotation = Math.random() * 120 - 60; // Increased rotation range
+        const randomX = (Math.random() - 0.5) * 200; // Add horizontal drift
         
-        gsap.to(letter, {
-            y: (1 - speed) * window.innerHeight * 0.5,
-            rotation: randomRotation,
-            ease: 'power2.out',
-            duration: 0.8,
+        // Create timeline for each letter
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
-                end: window.innerHeight,
-                scrub: 0.5,
+                end: () => window.innerHeight * 3, // Extended scroll distance
+                scrub: 0.8, // Slightly more responsive
                 invalidateOnRefresh: true
             }
         });
+        
+        tl.to(letter, {
+            y: (1 - speed) * window.innerHeight * 1.5, // More dramatic vertical movement
+            x: randomX * speed, // Horizontal scatter
+            rotation: randomRotation * speed, // Speed-based rotation
+            scale: Math.max(0.3, 1 - (speed * 0.7)), // Scale based on speed
+            opacity: Math.max(0.1, 1 - (speed * 0.8)), // Fade based on speed
+            ease: 'none'
+        });
     });
     
-    // Animate hero info appearance after scroll
+    // Enhanced fade-in of hero info section with proper timing
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1
+            start: () => window.innerHeight * 0.5,
+            end: () => window.innerHeight * 2.5,
+            scrub: 2,
+            invalidateOnRefresh: true
         }
     })
     .to('.hero-info', {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 3,
         ease: 'power2.out'
-    }, 0.5)
-    .to('.scroll-indicator', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out'
-    }, 0.7);
+    }, 2);
 }
 
 // Load blog posts for the writing section
