@@ -202,13 +202,14 @@ header {
 
 /* Hero Section - Enhanced Letter Explosion Style */
 .hero-section {
-    min-height: 300vh; /* Extended scroll space like Bettina's */
+    min-height: 400vh; /* Even more extended scroll space */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 0;
     position: relative;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 /* Letter Explosion Container */
@@ -240,14 +241,15 @@ header {
 .letter {
     display: inline-block;
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: clamp(4rem, 12vw, 12rem); /* Larger letters for more impact */
+    font-size: clamp(4rem, 12vw, 14rem); /* Even larger letters for maximum impact */
     font-weight: 800;
     color: var(--black);
     line-height: 0.85;
     margin-right: 0.05em;
     transform-origin: center center;
-    will-change: transform, opacity;
+    will-change: transform, opacity, filter;
     transition: none;
+    perspective: 1000px;
 }
 
 .letter.space {
@@ -257,15 +259,15 @@ header {
 /* Hero Info Section - Positioned after letter explosion */
 .hero-info {
     position: relative;
-    top: -50vh;
+    top: -100vh;
     left: 0;
     right: 0;
     padding: 4rem;
     z-index: 2;
     opacity: 0;
-    transform: translateY(4rem);
-    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.95) 20%, white 50%);
-    min-height: 50vh;
+    transform: translateY(6rem);
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.9) 10%, white 30%);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

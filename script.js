@@ -26,8 +26,8 @@ function initLetterExplosion() {
                 const letterDiv = document.createElement('div');
                 letterDiv.classList.add('letter');
                 letterDiv.textContent = char;
-                // More varied speed range for dramatic effect
-                letterDiv.dataset.speed = (0.3 + Math.random() * 1.4).toString();
+                // Extreme speed variation for chaos
+                letterDiv.dataset.speed = (0.1 + Math.random() * 1.8).toString();
                 letterDiv.dataset.word = word;
                 letterDiv.dataset.line = lineIndex.toString();
                 lineDiv.appendChild(letterDiv);
@@ -38,7 +38,7 @@ function initLetterExplosion() {
                 const spaceDiv = document.createElement('div');
                 spaceDiv.classList.add('letter', 'space');
                 spaceDiv.innerHTML = '&nbsp;';
-                spaceDiv.dataset.speed = (0.3 + Math.random() * 1.4).toString();
+                spaceDiv.dataset.speed = (0.1 + Math.random() * 1.8).toString();
                 lineDiv.appendChild(spaceDiv);
             }
         });
@@ -46,42 +46,55 @@ function initLetterExplosion() {
         container.appendChild(lineDiv);
     });
     
-    // Enhanced scroll-based animation with more dramatic movement
+    // Ultra dramatic scroll-based animation with extreme movement
     const letters = container.querySelectorAll('.letter');
-    const maxScroll = ScrollTrigger.maxScroll(window);
     
     letters.forEach((letter, index) => {
         const speed = parseFloat(letter.dataset.speed || '1');
-        const randomRotation = Math.random() * 120 - 60; // Increased rotation range
-        const randomX = (Math.random() - 0.5) * 200; // Add horizontal drift
+        const randomRotation = Math.random() * 360 - 180; // Full rotation range
+        const randomX = (Math.random() - 0.5) * 1200; // Ultra wide horizontal scatter
+        const randomY = Math.random() * window.innerHeight * 4; // Letters can flow to the very bottom
         
-        // Create timeline for each letter
+        // Create dramatic timeline for each letter
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
-                end: () => window.innerHeight * 3, // Extended scroll distance
-                scrub: 0.8, // Slightly more responsive
+                end: () => window.innerHeight * 4, // Extended to full section height
+                scrub: 1, // Smoother scrub for dramatic effect
                 invalidateOnRefresh: true
             }
         });
         
         tl.to(letter, {
-            y: (1 - speed) * window.innerHeight * 1.5, // More dramatic vertical movement
-            x: randomX * speed, // Horizontal scatter
-            rotation: randomRotation * speed, // Speed-based rotation
-            scale: Math.max(0.3, 1 - (speed * 0.7)), // Scale based on speed
-            opacity: Math.max(0.1, 1 - (speed * 0.8)), // Fade based on speed
+            y: randomY + (speed * window.innerHeight * 3.5), // Letters flow all the way to section end
+            x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
+            rotation: randomRotation + (speed * 270), // Even more rotation
+            scale: Math.max(0.05, 1.3 - (speed * 1.1)), // More dramatic scaling range
+            opacity: Math.max(0.02, 1 - (speed * 0.9)), // Almost invisible for fastest letters
             ease: 'none'
+        });
+        
+        // Add secondary animation for extra chaos
+        gsap.to(letter, {
+            rotationX: Math.random() * 90 - 45,
+            rotationY: Math.random() * 90 - 45,
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: () => window.innerHeight * 0.5,
+                end: () => window.innerHeight * 3.5,
+                scrub: 2,
+                invalidateOnRefresh: true
+            }
         });
     });
     
-    // Enhanced fade-in of hero info section with proper timing
+    // Enhanced fade-in of hero info section after dramatic letter explosion
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: () => window.innerHeight * 0.5,
-            end: () => window.innerHeight * 2.5,
+            start: () => window.innerHeight * 2,
+            end: () => window.innerHeight * 3.5,
             scrub: 2,
             invalidateOnRefresh: true
         }
@@ -91,7 +104,7 @@ function initLetterExplosion() {
         y: 0,
         duration: 3,
         ease: 'power2.out'
-    }, 2);
+    }, 1);
 }
 
 // Load blog posts for the writing section
