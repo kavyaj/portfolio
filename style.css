@@ -208,8 +208,7 @@ header {
     justify-content: flex-start;
     padding: 0;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden; /* Hide letters that fly outside viewport */
 }
 
 /* Letter Explosion Container */
@@ -222,7 +221,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 2rem 4rem;
+    padding: 8rem 4rem 2rem 4rem; /* Added top padding for upward letter space */
     z-index: 1;
 }
 

@@ -53,7 +53,10 @@ function initLetterExplosion() {
         const speed = parseFloat(letter.dataset.speed || '1');
         const randomRotation = Math.random() * 360 - 180; // Full rotation range
         const randomX = (Math.random() - 0.5) * 1200; // Ultra wide horizontal scatter
-        const randomY = Math.random() * window.innerHeight * 2.5; // Adjusted for shorter scroll
+        
+        // Some letters fly UP, some fly DOWN - like Bettina's site
+        const direction = Math.random() > 0.4 ? 1 : -1; // 60% down, 40% up
+        const randomY = direction * Math.random() * window.innerHeight * 2.5;
         
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
@@ -67,7 +70,7 @@ function initLetterExplosion() {
         });
         
         tl.to(letter, {
-            y: randomY + (speed * window.innerHeight * 2), // Letters flow to section end
+            y: randomY + (direction * speed * window.innerHeight * 1.8), // Letters fly up AND down
             x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
             rotation: randomRotation + (speed * 270), // Even more rotation
             scale: Math.max(0.05, 1.3 - (speed * 1.1)), // More dramatic scaling range
@@ -75,13 +78,14 @@ function initLetterExplosion() {
             ease: 'none'
         });
         
-        // Add secondary animation for extra chaos
+        // Add secondary animation for extra chaos - 3D rotation
         gsap.to(letter, {
-            rotationX: Math.random() * 90 - 45,
-            rotationY: Math.random() * 90 - 45,
+            rotationX: (Math.random() - 0.5) * 180, // More dramatic 3D rotation
+            rotationY: (Math.random() - 0.5) * 180,
+            z: Math.random() * 200 - 100, // Add depth variation
             scrollTrigger: {
                 trigger: document.documentElement,
-                start: () => window.innerHeight * 0.5,
+                start: () => window.innerHeight * 0.3,
                 end: () => window.innerHeight * 2.2,
                 scrub: 2,
                 invalidateOnRefresh: true
