@@ -4,8 +4,8 @@ gsap.registerPlugin(ScrollTrigger);
 // Letter Explosion Animation - Enhanced Bettina Sosa Style
 function initLetterExplosion() {
     const lines = [
-        'Building is my craft',
-        'storytelling is my passion'
+        'From concept to creation,',
+        'iteratively.'
     ];
 
     const container = document.querySelector('.letter-explosion-container');
