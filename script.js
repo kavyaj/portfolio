@@ -53,21 +53,21 @@ function initLetterExplosion() {
         const speed = parseFloat(letter.dataset.speed || '1');
         const randomRotation = Math.random() * 360 - 180; // Full rotation range
         const randomX = (Math.random() - 0.5) * 1200; // Ultra wide horizontal scatter
-        const randomY = Math.random() * window.innerHeight * 4; // Letters can flow to the very bottom
+        const randomY = Math.random() * window.innerHeight * 2.5; // Adjusted for shorter scroll
         
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
-                end: () => window.innerHeight * 4, // Extended to full section height
+                end: () => window.innerHeight * 2.5, // Adjusted for shorter scroll
                 scrub: 1, // Smoother scrub for dramatic effect
                 invalidateOnRefresh: true
             }
         });
         
         tl.to(letter, {
-            y: randomY + (speed * window.innerHeight * 3.5), // Letters flow all the way to section end
+            y: randomY + (speed * window.innerHeight * 2), // Letters flow to section end
             x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
             rotation: randomRotation + (speed * 270), // Even more rotation
             scale: Math.max(0.05, 1.3 - (speed * 1.1)), // More dramatic scaling range
@@ -82,7 +82,7 @@ function initLetterExplosion() {
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: () => window.innerHeight * 0.5,
-                end: () => window.innerHeight * 3.5,
+                end: () => window.innerHeight * 2.2,
                 scrub: 2,
                 invalidateOnRefresh: true
             }
@@ -93,8 +93,8 @@ function initLetterExplosion() {
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: () => window.innerHeight * 2,
-            end: () => window.innerHeight * 3.5,
+            start: () => window.innerHeight * 1.5,
+            end: () => window.innerHeight * 2.2,
             scrub: 2,
             invalidateOnRefresh: true
         }
