@@ -31,8 +31,8 @@
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    const posts = await response.json();
-                    displayPosts(posts);
+                    const data = await response.json();
+                    displayPosts(data.posts);
                 } catch (error) {
                     console.error("Could not fetch posts:", error);
                     postsContainer.innerHTML = '<p>Error loading posts.</p>';
@@ -45,8 +45,8 @@
                     postElement.classList.add('blog-post');
                     postElement.innerHTML = `
                         <h2>${post.title}</h2>
-                        <p class="post-meta">Published on ${new Date(post.date).toLocaleDateString()}</p>
-                        <p>${post.summary}</p>
+                        <p class="post-meta">Published on ${new Date(post.created_at).toLocaleDateString()}</p>
+                        <p>${post.excerpt}</p>
                         <a href="post.html?id=${post.id}" class="read-more">Read More</a>
                     `;
                     postsContainer.appendChild(postElement);

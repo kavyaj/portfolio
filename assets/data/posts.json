@@ -30,11 +30,11 @@
     },
     {
       "id": 4,
-      "title": "Your New Post Title",
-      "slug": "your-new-post-title",
-      "excerpt": "A brief description of your new blog post that will appear on the blog listing page.",
-      "content": "# Your New Post Title\n\nWrite your blog post content here using Markdown formatting.\n\n## Subheadings\n\nUse ## for subheadings.\n\n### Smaller headings\n\nUse ### for smaller headings.\n\n**Bold text** and *italic text* are supported.\n\n- Bullet points\n- Are also supported\n\n1. As are numbered lists\n2. Like this one",
-      "created_at": "2024-03-15T10:00:00Z",
+      "title": "We were the AI before AI became a thing.",
+      "slug": "we-were-the-ai-before-ai",
+      "excerpt": "A reflection on how we've transferred our cognitive load to AI, and what it means for the next generation who will grow up never knowing life without it.",
+      "content": "# We were the AI before AI became a thing.\n\nThere will come a day when my son will look at me, half-curious, half-judgy and ask,\n\"Wait… you people actually searched the internet… without AI?\"\n\nI can't wait for him to sit down with his grandma for that one. I can already see her face. The same look she had when I once said Maggi takes too long. She'll try to explain a time when there was no internet. He'll look at her like she's describing life before oxygen.\n\nIn all fairness, it's as alien to him as telegram is to me (the OG one, not the one with a capital T)\n\nThis thought occurs to me as I transfer all my cognitive load to Perplexity as I type \"I see error E4 on my Toshiba dishwasher. What do I do?\"\n\nI can feel my mom's years of trying to make me resourceful evaporating.\n\nIs searching on Google such an uphill task now?\n\nI often surprise myself with the degree of laziness that comes with my questions.\n\nNo doubt I'm still the curious type. The type some people used to find annoying because I asked too many \"why\" questions.\n\nBut adulthood has slowly transformed the whys to hows and whats.\n\n\"How do I get this done.\"\n\n\"What should I do about this.\"\n\nGetting things done. Chop chop.\n\nI tinker with the dishwasher and tell myself maybe one day we won't have to do dishes at all. Like Mrs. Weasley's magical sink where a sponge floats around scrubbing plates.\n\nMaybe we're doing this all wrong. Instead of going down the technological advancements route, we should have picked the magical one instead.\n\nImagine if we could just apparate anywhere. We'd save a lot of carbon footprint on travel, for sure.\n\nBut since no one's figured out magic yet, we settled for AI.\n\nAnd I guess when my son is old enough to ask me that AI question, I'll flex and say, \"We were the AI before AI became a thing.\" 😎",
+      "created_at": "2025-01-21T10:00:00Z",
       "published": true
     }
   ]

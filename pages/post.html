@@ -1,5 +1,54 @@
-<link rel="stylesheet" href="../css/style.css">
-<a href="blog.html" class="back-to-blog">← Back to Writings</a>
-<link rel="stylesheet" href="../css/style.css">
-<a href="blog.html" class="back-to-blog">← Back to Writings</a>
-const response = await fetch('../assets/data/posts.json');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="blog.html" class="back-to-blog">← Back to Writings</a>
+        </nav>
+    </header>
+    <main>
+        <article id="post-content">
+            <p>Loading post...</p>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2025 Kavya Jahagirdar</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = parseInt(urlParams.get('id'));
+            
+            async function loadPost() {
+                try {
+                    const response = await fetch('../assets/data/posts.json');
+                    const data = await response.json();
+                    const post = data.posts.find(p => p.id === postId);
+                    
+                    if (post) {
+                        document.title = post.title;
+                        document.getElementById('post-content').innerHTML = `
+                            <h1>${post.title}</h1>
+                            <p class="post-meta">Published on ${new Date(post.created_at).toLocaleDateString()}</p>
+                            <div class="post-body">${post.content.replace(/\n/g, '<br>')}</div>
+                        `;
+                    } else {
+                        document.getElementById('post-content').innerHTML = '<p>Post not found.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error loading post:', error);
+                    document.getElementById('post-content').innerHTML = '<p>Error loading post.</p>';
+                }
+            }
+            
+            loadPost();
+        });
+    </script>
+</body>
+</html>
