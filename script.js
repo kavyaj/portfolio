@@ -199,16 +199,42 @@ function initSmoothScrolling() {
     });
 }
 
-// Header scroll effect
+// Header visibility control - show only after hero section
 function initHeaderScrollEffect() {
     const header = document.querySelector('header');
-    if (!header) return;
+    const aboutSection = document.querySelector('#about');
+    if (!header || !aboutSection) return;
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
+    // Create scroll trigger to show header when about section comes into view
+    ScrollTrigger.create({
+        trigger: aboutSection,
+        start: 'top 80%',
+        end: 'bottom top',
+        onEnter: () => {
+            header.classList.add('visible');
+        },
+        onLeave: () => {
+            header.classList.remove('visible');
+        },
+        onEnterBack: () => {
+            header.classList.add('visible');
+        },
+        onLeaveBack: () => {
+            header.classList.remove('visible');
+        }
+    });
+
+    // Additional background color change on further scroll
+    ScrollTrigger.create({
+        trigger: aboutSection,
+        start: 'top 60px',
+        onEnter: () => {
+            if (header.classList.contains('visible')) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        },
+        onLeaveBack: () => {
             header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             header.style.boxShadow = 'none';
         }
