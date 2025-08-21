@@ -7,18 +7,18 @@ function initLetterExplosion() {
         'Building is my craft',
         'storytelling is my passion'
     ];
-    
+
     const container = document.querySelector('.letter-explosion-container');
     if (!container) return;
-    
+
     // Clear existing content
     container.innerHTML = '';
-    
+
     // Create letter elements
     lines.forEach((line, lineIndex) => {
         const lineDiv = document.createElement('div');
         lineDiv.classList.add('letter-line');
-        
+
         const words = line.split(' ');
         words.forEach((word, wordIndex) => {
             // Create letters for each word
@@ -32,7 +32,7 @@ function initLetterExplosion() {
                 letterDiv.dataset.line = lineIndex.toString();
                 lineDiv.appendChild(letterDiv);
             });
-            
+
             // Add space between words
             if (wordIndex < words.length - 1) {
                 const spaceDiv = document.createElement('div');
@@ -42,22 +42,22 @@ function initLetterExplosion() {
                 lineDiv.appendChild(spaceDiv);
             }
         });
-        
+
         container.appendChild(lineDiv);
     });
-    
+
     // Ultra dramatic scroll-based animation with extreme movement
     const letters = container.querySelectorAll('.letter');
-    
+
     letters.forEach((letter, index) => {
         const speed = parseFloat(letter.dataset.speed || '1');
         const randomRotation = Math.random() * 360 - 180; // Full rotation range
         const randomX = (Math.random() - 0.5) * 1200; // Ultra wide horizontal scatter
-        
+
         // Some letters fly UP, some fly DOWN - like Bettina's site
         const direction = Math.random() > 0.4 ? 1 : -1; // 60% down, 40% up
         const randomY = direction * Math.random() * window.innerHeight * 1.8;
-        
+
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -68,7 +68,7 @@ function initLetterExplosion() {
                 invalidateOnRefresh: true
             }
         });
-        
+
         tl.to(letter, {
             y: randomY + (direction * speed * window.innerHeight * 1.2), // Reduced movement range
             x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
@@ -77,7 +77,7 @@ function initLetterExplosion() {
             opacity: Math.max(0.02, 1 - (speed * 0.9)), // Almost invisible for fastest letters
             ease: 'none'
         });
-        
+
         // Add secondary animation for extra chaos - 3D rotation
         gsap.to(letter, {
             rotationX: (Math.random() - 0.5) * 180, // More dramatic 3D rotation
@@ -92,7 +92,7 @@ function initLetterExplosion() {
             }
         });
     });
-    
+
     // Enhanced fade-in of hero info section after dramatic letter explosion
     gsap.timeline({
         scrollTrigger: {
@@ -116,9 +116,9 @@ async function loadWritingPosts() {
     try {
         const response = await fetch('/api/blog/posts');
         const posts = await response.json();
-        
+
         const writingGrid = document.getElementById('writing-grid');
-        
+
         if (posts.length === 0) {
             writingGrid.innerHTML = `
                 <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
@@ -130,7 +130,7 @@ async function loadWritingPosts() {
 
         // Show only the latest 5 posts on the homepage
         const latestPosts = posts.slice(0, 5);
-        
+
         writingGrid.innerHTML = latestPosts.map(post => `
             <article class="writing-item" onclick="window.open('/post.html?slug=${post.slug}', '_blank')">
                 <h3 class="writing-title">${post.title}</h3>
@@ -144,7 +144,7 @@ async function loadWritingPosts() {
                 </div>
             </article>
         `).join('');
-        
+
         // Add click handlers for new items
         const writingItems = document.querySelectorAll('.writing-item');
         writingItems.forEach(item => {
@@ -157,7 +157,7 @@ async function loadWritingPosts() {
                 this.style.transform = 'translateY(0)';
             });
         });
-        
+
     } catch (error) {
         console.error('Error loading blog posts:', error);
         document.getElementById('writing-grid').innerHTML = `
@@ -172,7 +172,7 @@ async function loadWritingPosts() {
 function toggleMobileMenu() {
     const mobileToggle = document.querySelector('.nav-mobile-toggle');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -245,10 +245,10 @@ function initHeaderScrollEffect() {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize letter explosion animation
     initLetterExplosion();
-    
+
     // Load blog posts when page loads
     loadWritingPosts();
-    
+
     // Initialize other functionality
     toggleMobileMenu();
     initSmoothScrolling();
