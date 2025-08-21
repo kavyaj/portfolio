@@ -4,8 +4,8 @@ gsap.registerPlugin(ScrollTrigger);
 // Letter Explosion Animation - Enhanced Bettina Sosa Style
 function initLetterExplosion() {
     const lines = [
-        'From concept to creation,',
-        'iteratively.'
+        'Building is my craft',
+        'storytelling is my passion'
     ];
 
     const container = document.querySelector('.letter-explosion-container');
@@ -14,33 +14,36 @@ function initLetterExplosion() {
     // Clear existing content
     container.innerHTML = '';
 
-    // Create letter elements
+    // Create word elements (keeping words together as cohesive units)
     lines.forEach((line, lineIndex) => {
         const lineDiv = document.createElement('div');
         lineDiv.classList.add('letter-line');
 
         const words = line.split(' ');
         words.forEach((word, wordIndex) => {
+            // Create word container to keep letters together
+            const wordDiv = document.createElement('div');
+            wordDiv.classList.add('word-container');
+            wordDiv.style.display = 'inline-block';
+            wordDiv.style.marginRight = '0.5em';
+            
+            // Assign same speed to all letters in a word for cohesion
+            const wordSpeed = (0.3 + Math.random() * 0.8).toString(); // Less extreme variation
+            
             // Create letters for each word
             word.split('').forEach((char, charIndex) => {
                 const letterDiv = document.createElement('div');
                 letterDiv.classList.add('letter');
+                letterDiv.style.display = 'inline-block';
                 letterDiv.textContent = char;
-                // Extreme speed variation for chaos
-                letterDiv.dataset.speed = (0.1 + Math.random() * 1.8).toString();
+                letterDiv.dataset.speed = wordSpeed; // Same speed for word cohesion
                 letterDiv.dataset.word = word;
                 letterDiv.dataset.line = lineIndex.toString();
-                lineDiv.appendChild(letterDiv);
+                letterDiv.dataset.wordIndex = wordIndex.toString();
+                wordDiv.appendChild(letterDiv);
             });
-
-            // Add space between words
-            if (wordIndex < words.length - 1) {
-                const spaceDiv = document.createElement('div');
-                spaceDiv.classList.add('letter', 'space');
-                spaceDiv.innerHTML = '&nbsp;';
-                spaceDiv.dataset.speed = (0.1 + Math.random() * 1.8).toString();
-                lineDiv.appendChild(spaceDiv);
-            }
+            
+            lineDiv.appendChild(wordDiv);
         });
 
         container.appendChild(lineDiv);
@@ -51,42 +54,42 @@ function initLetterExplosion() {
 
     letters.forEach((letter, index) => {
         const speed = parseFloat(letter.dataset.speed || '1');
-        const randomRotation = Math.random() * 360 - 180; // Full rotation range
-        const randomX = (Math.random() - 0.5) * 1200; // Ultra wide horizontal scatter
+        const randomRotation = Math.random() * 180 - 90; // Reduced rotation range
+        const randomX = (Math.random() - 0.5) * 600; // Reduced horizontal scatter
 
-        // Some letters fly UP, some fly DOWN - like Bettina's site
-        const direction = Math.random() > 0.4 ? 1 : -1; // 60% down, 40% up
-        const randomY = direction * Math.random() * window.innerHeight * 1.8;
+        // Some letters fly UP, some fly DOWN - but less intense
+        const direction = Math.random() > 0.5 ? 1 : -1; // 50/50 split
+        const randomY = direction * Math.random() * window.innerHeight * 1.0;
 
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
-                end: () => window.innerHeight * 1.8, // Further reduced scroll space
+                end: () => window.innerHeight * 1.5, // Much shorter scroll space
                 scrub: 1, // Smoother scrub for dramatic effect
                 invalidateOnRefresh: true
             }
         });
 
         tl.to(letter, {
-            y: randomY + (direction * speed * window.innerHeight * 1.2), // Reduced movement range
-            x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
-            rotation: randomRotation + (speed * 270), // Even more rotation
-            scale: Math.max(0.05, 1.3 - (speed * 1.1)), // More dramatic scaling range
-            opacity: Math.max(0.02, 1 - (speed * 0.9)), // Almost invisible for fastest letters
+            y: randomY + (direction * speed * window.innerHeight * 0.8), // Much gentler movement
+            x: randomX * (0.5 + speed * 0.8), // Reduced horizontal scatter
+            rotation: randomRotation + (speed * 90), // Less rotation
+            scale: Math.max(0.3, 1.2 - (speed * 0.6)), // Gentler scaling
+            opacity: Math.max(0.4, 1 - (speed * 0.5)), // Keep more visible
             ease: 'none'
         });
 
         // Add secondary animation for extra chaos - 3D rotation
         gsap.to(letter, {
-            rotationX: (Math.random() - 0.5) * 180, // More dramatic 3D rotation
-            rotationY: (Math.random() - 0.5) * 180,
+            rotationX: (Math.random() - 0.5) * 60, // Gentler 3D rotation
+            rotationY: (Math.random() - 0.5) * 60,
             z: Math.random() * 200 - 100, // Add depth variation
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: () => window.innerHeight * 0.3,
-                end: () => window.innerHeight * 1.6,
+                end: () => window.innerHeight * 1.3,
                 scrub: 2,
                 invalidateOnRefresh: true
             }
@@ -97,8 +100,8 @@ function initLetterExplosion() {
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: () => window.innerHeight * 1.2,
-            end: () => window.innerHeight * 1.6,
+            start: () => window.innerHeight * 1.0,
+            end: () => window.innerHeight * 1.3,
             scrub: 2,
             invalidateOnRefresh: true
         }

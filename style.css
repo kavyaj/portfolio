@@ -210,7 +210,7 @@ header.visible {
 
 /* Hero Section - Enhanced Letter Explosion Style */
 .hero-section {
-    min-height: 180vh; /* Further reduced scroll space */
+    min-height: 150vh; /* Much shorter scroll space */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -229,7 +229,7 @@ header.visible {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 8rem 4rem 2rem 4rem; /* Added top padding for upward letter space */
+    padding: 12rem 4rem 2rem 4rem; /* Much more white space above text */
     z-index: 1;
 }
 
@@ -257,6 +257,12 @@ header.visible {
     will-change: transform, opacity, filter;
     transition: none;
     perspective: 1000px;
+}
+
+.word-container {
+    display: inline-block;
+    margin-right: 0.5em;
+    white-space: nowrap;
 }
 
 .letter.space {
