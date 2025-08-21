@@ -56,21 +56,21 @@ function initLetterExplosion() {
         
         // Some letters fly UP, some fly DOWN - like Bettina's site
         const direction = Math.random() > 0.4 ? 1 : -1; // 60% down, 40% up
-        const randomY = direction * Math.random() * window.innerHeight * 2.5;
+        const randomY = direction * Math.random() * window.innerHeight * 1.8;
         
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: 0,
-                end: () => window.innerHeight * 2.5, // Adjusted for shorter scroll
+                end: () => window.innerHeight * 1.8, // Further reduced scroll space
                 scrub: 1, // Smoother scrub for dramatic effect
                 invalidateOnRefresh: true
             }
         });
         
         tl.to(letter, {
-            y: randomY + (direction * speed * window.innerHeight * 1.8), // Letters fly up AND down
+            y: randomY + (direction * speed * window.innerHeight * 1.2), // Reduced movement range
             x: randomX * (0.3 + speed * 1.2), // More extreme horizontal scatter
             rotation: randomRotation + (speed * 270), // Even more rotation
             scale: Math.max(0.05, 1.3 - (speed * 1.1)), // More dramatic scaling range
@@ -86,7 +86,7 @@ function initLetterExplosion() {
             scrollTrigger: {
                 trigger: document.documentElement,
                 start: () => window.innerHeight * 0.3,
-                end: () => window.innerHeight * 2.2,
+                end: () => window.innerHeight * 1.6,
                 scrub: 2,
                 invalidateOnRefresh: true
             }
@@ -97,8 +97,8 @@ function initLetterExplosion() {
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: () => window.innerHeight * 1.5,
-            end: () => window.innerHeight * 2.2,
+            start: () => window.innerHeight * 1.2,
+            end: () => window.innerHeight * 1.6,
             scrub: 2,
             invalidateOnRefresh: true
         }

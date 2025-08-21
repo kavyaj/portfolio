@@ -210,7 +210,7 @@ header.visible {
 
 /* Hero Section - Enhanced Letter Explosion Style */
 .hero-section {
-    min-height: 250vh; /* Reduced scroll space for better experience */
+    min-height: 180vh; /* Further reduced scroll space */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -250,7 +250,7 @@ header.visible {
     font-family: 'Big Shoulders Display', sans-serif;
     font-size: clamp(4rem, 12vw, 14rem); /* Even larger letters for maximum impact */
     font-weight: 800;
-    color: var(--black);
+    color: var(--primary-pink); /* Changed to primary pink */
     line-height: 0.85;
     margin-right: 0.05em;
     transform-origin: center center;

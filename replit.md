@@ -111,8 +111,11 @@ Built as a static website with clean, semantic code structure for easy hosting o
 
 - **August 2025**: Enhanced Hero Section with Letter Explosion Animation
   - Implemented dramatic GSAP-powered letter explosion animation inspired by Bettina Sosa
-  - Extended hero section to 300vh for prolonged scroll interaction
-  - Letters scatter with random speeds, rotations, and opacity changes
-  - Enhanced scroll distance with more pronounced movement effects
-  - Added sticky positioning for smooth letter animation experience
+  - Letters now fly in both directions (up and down) like authentic Bettina Sosa effect
+  - Added white space above text for upward letter movement
+  - Enhanced 3D rotations with rotationX, rotationY, and z-depth for realistic motion
+  - Optimized scroll experience to 180vh for better user experience
+  - Changed letter colors to primary pink (#fd5183) for brand consistency
+  - Hidden header during hero section, appears smoothly when reaching about section
+  - Letters scatter with extreme horizontal movement (1200px range) and dramatic scaling
   - Maintained blog system integration and all existing functionality
