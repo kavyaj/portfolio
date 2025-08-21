@@ -585,9 +585,10 @@ section {
 }
 
 .values-content span {
+    font-family: 'Big Shoulders Display', sans-serif;
     font-size: 2rem;
     font-weight: 900;
-    color: var(--gray-medium);
+    color: var(--primary-pink);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
