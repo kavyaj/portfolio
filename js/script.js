@@ -1,1 +1,1 @@
-const response = await fetch('/assets/data/posts.json');
+const response = await fetch('assets/data/posts.json');
