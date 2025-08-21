@@ -1,0 +1,1 @@
+const response = await fetch('/assets/data/posts.json');
