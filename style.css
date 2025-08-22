@@ -233,6 +233,28 @@ header.visible {
     z-index: 1;
 }
 
+/* Mobile responsiveness for hero text */
+@media (max-width: 768px) {
+    .hero-animated-text {
+        padding: 8rem 2rem 2rem 2rem; /* Reduced padding on mobile */
+        align-items: center; /* Center align on mobile */
+        text-align: center;
+    }
+    
+    .letter-explosion-container {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .letter-line {
+        justify-content: center; /* Center letters on mobile */
+    }
+    
+    .word-container {
+        margin-right: 0.8em; /* Reduced word spacing on mobile */
+    }
+}
+
 .letter-explosion-container {
     width: 100%;
     max-width: 1400px;
@@ -261,7 +283,7 @@ header.visible {
 
 .word-container {
     display: inline-block;
-    margin-right: 0.8em; /* Increased word spacing for better separation */
+    margin-right: 1.2em; /* Further increased word spacing */
     white-space: nowrap;
 }
 
@@ -284,6 +306,32 @@ header.visible {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* Mobile responsiveness for hero info */
+@media (max-width: 768px) {
+    .hero-info {
+        padding: 2rem;
+        text-align: center;
+        top: -40vh;
+        min-height: 40vh;
+    }
+    
+    .hero-name {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+        letter-spacing: 2px;
+    }
+    
+    .hero-description {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        line-height: 1.6;
+    }
+    
+    .hero-cta {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+        align-self: center;
+    }
 }
 
 .hero-name {
