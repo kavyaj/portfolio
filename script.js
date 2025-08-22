@@ -25,7 +25,7 @@ function initLetterExplosion() {
             const wordDiv = document.createElement('div');
             wordDiv.classList.add('word-container');
             wordDiv.style.display = 'inline-block';
-            wordDiv.style.marginRight = '1.2em'; // Further increased for better word separation
+            wordDiv.style.marginRight = '1.5em'; // Even more word separation
             
             // Assign same speed to all letters in a word for cohesion
             const wordSpeed = (0.3 + Math.random() * 0.8).toString(); // Less extreme variation
@@ -56,11 +56,11 @@ function initLetterExplosion() {
         const speed = parseFloat(letter.dataset.speed || '1');
         const isMobile = window.innerWidth <= 768; // Define mobile check first
         const randomRotation = Math.random() * 180 - 90; // Reduced rotation range
-        const randomX = (Math.random() - 0.5) * (isMobile ? 300 : 600); // Reduced horizontal scatter, less on mobile
+        const randomX = (Math.random() - 0.5) * (isMobile ? 150 : 600); // Much less scatter on mobile
 
         // Some letters fly UP, some fly DOWN - but less intense
         const direction = Math.random() > 0.5 ? 1 : -1; // 50/50 split
-        const randomY = direction * Math.random() * window.innerHeight * (isMobile ? 0.6 : 1.0);
+        const randomY = direction * Math.random() * window.innerHeight * (isMobile ? 0.3 : 1.0); // Much gentler on mobile
 
         // Create dramatic timeline for each letter
         const tl = gsap.timeline({
@@ -74,7 +74,7 @@ function initLetterExplosion() {
         });
 
         tl.to(letter, {
-            y: randomY + (direction * speed * window.innerHeight * 0.8), // Much gentler movement
+            y: randomY + (direction * speed * window.innerHeight * (isMobile ? 0.4 : 0.8)), // Much gentler movement on mobile
             x: randomX * (0.5 + speed * 0.8), // Reduced horizontal scatter
             rotation: randomRotation + (speed * 90), // Less rotation
             scale: Math.max(0.3, 1.2 - (speed * 0.6)), // Gentler scaling

@@ -236,7 +236,7 @@ header.visible {
 /* Mobile responsiveness for hero text */
 @media (max-width: 768px) {
     .hero-animated-text {
-        padding: 8rem 2rem 2rem 2rem; /* Reduced padding on mobile */
+        padding: 6rem 1.5rem 2rem 1.5rem; /* Reduced padding on mobile */
         align-items: center; /* Center align on mobile */
         text-align: center;
     }
@@ -248,10 +248,15 @@ header.visible {
     
     .letter-line {
         justify-content: center; /* Center letters on mobile */
+        margin-bottom: 1.5rem; /* Better line spacing on mobile */
     }
     
     .word-container {
-        margin-right: 0.8em; /* Reduced word spacing on mobile */
+        margin-right: 1em; /* Better word spacing on mobile */
+    }
+    
+    .letter {
+        font-size: clamp(2rem, 8vw, 6rem) !important; /* Smaller on mobile to prevent overflow */
     }
 }
 
@@ -263,7 +268,7 @@ header.visible {
 .letter-line {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem; /* Increased line spacing */
     justify-content: flex-start;
 }
 
@@ -283,7 +288,7 @@ header.visible {
 
 .word-container {
     display: inline-block;
-    margin-right: 1.2em; /* Further increased word spacing */
+    margin-right: 1.5em; /* Even more word spacing */
     white-space: nowrap;
 }
 
