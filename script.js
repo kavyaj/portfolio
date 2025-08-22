@@ -96,30 +96,7 @@ function initLetterExplosion() {
         });
     });
 
-    // Enhanced fade-in of hero info section after dramatic letter explosion
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: '.hero-section',
-            start: () => window.innerHeight * 1.2,
-            end: () => window.innerHeight * 1.4,
-            scrub: 2,
-            invalidateOnRefresh: true,
-            onLeave: () => {
-                // Keep hero-info visible when scrolling down
-                gsap.set('.hero-info', { opacity: 1, y: 0 });
-            },
-            onEnterBack: () => {
-                // Hide hero-info when scrolling back up to hero section
-                gsap.set('.hero-info', { opacity: 0, y: '4rem' });
-            }
-        }
-    })
-    .to('.hero-info', {
-        opacity: 1,
-        y: 0,
-        duration: 3,
-        ease: 'power2.out'
-    }, 1);
+
 }
 
 // Load blog posts for the writing section
