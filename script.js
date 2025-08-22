@@ -4,8 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Letter Explosion Animation - Enhanced Bettina Sosa Style
 function initLetterExplosion() {
     const lines = [
-        'From concept to creation,',
-        'iteratively.'
+        'From concept to creation.'
     ];
 
     const container = document.querySelector('.letter-explosion-container');
