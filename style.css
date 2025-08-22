@@ -248,11 +248,11 @@ header.visible {
 .letter {
     display: inline-block;
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: clamp(3rem, 10vw, 10rem); /* Reduced font size */
-    font-weight: 900; /* Increased to 900 */
+    font-size: clamp(3rem, 10vw, 10rem);
+    font-weight: 900;
     color: var(--primary-pink);
     line-height: 0.85;
-    margin-right: 0.05em;
+    margin-right: -0.02em; /* Reduced letter spacing - closer together */
     transform-origin: center center;
     will-change: transform, opacity, filter;
     transition: none;
@@ -261,7 +261,7 @@ header.visible {
 
 .word-container {
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 0.8em; /* Increased word spacing for better separation */
     white-space: nowrap;
 }
 

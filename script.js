@@ -25,7 +25,7 @@ function initLetterExplosion() {
             const wordDiv = document.createElement('div');
             wordDiv.classList.add('word-container');
             wordDiv.style.display = 'inline-block';
-            wordDiv.style.marginRight = '0.5em';
+            wordDiv.style.marginRight = '0.8em'; // Increased for better word separation
             
             // Assign same speed to all letters in a word for cohesion
             const wordSpeed = (0.3 + Math.random() * 0.8).toString(); // Less extreme variation
