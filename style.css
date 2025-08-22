@@ -268,8 +268,9 @@ header.visible {
 .letter-line {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 2rem; /* Increased line spacing */
+    margin-bottom: 2rem; /* Uniform spacing between all lines */
     justify-content: flex-start;
+    line-height: 1; /* Ensure consistent line height */
 }
 
 .letter {
@@ -278,7 +279,7 @@ header.visible {
     font-size: clamp(3rem, 10vw, 10rem);
     font-weight: 900;
     color: var(--primary-pink);
-    line-height: 0.85;
+    line-height: 1; /* Uniform line height */
     margin-right: -0.02em; /* Reduced letter spacing - closer together */
     transform-origin: center center;
     will-change: transform, opacity, filter;
