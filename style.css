@@ -312,6 +312,12 @@ header.visible {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Show hero info when visible */
+.hero-info.visible {
+    pointer-events: auto;
 }
 
 /* Mobile responsiveness for hero info */

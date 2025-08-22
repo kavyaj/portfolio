@@ -101,10 +101,18 @@ function initLetterExplosion() {
     gsap.timeline({
         scrollTrigger: {
             trigger: '.hero-section',
-            start: () => window.innerHeight * 1.0,
-            end: () => window.innerHeight * 1.3,
+            start: () => window.innerHeight * 1.2,
+            end: () => window.innerHeight * 1.4,
             scrub: 2,
-            invalidateOnRefresh: true
+            invalidateOnRefresh: true,
+            onLeave: () => {
+                // Keep hero-info visible when scrolling down
+                gsap.set('.hero-info', { opacity: 1, y: 0 });
+            },
+            onEnterBack: () => {
+                // Hide hero-info when scrolling back up to hero section
+                gsap.set('.hero-info', { opacity: 0, y: '4rem' });
+            }
         }
     })
     .to('.hero-info', {
