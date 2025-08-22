@@ -54,12 +54,12 @@ function initLetterExplosion() {
 
     letters.forEach((letter, index) => {
         const speed = parseFloat(letter.dataset.speed || '1');
+        const isMobile = window.innerWidth <= 768; // Define mobile check first
         const randomRotation = Math.random() * 180 - 90; // Reduced rotation range
         const randomX = (Math.random() - 0.5) * (isMobile ? 300 : 600); // Reduced horizontal scatter, less on mobile
 
         // Some letters fly UP, some fly DOWN - but less intense
         const direction = Math.random() > 0.5 ? 1 : -1; // 50/50 split
-        const isMobile = window.innerWidth <= 768;
         const randomY = direction * Math.random() * window.innerHeight * (isMobile ? 0.6 : 1.0);
 
         // Create dramatic timeline for each letter
