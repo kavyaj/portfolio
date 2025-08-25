@@ -8,8 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../style.css">
     <style>
+        /* CSS Variables */
+        :root {
+            --primary-pink: #fd5183;
+            --black: #121212;
+            --gray-dark: #333333;
+            --gray-medium: #666666;
+            --gray-light: #999999;
+            --gray-lighter: #f5f5f5;
+        }
+        
         /* Post-specific styles */
         .post-navigation {
             position: fixed;
@@ -57,14 +67,15 @@
         
         .post-header {
             background: linear-gradient(135deg, #f0f0f0 0%, #f5f5f5 100%);
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 2rem 3rem;
             text-align: center;
+            margin-bottom: 2rem;
         }
         
         .post-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 2rem;
         }
         
         .post-meta-header {
@@ -119,11 +130,12 @@
         .post-content {
             background: white;
             border-radius: 16px;
-            padding: 4rem;
+            padding: 3rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+            line-height: 1.6;
         }
         
         .post-content::before {
