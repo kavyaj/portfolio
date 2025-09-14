@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My New Blog | Kavya Jahagirdar</title>
+    <meta name="description" content="Personal portfolio of Kavya Jahagirdar - Product builder, storyteller, and entrepreneur">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    
+    <script src="/gsap.min.js"></script>
+    <script src="/ScrollTrigger.min.js"></script>
+    
+    
+<style>
+     
+    :root {
+        --primary-pink: #fd5183;
+        --black: #121212;
+        --gray-dark: #333333;
+        --gray-medium: #666666;
+        --gray-light: #999999;
+        --gray-lighter: #f5f5f5;
+    }
+    
+     
+    .post-header {
+        background: linear-gradient(135deg, #f0f0f0 0%, #f5f5f5 100%);
+        padding: 8rem 2rem 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .post-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .post-meta-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .post-date {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--gray-medium);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .post-category {
+        background: rgba(253, 81, 131, 0.1);
+        color: var(--primary-pink);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .post-title {
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        color: var(--primary-pink);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+    
+    .post-excerpt {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: var(--gray-dark);
+        font-style: italic;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .post-content {
+        background: white;
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: visible;
+        line-height: 1.6;
+    }
+    
+    .post-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-pink), #ffadc4);
+    }
+    
+    .post-content h1, .post-content h2, .post-content h3 {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--black);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .post-content h1 { font-size: 2rem; font-weight: 700; }
+    .post-content h2 { font-size: 1.6rem; font-weight: 600; }
+    .post-content h3 { font-size: 1.3rem; font-weight: 600; }
+    
+    .post-content p {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--gray-dark);
+        margin-bottom: 1.8rem;
+    }
+    
+    .post-navigation-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-button {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        color: var(--primary-pink);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary-pink);
+        border-radius: 5px;
+    }
+    
+    .nav-button:hover {
+        background: var(--primary-pink);
+        color: white;
+    }
+</style>
+
+</head>
+<body>
+    
+    <header>
+    <nav class="nav-container">
+        <div class="nav-brand">
+            <a href="/" class="nav-brand-link">
+                <img src="/KJ_logo.svg" alt="Kavya Jahagirdar" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-menu">
+            
+            <a href="/#about" class="nav-link">About</a>
+            
+            <a href="/#projects" class="nav-link">Projects</a>
+            
+            <a href="/#experience" class="nav-link">Experience</a>
+            
+            <a href="/writing/" class="nav-link">Writing</a>
+            
+        </div>
+        <div class="nav-mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+    
+    
+    <main>
+        
+<header class="post-header">
+    <div class="post-container">
+        <div class="post-meta-header">
+            <span class="post-date">January 15, 2024</span>
+            <span class="post-category">Writing</span>
+        </div>
+        <h1 class="post-title">Welcome to My New Blog</h1>
+        
+        <p class="post-excerpt">Starting fresh with a new approach to blogging and sharing insights about building products and storytelling.</p>
+        
+    </div>
+</header>
+
+<div class="post-container">
+    <article class="post-content">
+        <h1 id="welcome-to-my-new-blog">Welcome to My New Blog</h1>
+<p>This is my first post using the new blog system. I&rsquo;m excited to share more insights about product building, storytelling, and the journey of entrepreneurship.</p>
+<h2 id="what-you-can-expect">What You Can Expect</h2>
+<p>I&rsquo;ll be writing about:</p>
+<ul>
+<li><strong>Product Development</strong>: Lessons learned from building Resumey.Pro and StoryCV</li>
+<li><strong>Storytelling</strong>: How narrative shapes both products and businesses</li>
+<li><strong>Entrepreneurship</strong>: The real challenges and victories of startup life</li>
+<li><strong>Creative Process</strong>: From ideation to execution</li>
+</ul>
+<h2 id="why-the-change">Why the Change?</h2>
+<p>Moving to a more structured blogging approach allows me to:</p>
+<ul>
+<li>Write more consistently</li>
+<li>Better organize my thoughts</li>
+<li>Share deeper insights</li>
+<li>Connect with readers more effectively</li>
+</ul>
+<p>Stay tuned for more content coming soon!</p>
+
+    </article>
+    
+    <div class="post-navigation-bottom">
+        <a href="/writing/" class="nav-button">← All Posts</a>
+        <a href="/" class="nav-button">Back to Portfolio →</a>
+    </div>
+</div>
+
+    </main>
+    
+    
+    <footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="/Primary%20-%20Kavya%20Logo.webp" alt="Kavya Jahagirdar" class="footer-logo-img">
+        </div>
+        <div class="footer-social">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/kavya-jahagirdar/" target="_blank" class="social-link linkedin-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="social-icon">
+                        <path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/kavyaj93" target="_blank" class="social-link twitter-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="social-icon">
+                        <path d="M523.4 215.7C523.7 220.2 523.7 224.8 523.7 229.3C523.7 368 418.1 527.9 225.1 527.9C165.6 527.9 110.4 510.7 64 480.8C72.4 481.8 80.6 482.1 89.3 482.1C138.4 482.1 183.5 465.5 219.6 437.3C173.5 436.3 134.8 406.1 121.5 364.5C128 365.5 134.5 366.1 141.3 366.1C150.7 366.1 160.1 364.8 168.9 362.5C120.8 352.8 84.8 310.5 84.8 259.5L84.8 258.2C98.8 266 115 270.9 132.2 271.5C103.9 252.7 85.4 220.5 85.4 184.1C85.4 164.6 90.6 146.7 99.7 131.1C151.4 194.8 229 236.4 316.1 240.9C314.5 233.1 313.5 225 313.5 216.9C313.5 159.1 360.3 112 418.4 112C448.6 112 475.9 124.7 495.1 145.1C518.8 140.6 541.6 131.8 561.7 119.8C553.9 144.2 537.3 164.6 515.6 177.6C536.7 175.3 557.2 169.5 576 161.4C561.7 182.2 543.8 200.7 523.4 215.7z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-text">
+            <p class="footer-copyright">&copy; 2025 Kavya Jahagirdar. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+    
+    
+    <script src="/script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,166 @@
+{{ define "head" }}
+<style>
+    /* CSS Variables */
+    :root {
+        --primary-pink: #fd5183;
+        --black: #121212;
+        --gray-dark: #333333;
+        --gray-medium: #666666;
+        --gray-light: #999999;
+        --gray-lighter: #f5f5f5;
+    }
+    
+    /* Post styles */
+    .post-header {
+        background: linear-gradient(135deg, #f0f0f0 0%, #f5f5f5 100%);
+        padding: 8rem 2rem 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .post-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .post-meta-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .post-date {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--gray-medium);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .post-category {
+        background: rgba(253, 81, 131, 0.1);
+        color: var(--primary-pink);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .post-title {
+        font-family: 'Big Shoulders Display', sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        color: var(--primary-pink);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+    
+    .post-excerpt {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: var(--gray-dark);
+        font-style: italic;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .post-content {
+        background: white;
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: visible;
+        line-height: 1.6;
+    }
+    
+    .post-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-pink), #ffadc4);
+    }
+    
+    .post-content h1, .post-content h2, .post-content h3 {
+        font-family: 'DM Sans', sans-serif;
+        color: var(--black);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .post-content h1 { font-size: 2rem; font-weight: 700; }
+    .post-content h2 { font-size: 1.6rem; font-weight: 600; }
+    .post-content h3 { font-size: 1.3rem; font-weight: 600; }
+    
+    .post-content p {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--gray-dark);
+        margin-bottom: 1.8rem;
+    }
+    
+    .post-navigation-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-button {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        color: var(--primary-pink);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary-pink);
+        border-radius: 5px;
+    }
+    
+    .nav-button:hover {
+        background: var(--primary-pink);
+        color: white;
+    }
+</style>
+{{ end }}
+
+{{ define "main" }}
+<header class="post-header">
+    <div class="post-container">
+        <div class="post-meta-header">
+            <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+            <span class="post-category">{{ .Section | title }}</span>
+        </div>
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ with .Params.excerpt }}
+        <p class="post-excerpt">{{ . }}</p>
+        {{ end }}
+    </div>
+</header>
+
+<div class="post-container">
+    <article class="post-content">
+        {{ .Content }}
+    </article>
+    
+    <div class="post-navigation-bottom">
+        <a href="{{ "/writing/" | relURL }}" class="nav-button">← All Posts</a>
+        <a href="{{ "/" | relURL }}" class="nav-button">Back to Portfolio →</a>
+    </div>
+</div>
+{{ end }}
