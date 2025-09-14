@@ -1,0 +1,50 @@
+baseURL = 'https://kavya.wiki/'
+languageCode = 'en-us'
+title = 'Kavya Jahagirdar'
+theme = 'kavya-theme'
+
+# Clean URLs configuration
+uglyURLs = false
+canonifyURLs = true
+disablePathToLower = false
+
+# Permalinks for clean URLs
+[permalinks]
+  posts = "/writing/:title/"
+  pages = "/:filename/"
+
+# Site parameters
+[params]
+  description = "Personal portfolio of Kavya Jahagirdar - Product builder, storyteller, and entrepreneur"
+  author = "Kavya Jahagirdar"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/#about"
+    weight = 1
+  [[menu.main]]
+    name = "Projects" 
+    url = "/#projects"
+    weight = 2
+  [[menu.main]]
+    name = "Experience"
+    url = "/#experience"
+    weight = 3
+  [[menu.main]]
+    name = "Writing"
+    url = "/writing/"
+    weight = 4
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+# Markup configuration for clean rendering
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

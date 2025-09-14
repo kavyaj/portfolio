@@ -1,0 +1,11 @@
+name = "Kavya Theme"
+license = "MIT"
+licenselink = "https://github.com/your-username/kavya-theme/blob/master/LICENSE"
+description = "Custom theme for Kavya Jahagirdar's portfolio"
+tags = ["portfolio", "blog", "personal"]
+features = ["responsive", "clean-urls", "blog"]
+min_version = "0.126.0"
+
+[author]
+  name = "Kavya Jahagirdar"
+  homepage = "https://kavya.wiki"
