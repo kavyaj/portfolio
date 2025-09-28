@@ -37,29 +37,29 @@ app.get('/', (req, res) => {
 });
 
 // Blog API endpoints
-app.get('/api/blog/posts', async (req, res) => {
+app.get('/api/blog/posts', (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT id, title, slug, excerpt, created_at FROM blog_posts WHERE published = true ORDER BY created_at DESC'
-    );
-    res.json(result.rows);
+    const fs = require('fs');
+    const postsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'hugo-portfolio/static/assets/data/posts.json'), 'utf8'));
+    const publishedPosts = postsData.posts.filter(post => post.published);
+    res.json(publishedPosts);
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     res.status(500).json({ error: 'Failed to fetch blog posts' });
   }
 });
 
-app.get('/api/blog/posts/:slug', async (req, res) => {
+app.get('/api/blog/posts/:slug', (req, res) => {
   try {
+    const fs = require('fs');
     const { slug } = req.params;
-    const result = await pool.query(
-      'SELECT * FROM blog_posts WHERE slug = $1 AND published = true',
-      [slug]
-    );
-    if (result.rows.length === 0) {
+    const postsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'hugo-portfolio/static/assets/data/posts.json'), 'utf8'));
+    const post = postsData.posts.find(p => p.slug === slug && p.published);
+    
+    if (!post) {
       return res.status(404).json({ error: 'Post not found' });
     }
-    res.json(result.rows[0]);
+    res.json(post);
   } catch (error) {
     console.error('Error fetching blog post:', error);
     res.status(500).json({ error: 'Failed to fetch blog post' });
