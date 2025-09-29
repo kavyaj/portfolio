@@ -21,9 +21,7 @@
     {{ block "head" . }}{{ end }}
 </head>
 <body>
-    {{ if not .IsHome }}
     {{ partial "header.html" . }}
-    {{ end }}
     
     <main>
         {{ block "main" . }}{{ end }}
