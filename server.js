@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 
 // Serve Hugo static files only
-app.use(express.static(path.join(__dirname, 'hugo-portfolio/public'), {
+app.use(express.static(path.join(__dirname, 'public'), {
   setHeaders: (res, filepath) => {
     if (filepath.endsWith('.html')) {
       res.setHeader('Cache-Control', 'no-cache');
