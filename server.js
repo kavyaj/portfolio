@@ -1,26 +1,37 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const app = express();
 
-// Serve Hugo static files only
-app.use(express.static(path.join(__dirname, 'public'), {
-  setHeaders: (res, filepath) => {
-    if (filepath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache');
-    }
-  }
-}));
+// Test route
+app.get('/test', (req, res) => {
+  res.send('Server is working!');
+});
 
-// Serve quotes page from root directory  
+// Check if file exists and serve it
+app.get('/', (req, res) => {
+  const indexPath = path.join(__dirname, 'public', 'index.html');
+  console.log('Trying to serve:', indexPath);
+  console.log('File exists:', fs.existsSync(indexPath));
+  
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send('Index file not found');
+  }
+});
+
+// Serve other static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve quotes page
 app.get('/quotes.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'quotes.html'));
 });
 
-// Removed all blog API endpoints - now using Hugo's content system
-
 const port = process.env.PORT || 5000;
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Hugo server running on http://0.0.0.0:${port}`);
-  console.log(`Preview available at: http://localhost:${port}`);
+  console.log(`Server running on http://0.0.0.0:${port}`);
+  console.log(`Test: http://localhost:${port}/test`);
 });
