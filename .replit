@@ -35,7 +35,7 @@ externalPort = 3002
 PORT = "5000"
 
 [workflows]
-runButton = "Serve Static Site"
+runButton = "Stop and Start Server"
 
 [[workflows.workflow]]
 name = "Project"
@@ -62,7 +62,19 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "echo \"y\" | npx http-server . -p 5000 -c-1"
+args = "echo \"y\" | npx http-server ./hugo-portfolio/public -p 5000 -c-1"
+
+[[workflows.workflow]]
+name = "Stop and Start Server"
+author = 43771092
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
 
 [agent]
-integrations = ["javascript_database==1.0.0", "javascript_log_in_with_replit==1.0.0"]
+integrations = [
+  "javascript_database==1.0.0",
+  "javascript_log_in_with_replit==1.0.0",
+]
