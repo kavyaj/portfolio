@@ -36,6 +36,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'hugo-portfolio/public/index.html'));
 });
 
+// Serve quotes page from root directory
+app.get('/quotes.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'quotes.html'));
+});
+
 // Blog API endpoints
 app.get('/api/blog/posts', async (req, res) => {
   try {
