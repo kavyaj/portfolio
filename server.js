@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve quotes page with clean URL
 app.get('/quotes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'quotes', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'quotes', 'index.html'));
 });
 
 // Redirect old .html URL to clean URL  
