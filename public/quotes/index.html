@@ -15,7 +15,7 @@
         .quotes-page {
             min-height: 100vh;
             padding-top: 120px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .quotes-header {
@@ -51,107 +51,153 @@
             overflow: hidden;
         }
 
-        .quote-card {
+        .quote-item {
             position: absolute;
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(253, 81, 131, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .quote-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(253, 81, 131, 0.2);
-            border-color: var(--primary-pink);
-        }
-
-        .quote-large {
-            width: 400px;
-            min-height: 200px;
-        }
-
-        .quote-medium {
-            width: 320px;
-            min-height: 160px;
-        }
-
-        .quote-small {
-            width: 280px;
-            min-height: 120px;
+        .quote-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(253, 81, 131, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(253, 81, 131, 0.3);
         }
 
         .quote-text {
-            font-family: 'DM Sans', serif;
-            font-size: 1.1rem;
+            font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
-            color: var(--black);
+            color: #333;
             margin-bottom: 1rem;
-            font-style: italic;
+            position: relative;
+        }
+
+        .quote-text::before {
+            content: '"';
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 3rem;
+            color: #fd5183;
+            position: absolute;
+            left: -1rem;
+            top: -0.5rem;
+            opacity: 0.3;
+        }
+
+        .quote-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .quote-item:hover .quote-meta {
+            opacity: 1;
         }
 
         .quote-author {
             font-family: 'DM Sans', sans-serif;
             font-size: 0.9rem;
-            color: var(--primary-pink);
-            font-weight: 600;
+            color: #666;
+            font-weight: 500;
         }
 
-        .quote-context {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.8rem;
-            color: var(--gray-medium);
-            margin-top: 0.5rem;
-            font-style: normal;
+        .quote-info-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fd5183;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Quote Modal */
+        .quote-item:hover .quote-info-icon {
+            opacity: 1;
+        }
+
+        /* Size variations based on importance */
+        .quote-large {
+            width: 350px;
+            font-size: 1.2rem;
+        }
+
+        .quote-medium {
+            width: 280px;
+            font-size: 1rem;
+        }
+
+        .quote-small {
+            width: 220px;
+            font-size: 0.9rem;
+        }
+
+        /* Rotation variations for organic feel */
+        .quote-item:nth-child(odd) {
+            transform: rotate(-1deg);
+        }
+
+        .quote-item:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .quote-item:nth-child(3n) {
+            transform: rotate(-2deg);
+        }
+
+        .quote-item:hover {
+            transform: rotate(0deg) translateY(-8px) scale(1.02);
+        }
+
+        /* Modal Styles */
         .quote-modal {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .quote-modal.active {
+            backdrop-filter: blur(10px);
+            z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .quote-modal.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .quote-modal-content {
             background: white;
+            border-radius: 20px;
             padding: 3rem;
-            border-radius: 16px;
             max-width: 600px;
+            width: 90%;
             max-height: 80vh;
             overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
             position: relative;
-            margin: 2rem;
         }
 
-        .quote-modal .quote-text {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .quote-modal .quote-author {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .quote-modal .quote-context {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
+        .quote-modal.active .quote-modal-content {
+            transform: scale(1);
         }
 
         .quote-close {
@@ -171,6 +217,78 @@
         .quote-close:hover {
             background: #f0f0f0;
             color: #fd5183;
+        }
+
+        .modal-quote-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-quote-text::before {
+            content: '"';
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 4rem;
+            color: #fd5183;
+            position: absolute;
+            left: -2rem;
+            top: -1rem;
+            opacity: 0.2;
+        }
+
+        .modal-quote-text::after {
+            content: '"';
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 4rem;
+            color: #fd5183;
+            position: absolute;
+            right: -2rem;
+            bottom: -2rem;
+            opacity: 0.2;
+        }
+
+        .modal-quote-author {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fd5183;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-quote-source {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .modal-personal-note {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #fd5183;
+        }
+
+        .modal-personal-note-title {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-personal-note-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
         }
 
         /* Responsive Design */
@@ -195,6 +313,11 @@
             .quote-modal-content {
                 padding: 2rem;
                 margin: 1rem;
+            }
+
+            .modal-quote-text::before,
+            .modal-quote-text::after {
+                display: none;
             }
         }
     </style>
@@ -240,9 +363,13 @@
     <div class="quote-modal" id="quote-modal">
         <div class="quote-modal-content">
             <button class="quote-close" onclick="closeQuoteModal()">&times;</button>
-            <div class="quote-text" id="modal-quote-text"></div>
-            <div class="quote-author" id="modal-quote-author"></div>
-            <div class="quote-context" id="modal-quote-context"></div>
+            <div class="modal-quote-text" id="modal-quote-text"></div>
+            <div class="modal-quote-author" id="modal-quote-author"></div>
+            <div class="modal-quote-source" id="modal-quote-source"></div>
+            <div class="modal-personal-note" id="modal-personal-note">
+                <div class="modal-personal-note-title">Why this resonates with me</div>
+                <div class="modal-personal-note-text" id="modal-personal-note-text"></div>
+            </div>
         </div>
     </div>
 
@@ -282,49 +409,71 @@
             }
         });
 
-        // Sample quotes data
+        // Enhanced quotes data with more context
         const quotes = [
             {
                 text: "Design is not just what it looks like and feels like. Design is how it works.",
                 author: "Steve Jobs",
-                context: "This quote shaped my understanding of user experience design during my early career at tech startups.",
+                source: "New York Times Magazine, 2003",
+                context: "This quote fundamentally shaped my understanding of user experience design during my early career at tech startups. It taught me that beautiful interfaces mean nothing without thoughtful functionality.",
                 size: "large"
             },
             {
                 text: "The best way to predict the future is to create it.",
                 author: "Peter Drucker",
-                context: "A reminder that drives my entrepreneurial spirit and product thinking.",
+                source: "Management Challenges for the 21st Century",
+                context: "A constant reminder that drives my entrepreneurial spirit and product thinking. Instead of waiting for change, I learned to be the architect of innovation.",
                 size: "medium"
             },
             {
                 text: "Simplicity is the ultimate sophistication.",
                 author: "Leonardo da Vinci",
-                context: "My guiding principle for creating clean, intuitive user interfaces.",
+                source: "Renaissance Notebooks",
+                context: "My guiding principle for creating clean, intuitive user interfaces. Every design decision I make is filtered through this lens of elegant simplicity.",
                 size: "small"
             },
             {
                 text: "Innovation distinguishes between a leader and a follower.",
                 author: "Steve Jobs",
-                context: "This mindset helped me transition from corporate design to startup innovation.",
+                source: "Apple Keynote, 1997",
+                context: "This mindset helped me transition from corporate design to startup innovation. It pushed me to always question the status quo and find better solutions.",
                 size: "medium"
             },
             {
                 text: "Design is thinking made visual.",
                 author: "Saul Bass",
-                context: "The foundation of my design philosophy - every visual choice should have reasoning.",
+                source: "Design Conference, 1985",
+                context: "The foundation of my design philosophy - every visual choice should have reasoning. This quote reminds me that design is problem-solving, not decoration.",
                 size: "large"
             },
             {
                 text: "Form follows function.",
                 author: "Louis Sullivan",
-                context: "A timeless principle that guides my approach to product design and architecture.",
+                source: "The Tall Office Building Artistically Considered",
+                context: "A timeless principle that guides my approach to product design and architecture. Beauty emerges naturally when function is prioritized.",
                 size: "small"
+            },
+            {
+                text: "Good design is obvious. Great design is transparent.",
+                author: "Joe Sparano",
+                source: "Design Principles",
+                context: "This taught me that the best user experiences are invisible - users accomplish their goals without thinking about the interface.",
+                size: "medium"
+            },
+            {
+                text: "Design creates culture. Culture shapes values. Values determine the future.",
+                author: "Robert L. Peters",
+                source: "Design Culture Manifesto",
+                context: "Understanding the broader impact of design decisions on society and user behavior. Design isn't neutral - it shapes how people think and act.",
+                size: "large"
             }
         ];
 
-        // Position quotes randomly
+        // Position quotes randomly with improved algorithm
         function positionQuotes() {
             const canvas = document.getElementById('quotes-canvas');
+            canvas.innerHTML = ''; // Clear existing quotes
+            
             const canvasRect = canvas.getBoundingClientRect();
             const isMobile = window.innerWidth <= 768;
             
@@ -334,32 +483,66 @@
                     const quoteElement = createQuoteElement(quote, index);
                     quoteElement.style.position = 'relative';
                     quoteElement.style.marginBottom = '2rem';
+                    quoteElement.style.transform = 'none';
                     canvas.appendChild(quoteElement);
                 });
             } else {
-                // On desktop, position randomly
+                // On desktop, position randomly with collision detection
+                const positions = [];
+                
                 quotes.forEach((quote, index) => {
                     const quoteElement = createQuoteElement(quote, index);
-                    const maxX = canvasRect.width - 400;
-                    const maxY = canvasRect.height - 200;
+                    const rect = getQuoteSize(quote.size);
                     
-                    const x = Math.random() * Math.max(maxX, 0);
-                    const y = Math.random() * Math.max(maxY, 0);
+                    let position;
+                    let attempts = 0;
+                    do {
+                        position = {
+                            x: Math.random() * Math.max(canvasRect.width - rect.width - 40, 0) + 20,
+                            y: Math.random() * Math.max(800 - rect.height - 40, 0) + 20,
+                            width: rect.width,
+                            height: rect.height
+                        };
+                        attempts++;
+                    } while (checkCollision(position, positions) && attempts < 50);
                     
-                    quoteElement.style.left = x + 'px';
-                    quoteElement.style.top = y + 'px';
+                    positions.push(position);
+                    
+                    quoteElement.style.left = position.x + 'px';
+                    quoteElement.style.top = position.y + 'px';
                     
                     canvas.appendChild(quoteElement);
                 });
             }
         }
 
+        function getQuoteSize(size) {
+            switch(size) {
+                case 'large': return { width: 350, height: 200 };
+                case 'medium': return { width: 280, height: 160 };
+                case 'small': return { width: 220, height: 120 };
+                default: return { width: 280, height: 160 };
+            }
+        }
+
+        function checkCollision(newPos, existingPositions) {
+            return existingPositions.some(pos => 
+                newPos.x < pos.x + pos.width + 20 &&
+                newPos.x + newPos.width + 20 > pos.x &&
+                newPos.y < pos.y + pos.height + 20 &&
+                newPos.y + newPos.height + 20 > pos.y
+            );
+        }
+
         function createQuoteElement(quote, index) {
             const quoteDiv = document.createElement('div');
-            quoteDiv.className = `quote-card quote-${quote.size}`;
+            quoteDiv.className = `quote-item quote-${quote.size}`;
             quoteDiv.innerHTML = `
-                <div class="quote-text">"${quote.text}"</div>
-                <div class="quote-author">— ${quote.author}</div>
+                <div class="quote-text">${quote.text}</div>
+                <div class="quote-meta">
+                    <div class="quote-author">— ${quote.author}</div>
+                    <div class="quote-info-icon">i</div>
+                </div>
             `;
             
             quoteDiv.addEventListener('click', () => openQuoteModal(quote));
@@ -371,10 +554,12 @@
             const modal = document.getElementById('quote-modal');
             const modalText = document.getElementById('modal-quote-text');
             const modalAuthor = document.getElementById('modal-quote-author');
-            const modalContext = document.getElementById('modal-quote-context');
+            const modalSource = document.getElementById('modal-quote-source');
+            const modalContext = document.getElementById('modal-personal-note-text');
             
-            modalText.textContent = `"${quote.text}"`;
+            modalText.textContent = quote.text;
             modalAuthor.textContent = `— ${quote.author}`;
+            modalSource.textContent = quote.source;
             modalContext.textContent = quote.context;
             
             modal.classList.add('active');
@@ -403,10 +588,37 @@
 
         // Initialize quotes when page loads
         window.addEventListener('load', positionQuotes);
-        window.addEventListener('resize', function() {
-            const canvas = document.getElementById('quotes-canvas');
-            canvas.innerHTML = '';
-            positionQuotes();
+        window.addEventListener('resize', positionQuotes);
+        
+        // Add some subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .quote-item {
+                    animation: fadeInUp 0.6s ease forwards;
+                }
+                
+                .quote-item:nth-child(1) { animation-delay: 0.1s; }
+                .quote-item:nth-child(2) { animation-delay: 0.2s; }
+                .quote-item:nth-child(3) { animation-delay: 0.3s; }
+                .quote-item:nth-child(4) { animation-delay: 0.4s; }
+                .quote-item:nth-child(5) { animation-delay: 0.5s; }
+                .quote-item:nth-child(6) { animation-delay: 0.6s; }
+                .quote-item:nth-child(7) { animation-delay: 0.7s; }
+                .quote-item:nth-child(8) { animation-delay: 0.8s; }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
