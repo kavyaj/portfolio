@@ -24,9 +24,14 @@ app.get('/', (req, res) => {
 // Serve other static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve quotes page
+// Serve quotes page with clean URL
+app.get('/quotes', (req, res) => {
+  res.sendFile(path.join(__dirname, 'quotes', 'index.html'));
+});
+
+// Redirect old .html URL to clean URL  
 app.get('/quotes.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'quotes.html'));
+  res.redirect(301, '/quotes');
 });
 
 const port = process.env.PORT || 5000;

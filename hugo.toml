@@ -38,7 +38,7 @@ disablePathToLower = false
     weight = 4
   [[menu.main]]
     name = "Quotes"
-    url = "/quotes.html"
+    url = "/quotes"
     weight = 5
 
 # Output formats
