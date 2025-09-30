@@ -1,21 +1,413 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = 3000;
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes - Kavya Jahagirdar</title>
+    <meta name="description" content="A contextual thought stream of quotes that inspire and guide Kavya Jahagirdar">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Quotes Page Specific Styles */
+        .quotes-page {
+            min-height: 100vh;
+            padding-top: 120px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
 
-// Route for the home page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+        .quotes-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-// Route for the quotes page
-app.get('/quotes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'quotes', 'quotes.html'));
-});
+        .quotes-title {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--primary-pink);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+        .quotes-subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--black);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quotes-canvas {
+            position: relative;
+            min-height: 800px;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        .quote-card {
+            position: absolute;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(253, 81, 131, 0.1);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(253, 81, 131, 0.2);
+            border-color: var(--primary-pink);
+        }
+
+        .quote-large {
+            width: 400px;
+            min-height: 200px;
+        }
+
+        .quote-medium {
+            width: 320px;
+            min-height: 160px;
+        }
+
+        .quote-small {
+            width: 280px;
+            min-height: 120px;
+        }
+
+        .quote-text {
+            font-family: 'DM Sans', serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--black);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .quote-context {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--gray-medium);
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+
+        /* Quote Modal */
+        .quote-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .quote-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            margin: 2rem;
+        }
+
+        .quote-modal .quote-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .quote-modal .quote-author {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote-modal .quote-context {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quote-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .quote-close:hover {
+            background: #f0f0f0;
+            color: #fd5183;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .quotes-title {
+                font-size: 2.5rem;
+            }
+            
+            .quotes-canvas {
+                padding: 1rem;
+            }
+            
+            .quote-large,
+            .quote-medium,
+            .quote-small {
+                width: 280px;
+                position: relative !important;
+                margin-bottom: 2rem;
+                transform: none !important;
+            }
+            
+            .quote-modal-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="/" class="nav-brand-link">
+                    <img src="../images/KJ_logo.svg" alt="Kavya Jahagirdar" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="/#about" class="nav-link">ABOUT</a>
+                <a href="/#projects" class="nav-link">PROJECTS</a>
+                <a href="/#experience" class="nav-link">EXPERIENCE</a>
+                <a href="/#writing" class="nav-link">WRITING</a>
+                <a href="/quotes" class="nav-link">QUOTES</a>
+            </div>
+            <div class="nav-mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="quotes-page">
+        <div class="quotes-header">
+            <h1 class="quotes-title">QUOTES</h1>
+            <p class="quotes-subtitle">
+                A contextual thought stream of wisdom that guides my journey. Each quote represents a moment of clarity, inspiration, or profound understanding that has shaped my perspective.
+            </p>
+        </div>
+
+        <div class="quotes-canvas" id="quotes-canvas">
+            <!-- Quotes will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Quote Modal -->
+    <div class="quote-modal" id="quote-modal">
+        <div class="quote-modal-content">
+            <button class="quote-close" onclick="closeQuoteModal()">&times;</button>
+            <div class="quote-text" id="modal-quote-text"></div>
+            <div class="quote-author" id="modal-quote-author"></div>
+            <div class="quote-context" id="modal-quote-context"></div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../images/KJ_logo.svg" alt="Kavya Jahagirdar" class="footer-logo-img">
+            </div>
+            <div class="footer-social">
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/kavyajahagirdar" target="_blank" class="social-link">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/kavyajahagirdar" target="_blank" class="social-link">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="footer-copyright">&copy; 2024 Kavya Jahagirdar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Show header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+        });
+
+        // Sample quotes data
+        const quotes = [
+            {
+                text: "Design is not just what it looks like and feels like. Design is how it works.",
+                author: "Steve Jobs",
+                context: "This quote shaped my understanding of user experience design during my early career at tech startups.",
+                size: "large"
+            },
+            {
+                text: "The best way to predict the future is to create it.",
+                author: "Peter Drucker",
+                context: "A reminder that drives my entrepreneurial spirit and product thinking.",
+                size: "medium"
+            },
+            {
+                text: "Simplicity is the ultimate sophistication.",
+                author: "Leonardo da Vinci",
+                context: "My guiding principle for creating clean, intuitive user interfaces.",
+                size: "small"
+            },
+            {
+                text: "Innovation distinguishes between a leader and a follower.",
+                author: "Steve Jobs",
+                context: "This mindset helped me transition from corporate design to startup innovation.",
+                size: "medium"
+            },
+            {
+                text: "Design is thinking made visual.",
+                author: "Saul Bass",
+                context: "The foundation of my design philosophy - every visual choice should have reasoning.",
+                size: "large"
+            },
+            {
+                text: "Form follows function.",
+                author: "Louis Sullivan",
+                context: "A timeless principle that guides my approach to product design and architecture.",
+                size: "small"
+            }
+        ];
+
+        // Position quotes randomly
+        function positionQuotes() {
+            const canvas = document.getElementById('quotes-canvas');
+            const canvasRect = canvas.getBoundingClientRect();
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // On mobile, stack quotes vertically
+                quotes.forEach((quote, index) => {
+                    const quoteElement = createQuoteElement(quote, index);
+                    quoteElement.style.position = 'relative';
+                    quoteElement.style.marginBottom = '2rem';
+                    canvas.appendChild(quoteElement);
+                });
+            } else {
+                // On desktop, position randomly
+                quotes.forEach((quote, index) => {
+                    const quoteElement = createQuoteElement(quote, index);
+                    const maxX = canvasRect.width - 400;
+                    const maxY = canvasRect.height - 200;
+                    
+                    const x = Math.random() * Math.max(maxX, 0);
+                    const y = Math.random() * Math.max(maxY, 0);
+                    
+                    quoteElement.style.left = x + 'px';
+                    quoteElement.style.top = y + 'px';
+                    
+                    canvas.appendChild(quoteElement);
+                });
+            }
+        }
+
+        function createQuoteElement(quote, index) {
+            const quoteDiv = document.createElement('div');
+            quoteDiv.className = `quote-card quote-${quote.size}`;
+            quoteDiv.innerHTML = `
+                <div class="quote-text">"${quote.text}"</div>
+                <div class="quote-author">— ${quote.author}</div>
+            `;
+            
+            quoteDiv.addEventListener('click', () => openQuoteModal(quote));
+            
+            return quoteDiv;
+        }
+
+        function openQuoteModal(quote) {
+            const modal = document.getElementById('quote-modal');
+            const modalText = document.getElementById('modal-quote-text');
+            const modalAuthor = document.getElementById('modal-quote-author');
+            const modalContext = document.getElementById('modal-quote-context');
+            
+            modalText.textContent = `"${quote.text}"`;
+            modalAuthor.textContent = `— ${quote.author}`;
+            modalContext.textContent = quote.context;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('quote-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQuoteModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQuoteModal();
+            }
+        });
+
+        // Initialize quotes when page loads
+        window.addEventListener('load', positionQuotes);
+        window.addEventListener('resize', function() {
+            const canvas = document.getElementById('quotes-canvas');
+            canvas.innerHTML = '';
+            positionQuotes();
+        });
+    </script>
+</body>
+</html>
