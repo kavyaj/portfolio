@@ -1,0 +1,59 @@
+
+[
+  {
+    "text": "Design is not just what it looks like and feels like. Design is how it works.",
+    "author": "Steve Jobs",
+    "source": "New York Times Magazine, 2003",
+    "context": "This quote fundamentally shaped my understanding of user experience design during my early career at tech startups. It taught me that beautiful interfaces mean nothing without thoughtful functionality.",
+    "size": "large"
+  },
+  {
+    "text": "The best way to predict the future is to create it.",
+    "author": "Peter Drucker",
+    "source": "Management Challenges for the 21st Century",
+    "context": "A constant reminder that drives my entrepreneurial spirit and product thinking. Instead of waiting for change, I learned to be the architect of innovation.",
+    "size": "medium"
+  },
+  {
+    "text": "Simplicity is the ultimate sophistication.",
+    "author": "Leonardo da Vinci",
+    "source": "Renaissance Notebooks",
+    "context": "My guiding principle for creating clean, intuitive user interfaces. Every design decision I make is filtered through this lens of elegant simplicity.",
+    "size": "small"
+  },
+  {
+    "text": "Innovation distinguishes between a leader and a follower.",
+    "author": "Steve Jobs",
+    "source": "Apple Keynote, 1997",
+    "context": "This mindset helped me transition from corporate design to startup innovation. It pushed me to always question the status quo and find better solutions.",
+    "size": "medium"
+  },
+  {
+    "text": "Design is thinking made visual.",
+    "author": "Saul Bass",
+    "source": "Design Conference, 1985",
+    "context": "The foundation of my design philosophy - every visual choice should have reasoning. This quote reminds me that design is problem-solving, not decoration.",
+    "size": "large"
+  },
+  {
+    "text": "Form follows function.",
+    "author": "Louis Sullivan",
+    "source": "The Tall Office Building Artistically Considered",
+    "context": "A timeless principle that guides my approach to product design and architecture. Beauty emerges naturally when function is prioritized.",
+    "size": "small"
+  },
+  {
+    "text": "Good design is obvious. Great design is transparent.",
+    "author": "Joe Sparano",
+    "source": "Design Principles",
+    "context": "This taught me that the best user experiences are invisible - users accomplish their goals without thinking about the interface.",
+    "size": "medium"
+  },
+  {
+    "text": "Design creates culture. Culture shapes values. Values determine the future.",
+    "author": "Robert L. Peters",
+    "source": "Design Culture Manifesto",
+    "context": "Understanding the broader impact of design decisions on society and user behavior. Design isn't neutral - it shapes how people think and act.",
+    "size": "large"
+  }
+]
