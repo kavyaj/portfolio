@@ -930,6 +930,22 @@ section {
     }
 }
 
+/* Modal Styles - Reusable Components */
+.modal-personal-note-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.modal-personal-note-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
 /* Modular Footer Classes for Reuse */
 .footer-minimal {
     padding: 1.5rem 2rem;
