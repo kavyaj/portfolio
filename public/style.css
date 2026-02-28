@@ -1237,3 +1237,89 @@ section {
     color: var(--gray-medium);
     font-weight: 500;
 }
+/* ─── Connect Section ─────────────────────────────────────────── */
+.connect-section {
+    background: white;
+    padding: 6rem 2rem 7rem;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.connect-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.connect-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fd5183;
+    margin-bottom: 1.25rem;
+}
+
+.connect-heading {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: #121212;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+}
+
+.connect-subheading {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #fd5183;
+    line-height: 1.1;
+    margin: 0 0 2rem;
+}
+
+.connect-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 auto 2.75rem;
+}
+
+.connect-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.connect-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #f4f4f4;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.connect-icon-link:hover {
+    background: #fde8ef;
+    transform: translateY(-3px);
+}
+
+.connect-icon {
+    width: 24px;
+    height: 24px;
+    fill: #999;
+    transition: fill 0.25s ease;
+}
+
+.connect-icon-link:hover .connect-icon {
+    fill: #fd5183;
+}
