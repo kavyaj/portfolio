@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Letter Explosion Animation - Enhanced Bettina Sosa Style
 function initLetterExplosion() {
     const lines = [
-        'My LinkedIn bio gives up halfway through. This is the rest.'
+        'From concept to creation.'
     ];
 
     const container = document.querySelector('.letter-explosion-container');
