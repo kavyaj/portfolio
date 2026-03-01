@@ -1323,3 +1323,40 @@ section {
 .connect-icon-link:hover .connect-icon {
     fill: #fd5183;
 }
+
+/* ─── About Section – New Heading & CTA ──────────────────────── */
+.about-heading {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #121212;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+}
+
+.about-subheading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #888;
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
+}
+
+.about-cta {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fd5183;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.about-cta:hover {
+    opacity: 0.75;
+    transform: translateY(2px);
+}
