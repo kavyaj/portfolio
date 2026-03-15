@@ -447,7 +447,7 @@ header.visible {
 
     /* About Section Mobile */
     .about-section {
-        overflow: hidden;
+        overflow: visible;
     }
 
     .about-content {
@@ -456,29 +456,37 @@ header.visible {
     }
 
     .about-text-content {
-        order: 2;
-        padding: 2.5rem 1.75rem 3rem;
-        text-align: left;
+        padding: 3rem 1.5rem 3rem;
     }
 
     .about-photo-container {
-        order: 1;
-        height: 55vw;
-        min-height: 220px;
-        max-height: 320px;
-        border-radius: 0 0 999px 999px;
-        margin: 0 3rem;
-        width: calc(100% - 6rem);
+        display: none;
     }
 
-    .about-photo {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+    .about-photo-mobile {
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .about-photo-circle {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 50% 8%;
+        display: block;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .about-heading {
         font-size: clamp(2.2rem, 9vw, 3rem);
+    }
+
+    .about-text {
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
     }
 }
 
@@ -546,6 +554,14 @@ section {
     margin-bottom: 1.75rem;
     line-height: 1.8;
     color: var(--black);
+}
+
+.about-photo-mobile {
+    display: none;
+}
+
+.about-photo-circle {
+    display: none;
 }
 
 
