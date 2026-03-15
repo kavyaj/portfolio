@@ -1,47 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kavya Jahagirdar</title>
-    <link>/</link>
-    <description>Recent content on Kavya Jahagirdar</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jan 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>We were the AI before AI became a thing.</title>
-      <link>/writing/before-ai-became-a-thing/</link>
-      <pubDate>Tue, 21 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>/writing/before-ai-became-a-thing/</guid>
-      <description>We were the AI before AI became a thing. There will come a day when my son will look at me, half-curious, half-judgy and ask, &amp;ldquo;Wait… you people actually searched the internet… without AI?&amp;rdquo;&#xA;I can&amp;rsquo;t wait for him to sit down with his grandma for that one. I can already see her face. The same look she had when I once said Maggi takes too long. She&amp;rsquo;ll try to explain a time when there was no internet.</description>
-    </item>
-    <item>
-      <title>From Corporate to Startup: A Designer&#39;s Perspective</title>
-      <link>/writing/corporate-to-startup-designer/</link>
-      <pubDate>Sun, 10 Mar 2024 09:15:00 +0000</pubDate>
-      <guid>/writing/corporate-to-startup-designer/</guid>
-      <description>From Corporate to Startup: A Designer&amp;rsquo;s Perspective Moving from a large corporation to the startup world was like learning to design all over again.&#xA;Corporate vs Startup Design Corporate Extensive research phases Multiple stakeholder approvals Risk-averse decision making Resource abundance Startup Ship first, research later Direct access to users Comfortable with uncertainty Resource constraints breed creativity What I Learned The biggest shift was learning to embrace uncertainty. In corporate environments, I was used to having all the answers before starting.</description>
-    </item>
-    <item>
-      <title>The Art of Design Systems</title>
-      <link>/writing/art-of-design-systems/</link>
-      <pubDate>Sat, 03 Feb 2024 14:30:00 +0000</pubDate>
-      <guid>/writing/art-of-design-systems/</guid>
-      <description>The Art of Design Systems Design systems have become the backbone of modern product development. But what makes a design system truly effective?&#xA;More Than Components A good design system is:&#xA;Consistent: Visual and interaction patterns that users can predict Scalable: Components that work across different contexts Accessible: Built with inclusivity in mind from the start Living: Continuously evolving based on team needs Building for the Future The best design systems I&amp;rsquo;ve worked with treat documentation as a first-class citizen.</description>
-    </item>
-    <item>
-      <title>Building Resumey.Pro: Lessons from My First SaaS</title>
-      <link>/writing/building-resumey-pro-lessons/</link>
-      <pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate>
-      <guid>/writing/building-resumey-pro-lessons/</guid>
-      <description>Building Resumey.Pro: Lessons from My First SaaS After spending years in traditional design roles, I made the leap to build my own product. Resumey.Pro started as a simple idea: what if creating a professional resume could be as easy as filling out a form?&#xA;The Journey The development process taught me several key lessons:&#xA;1. Start with the Problem I spent too much time on features nobody asked for. The real breakthrough came when I started talking to users daily.</description>
-    </item>
-    <item>
-      <title>Welcome to My New Blog</title>
-      <link>/writing/first-post/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/writing/first-post/</guid>
-      <description>Welcome to My New Blog This is my first post using the new blog system. I&amp;rsquo;m excited to share more insights about product building, storytelling, and the journey of entrepreneurship.&#xA;What You Can Expect I&amp;rsquo;ll be writing about:&#xA;Product Development: Lessons learned from building Resumey.Pro and StoryCV Storytelling: How narrative shapes both products and businesses Entrepreneurship: The real challenges and victories of startup life Creative Process: From ideation to execution Why the Change?</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kavya Jahagirdar</title><link>/</link><description>Recent content on Kavya Jahagirdar</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 21 Jan 2025 10:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>We were the AI before AI became a thing.</title><link>/writing/before-ai-became-a-thing/</link><pubDate>Tue, 21 Jan 2025 10:00:00 +0000</pubDate><guid>/writing/before-ai-became-a-thing/</guid><description>We were the AI before AI became a thing. There will come a day when my son will look at me, half-curious, half-judgy and ask, &amp;ldquo;Wait… you people actually searched the internet… without AI?&amp;rdquo;
+I can&amp;rsquo;t wait for him to sit down with his grandma for that one. I can already see her face. The same look she had when I once said Maggi takes too long. She&amp;rsquo;ll try to explain a time when there was no internet.</description></item><item><title>From Corporate to Startup: A Designer's Perspective</title><link>/writing/corporate-to-startup-designer/</link><pubDate>Sun, 10 Mar 2024 09:15:00 +0000</pubDate><guid>/writing/corporate-to-startup-designer/</guid><description>From Corporate to Startup: A Designer&amp;rsquo;s Perspective Moving from a large corporation to the startup world was like learning to design all over again.
+Corporate vs Startup Design Corporate Extensive research phases Multiple stakeholder approvals Risk-averse decision making Resource abundance Startup Ship first, research later Direct access to users Comfortable with uncertainty Resource constraints breed creativity What I Learned The biggest shift was learning to embrace uncertainty. In corporate environments, I was used to having all the answers before starting.</description></item><item><title>The Art of Design Systems</title><link>/writing/art-of-design-systems/</link><pubDate>Sat, 03 Feb 2024 14:30:00 +0000</pubDate><guid>/writing/art-of-design-systems/</guid><description>The Art of Design Systems Design systems have become the backbone of modern product development. But what makes a design system truly effective?
+More Than Components A good design system is:
+Consistent: Visual and interaction patterns that users can predict Scalable: Components that work across different contexts Accessible: Built with inclusivity in mind from the start Living: Continuously evolving based on team needs Building for the Future The best design systems I&amp;rsquo;ve worked with treat documentation as a first-class citizen.</description></item><item><title>Building Resumey.Pro: Lessons from My First SaaS</title><link>/writing/building-resumey-pro-lessons/</link><pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate><guid>/writing/building-resumey-pro-lessons/</guid><description>Building Resumey.Pro: Lessons from My First SaaS After spending years in traditional design roles, I made the leap to build my own product. Resumey.Pro started as a simple idea: what if creating a professional resume could be as easy as filling out a form?
+The Journey The development process taught me several key lessons:
+1. Start with the Problem I spent too much time on features nobody asked for. The real breakthrough came when I started talking to users daily.</description></item><item><title>Welcome to My New Blog</title><link>/writing/first-post/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>/writing/first-post/</guid><description>Welcome to My New Blog This is my first post using the new blog system. I&amp;rsquo;m excited to share more insights about product building, storytelling, and the journey of entrepreneurship.
+What You Can Expect I&amp;rsquo;ll be writing about:
+Product Development: Lessons learned from building Resumey.Pro and StoryCV Storytelling: How narrative shapes both products and businesses Entrepreneurship: The real challenges and victories of startup life Creative Process: From ideation to execution Why the Change?</description></item></channel></rss>

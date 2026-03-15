@@ -446,17 +446,31 @@ header.visible {
     }
 
     /* About Section Mobile */
+    .about-section {
+        overflow: hidden;
+    }
+
     .about-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        text-align: center;
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .about-text-content {
+        padding: 4rem 2rem 3rem;
+        text-align: left;
+    }
+
+    .about-photo-container {
+        height: 60vw;
+        min-height: 280px;
+        border-radius: 999px 999px 0 0;
+        margin: 0 2rem;
     }
 
     .about-photo {
-        width: 150px;
-        height: 225px;
-        border-radius: 75px; /* Maintain pill shape on mobile */
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
     }
 }
 
@@ -481,39 +495,49 @@ section {
 }
 
 /* About Section */
+.about-section {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+    background: white;
+}
+
 .about-content {
-    max-width: 1000px;
-    display: flex;
-    align-items: flex-start;
-    gap: 4rem;
-    margin: 0 auto;
-}
-
-.about-photo-container {
-    flex-shrink: 0;
-}
-
-.about-photo {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 100px; /* Pill shape - half of width for top/bottom curves */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.about-photo:hover {
-    transform: scale(1.05);
+    display: grid;
+    grid-template-columns: 55% 45%;
+    min-height: 80vh;
+    max-width: none;
+    margin: 0;
+    gap: 0;
+    align-items: center;
 }
 
 .about-text-content {
-    flex: 1;
+    padding: 5rem 4rem 5rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-photo-container {
+    height: 80vh;
+    overflow: hidden;
+    border-radius: 999px 0 0 999px;
+}
+
+.about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .about-text {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    line-height: 1.8;
+    color: var(--black);
 }
 
 
@@ -1327,21 +1351,21 @@ section {
 /* ─── About Section – New Heading & CTA ──────────────────────── */
 .about-heading {
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
     font-weight: 800;
-    color: #121212;
+    color: var(--primary-pink);
     letter-spacing: -0.02em;
     line-height: 1.05;
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
 }
 
 .about-subheading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 400;
-    font-style: italic;
-    color: #888;
-    line-height: 1.6;
+    font-style: normal;
+    color: var(--black);
+    line-height: 1.7;
     margin: 0 0 1.75rem;
 }
 
