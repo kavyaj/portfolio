@@ -1,123 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experience | Kavya Jahagirdar</title>
-<meta name="description" content="Kavya Jahagirdar's work experience — from finance to SaaS founder. A non-linear career built on curiosity, intentional choices, and the question: does this make sense for the life I actually want?">
-<meta name="author" content="Kavya Jahagirdar">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="Experience | Kavya Jahagirdar">
-<meta property="og:description" content="From finance to SaaS founder. A non-linear career built on curiosity and intentional choices.">
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://kavya.wiki/experience">
-<meta property="og:image" content="https://kavya.wiki/images/Kavya-Photo.webp">
-<meta property="og:site_name" content="Kavya Jahagirdar">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Experience | Kavya Jahagirdar">
-<meta name="twitter:description" content="From finance to SaaS founder. A non-linear career built on curiosity and intentional choices.">
-<meta name="twitter:image" content="https://kavya.wiki/images/Kavya-Photo.webp">
-<link rel="canonical" href="https://kavya.wiki/experience">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+{{ define "head" }}
 <style>
-  :root {
-    --primary-pink: #fd5183;
-    --black: #121212;
-    --white: #fff;
-    --gray-light: #f5f5f5;
-    --gray-medium: #666;
-    --gray-dark: #333;
-    --gray-divider: #e0e0e0;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--black);
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* ── NAV ── */
-  nav {
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--gray-divider);
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: var(--black);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--primary-pink); }
-
-  .nav-back {
-    font-size: 0.82rem;
-    color: var(--gray-medium);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-    transition: color 0.2s;
-  }
-
-  .nav-back:hover { color: var(--primary-pink); }
-
-  /* ── PAGE HEADER ── */
-  .page-header {
+  /* ── EXPERIENCE PAGE ── */
+  .exp-page {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 5rem 3rem 3rem;
+    padding: 0 3rem 6rem;
+  }
+
+  /* Page Header */
+  .exp-page-header {
+    padding: 5rem 0 3.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: end;
     border-bottom: 1px solid var(--gray-divider);
+    margin-bottom: 0;
   }
 
-  .page-label {
+  .exp-page-label {
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--primary-pink);
     margin-bottom: 1rem;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .page-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    letter-spacing: -0.03em;
+  .exp-page-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     line-height: 1;
     color: var(--black);
+    text-transform: none;
   }
 
-  .page-title em {
+  .exp-page-title em {
     font-style: italic;
     color: var(--primary-pink);
   }
 
-  /* ── NARRATIVE INTRO ── */
-  .narrative {
+  .exp-narrative {
     font-size: 1rem;
     line-height: 1.85;
     color: var(--gray-medium);
     font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .narrative p + p { margin-top: 1rem; }
+  .exp-narrative p + p { margin-top: 1rem; }
+  .exp-narrative strong { color: var(--gray-dark); font-weight: 500; }
 
-  .narrative strong { color: var(--gray-dark); font-weight: 500; }
-
-  /* ── TOOLTIP ── */
+  /* Tooltip */
   .tooltip-trigger {
     position: relative;
     display: inline;
@@ -131,7 +68,7 @@
     position: absolute;
     bottom: calc(100% + 10px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(4px);
     background: var(--black);
     color: rgba(255,255,255,0.85);
     font-size: 0.82rem;
@@ -143,9 +80,9 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s, transform 0.2s;
-    transform: translateX(-50%) translateY(4px);
     z-index: 10;
     font-style: normal;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .tooltip-box::after {
@@ -163,32 +100,37 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  /* ── MAIN LAYOUT ── */
-  .main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 3rem 6rem;
+  /* Main two-column layout */
+  .exp-main {
     display: grid;
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: 1fr 360px;
     gap: 5rem;
     align-items: start;
   }
 
-  /* ── EXPERIENCE SECTION ── */
-  .experience-section { padding-top: 4rem; }
+  /* Left column */
+  .exp-left { padding-top: 4rem; }
 
-  .section-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    letter-spacing: -0.02em;
+  /* Right column / sidebar */
+  .exp-sidebar { padding-top: 4rem; }
+
+  /* Section headings */
+  .exp-section-heading {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--black);
     margin-bottom: 2.5rem;
     text-transform: none;
   }
 
-  .section-heading em { font-style: italic; color: var(--primary-pink); }
+  .exp-section-heading em {
+    font-style: italic;
+    color: var(--primary-pink);
+  }
 
-  /* ── TIMELINE ── */
+  /* Timeline */
   .timeline {
     position: relative;
     padding-left: 1.5rem;
@@ -231,7 +173,6 @@
   }
 
   .timeline-item:hover::before { background: var(--primary-pink); }
-
   .timeline-item:last-child { padding-bottom: 0; }
 
   .timeline-meta {
@@ -244,24 +185,28 @@
 
   .timeline-company {
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--primary-pink);
+    font-family: 'DM Sans', sans-serif;
   }
 
   .timeline-period {
     font-size: 0.72rem;
     color: var(--gray-medium);
     letter-spacing: 0.04em;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .timeline-role {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--black);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
+    text-transform: none;
   }
 
   .timeline-desc {
@@ -269,14 +214,15 @@
     line-height: 1.75;
     color: var(--gray-medium);
     font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .timeline-desc em { font-style: italic; color: var(--gray-dark); }
+  .timeline-desc em {
+    font-style: italic;
+    color: var(--gray-dark);
+  }
 
-  /* ── SIDEBAR ── */
-  .sidebar { padding-top: 4rem; }
-
-  /* ── EDUCATION ── */
+  /* Education card */
   .edu-card {
     background: var(--gray-light);
     border-radius: 4px;
@@ -286,18 +232,21 @@
 
   .edu-label {
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--primary-pink);
     margin-bottom: 0.6rem;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .edu-school {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
     color: var(--black);
     margin-bottom: 0.3rem;
+    text-transform: none;
   }
 
   .edu-degree {
@@ -305,6 +254,7 @@
     color: var(--gray-medium);
     line-height: 1.5;
     font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .edu-year {
@@ -312,18 +262,20 @@
     color: var(--gray-medium);
     margin-top: 0.5rem;
     letter-spacing: 0.04em;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  /* ── FEATURED IN ── */
+  /* Featured in */
   .featured-section { margin-top: 2rem; }
 
   .sidebar-label {
     font-size: 0.72rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gray-medium);
     margin-bottom: 1rem;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .podcast-item {
@@ -337,7 +289,8 @@
     font-size: 0.78rem;
     color: var(--primary-pink);
     margin-bottom: 0.3rem;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .podcast-title {
@@ -346,120 +299,56 @@
     line-height: 1.45;
     font-weight: 400;
     margin-bottom: 0.25rem;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .podcast-meta {
     font-size: 0.72rem;
     color: var(--gray-medium);
+    font-family: 'DM Sans', sans-serif;
   }
 
-  /* ── SKILLS SECTION ── */
-  .skills-section {
+  /* Skills section */
+  .exp-skills-section {
     background: var(--black);
     padding: 5rem 0;
+    margin-top: 0;
   }
 
-  .skills-inner {
+  .exp-skills-inner {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 3rem;
   }
 
-  .skills-header {
+  .exp-skills-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 3rem;
   }
 
-  .skills-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
+  .exp-skills-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
     color: var(--white);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     text-transform: none;
   }
 
-  .skills-title em { font-style: italic; color: var(--primary-pink); }
+  .exp-skills-title em {
+    font-style: italic;
+    color: var(--primary-pink);
+  }
 
-  .skills-note {
+  .exp-skills-note {
     font-size: 0.8rem;
     color: rgba(255,255,255,0.35);
     font-style: italic;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  /* ── SKILL TAGS ── */
-  .skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 3rem;
-  }
-
-  .skill-tag {
-    padding: 0.55rem 1.1rem;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 400;
-    cursor: default;
-    transition: all 0.25s ease;
-    border: 1px solid transparent;
-    letter-spacing: 0.01em;
-  }
-
-  .skill-tag.cat-marketing {
-    background: rgba(253,81,131,0.1);
-    color: rgba(253,81,131,0.9);
-    border-color: rgba(253,81,131,0.2);
-  }
-
-  .skill-tag.cat-marketing:hover {
-    background: var(--primary-pink);
-    color: var(--white);
-    border-color: var(--primary-pink);
-    transform: translateY(-2px);
-  }
-
-  .skill-tag.cat-product {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.7);
-    border-color: rgba(255,255,255,0.12);
-  }
-
-  .skill-tag.cat-product:hover {
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
-    border-color: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
-
-  .skill-tag.cat-finance {
-    background: rgba(104,105,87,0.15);
-    color: rgba(180,181,160,0.9);
-    border-color: rgba(104,105,87,0.25);
-  }
-
-  .skill-tag.cat-finance:hover {
-    background: rgba(104,105,87,0.35);
-    color: var(--white);
-    border-color: rgba(104,105,87,0.5);
-    transform: translateY(-2px);
-  }
-
-  .skill-tag.cat-creative {
-    background: rgba(253,81,131,0.05);
-    color: rgba(253,81,131,0.6);
-    border-color: rgba(253,81,131,0.1);
-  }
-
-  .skill-tag.cat-creative:hover {
-    background: rgba(253,81,131,0.15);
-    color: rgba(253,81,131,1);
-    border-color: rgba(253,81,131,0.3);
-    transform: translateY(-2px);
-  }
-
-  /* ── SKILL FILTERS ── */
   .skill-filters {
     display: flex;
     gap: 0.5rem;
@@ -479,6 +368,7 @@
     color: rgba(255,255,255,0.4);
     cursor: pointer;
     transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .filter-btn:hover, .filter-btn.active {
@@ -487,7 +377,73 @@
     background: rgba(253,81,131,0.08);
   }
 
-  /* ── TRAITS ── */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .skill-tag {
+    padding: 0.55rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: default;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    letter-spacing: 0.01em;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .skill-tag.cat-marketing {
+    background: rgba(253,81,131,0.1);
+    color: rgba(253,81,131,0.9);
+    border-color: rgba(253,81,131,0.2);
+  }
+  .skill-tag.cat-marketing:hover {
+    background: var(--primary-pink);
+    color: var(--white);
+    border-color: var(--primary-pink);
+    transform: translateY(-2px);
+  }
+
+  .skill-tag.cat-product {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .skill-tag.cat-product:hover {
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  .skill-tag.cat-finance {
+    background: rgba(104,105,87,0.15);
+    color: rgba(180,181,160,0.9);
+    border-color: rgba(104,105,87,0.25);
+  }
+  .skill-tag.cat-finance:hover {
+    background: rgba(104,105,87,0.35);
+    color: var(--white);
+    border-color: rgba(104,105,87,0.5);
+    transform: translateY(-2px);
+  }
+
+  .skill-tag.cat-creative {
+    background: rgba(253,81,131,0.05);
+    color: rgba(253,81,131,0.6);
+    border-color: rgba(253,81,131,0.1);
+  }
+  .skill-tag.cat-creative:hover {
+    background: rgba(253,81,131,0.15);
+    color: rgba(253,81,131,1);
+    border-color: rgba(253,81,131,0.3);
+    transform: translateY(-2px);
+  }
+
   .traits-row {
     display: flex;
     gap: 1.5rem;
@@ -504,6 +460,7 @@
     color: rgba(255,255,255,0.4);
     font-weight: 300;
     letter-spacing: 0.04em;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .trait-dot {
@@ -515,161 +472,157 @@
     flex-shrink: 0;
   }
 
-  /* ── RESPONSIVE ── */
+  /* Responsive */
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .page-header { grid-template-columns: 1fr; padding: 3rem 1.5rem 2rem; gap: 2rem; }
-    .main { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; gap: 0; }
-    .sidebar { padding-top: 0; border-top: 1px solid var(--gray-divider); margin-top: 1rem; padding-top: 3rem; }
-    .skills-inner { padding: 0 1.5rem; }
+    .exp-page { padding: 0 1.5rem 4rem; }
+    .exp-page-header { grid-template-columns: 1fr; padding: 3rem 0 2rem; gap: 2rem; }
+    .exp-main { grid-template-columns: 1fr; gap: 0; }
+    .exp-sidebar { padding-top: 0; border-top: 1px solid var(--gray-divider); margin-top: 1rem; padding-top: 3rem; }
+    .exp-skills-inner { padding: 0 1.5rem; }
   }
 </style>
-</head>
-<body>
+{{ end }}
 
-<!-- NAV -->
-<nav>
-  <a href="{{ "/" | relURL }}" class="nav-logo">Kavya<span>.</span></a>
-  <a href="{{ "/" | relURL }}" class="nav-back">← Back to home</a>
-</nav>
+{{ define "main" }}
+<div class="exp-page">
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div>
-    <div class="page-label">The full picture</div>
-    <h1 class="page-title">Work &amp;<br><em>experience.</em></h1>
+  <!-- Page Header -->
+  <div class="exp-page-header">
+    <div>
+      <div class="exp-page-label">The full picture</div>
+      <h1 class="exp-page-title">Work &amp;<br><em>experience.</em></h1>
+    </div>
+    <div class="exp-narrative">
+      <p>
+        Every step in my career so far has been a choice.
+        <span class="tooltip-trigger">I don't say that lightly.
+          <span class="tooltip-box">I know not everyone gets that luxury. Visa constraints, financial pressures, family obligations — there are a hundred reasons why the path I took isn't available to everyone, and I'm grateful for the privilege that made it possible 🙏🏼</span>
+        </span>
+      </p>
+      <p>
+        I've never changed direction for a salary or a title. Just an attempt to build a life that makes sense to me, and the willingness to move when something stopped making sense.
+      </p>
+      <p>
+        It took a lot of late nights and a very patient partner to figure that out. Still does, honestly.
+      </p>
+    </div>
   </div>
-  <div class="narrative">
-    <p>
-      Every step in my career so far has been a choice.
-      <span class="tooltip-trigger">I don't say that lightly.
-        <span class="tooltip-box">I know not everyone gets that luxury. Visa constraints, financial pressures, family obligations — there are a hundred reasons why the path I took isn't available to everyone, and I'm grateful for the privilege that made it possible 🙏🏼</span>
-      </span>
-    </p>
-    <p>
-      I've never changed direction for a salary or a title. Just an attempt to build a life that makes sense to me, and the willingness to move when something stopped making sense.
-    </p>
-    <p>
-      It took a lot of late nights and a very patient partner to figure that out. Still does, honestly.
-    </p>
+
+  <!-- Main two-column content -->
+  <div class="exp-main">
+
+    <!-- Timeline -->
+    <div class="exp-left">
+      <h2 class="exp-section-heading">Where I've <em>been.</em></h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">StoryCV</span>
+            <span class="timeline-period">2025 — Present · Singapore</span>
+          </div>
+          <div class="timeline-role">Founder</div>
+          <p class="timeline-desc">Built this after noticing that most people struggle to put their work experiences into words. <em>Unexpectedly, it taught me that most people undersell themselves — and that's a solvable problem.</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">Resumey.Pro</span>
+            <span class="timeline-period">2021 — Present · Singapore</span>
+          </div>
+          <div class="timeline-role">Co-founder, Marketing</div>
+          <p class="timeline-desc">Running marketing and revenue for a product I built out of my own frustration. Turns out that's the best kind of motivation — <em>you already know exactly who you're building for.</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">Enabling.Win</span>
+            <span class="timeline-period">2018 — 2021 · Singapore</span>
+          </div>
+          <div class="timeline-role">Marketing &amp; Product Manager</div>
+          <p class="timeline-desc">Worked across product and marketing for a B2B app — everything from feature design to running webinars for food industry specialists. The kind of role where no two days looked the same, <em>which suited me fine.</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">J.P. Morgan</span>
+            <span class="timeline-period">2016 — 2018 · Singapore</span>
+          </div>
+          <div class="timeline-role">Instrument Reference Data Analyst</div>
+          <p class="timeline-desc">Fixed Income and Equities data — process improvement and strategic change, working across business and technology teams. Where I learned to ask uncomfortable questions about processes that had <em>"always been done this way."</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">Commerzbank</span>
+            <span class="timeline-period">2014 — 2016 · Singapore</span>
+          </div>
+          <div class="timeline-role">Trader Assistant, EMTN Private Placement</div>
+          <p class="timeline-desc">Advisory, pricing and execution of notes for short-term funding for banks and supranationals across Asia. My first real taste of the trading floor. <em>Buzzing, fast, and completely unlike anything I'd imagined.</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">Credit Suisse</span>
+            <span class="timeline-period">May — Jul 2013 · Singapore</span>
+          </div>
+          <div class="timeline-role">Summer Analyst, eFX IT</div>
+          <p class="timeline-desc">Where I first saw what technology looks like inside financial services. Brief, <em>but gave me a better idea about the world of banking.</em></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-company">Frost &amp; Sullivan</span>
+            <span class="timeline-period">Jul — Dec 2012 · Singapore</span>
+          </div>
+          <div class="timeline-role">Intern Analyst</div>
+          <p class="timeline-desc">Market research across topics as wildly different as geology and economic liberalisation. My first lesson in <em>learning to think about things I knew nothing about.</em></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="exp-sidebar">
+
+      <h2 class="exp-section-heading" style="margin-bottom:1.5rem;">Education.</h2>
+
+      <div class="edu-card">
+        <div class="edu-label">University</div>
+        <div class="edu-school">Nanyang Technological University</div>
+        <div class="edu-degree">B.Eng. Engineering<br>Minor in Entrepreneurship</div>
+        <div class="edu-year">Singapore · 2010 — 2014</div>
+      </div>
+
+      <div class="featured-section">
+        <div class="sidebar-label">Featured in</div>
+
+        <div class="podcast-item">
+          <div class="podcast-ep">Indie Founder · #160</div>
+          <div class="podcast-title">Interviewing Kavya who quit her job to build a pro resume builder</div>
+          <div class="podcast-meta">Oct 28, 2024 · 🎧 Spotify</div>
+        </div>
+
+        <div class="podcast-item">
+          <div class="podcast-ep">Indie Founder · #237</div>
+          <div class="podcast-title">It's been one year. Where are they now?</div>
+          <div class="podcast-meta">Jul 21, 2025 · 🎧 Spotify</div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="main">
+<!-- Skills section — full bleed black, outside the padded container -->
+<div class="exp-skills-section">
+  <div class="exp-skills-inner">
 
-  <!-- EXPERIENCE TIMELINE -->
-  <div class="experience-section">
-    <h2 class="section-heading">Where I've <em>been.</em></h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">StoryCV</span>
-          <span class="timeline-period">2025 — Present · Singapore</span>
-        </div>
-        <div class="timeline-role">Founder</div>
-        <p class="timeline-desc">Built this after noticing that most people struggle to put their work experiences into words. <em>Unexpectedly, it taught me that most people undersell themselves — and that's a solvable problem.</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Resumey.Pro</span>
-          <span class="timeline-period">2021 — Present · Singapore</span>
-        </div>
-        <div class="timeline-role">Co-founder, Marketing</div>
-        <p class="timeline-desc">Running marketing and revenue for a product I built out of my own frustration. Turns out that's the best kind of motivation — <em>you already know exactly who you're building for.</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Enabling.Win</span>
-          <span class="timeline-period">2018 — 2021 · Singapore</span>
-        </div>
-        <div class="timeline-role">Marketing &amp; Product Manager</div>
-        <p class="timeline-desc">Worked across product and marketing for a B2B app — everything from feature design to running webinars for food industry specialists. The kind of role where no two days looked the same, <em>which suited me fine.</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">J.P. Morgan</span>
-          <span class="timeline-period">2016 — 2018 · Singapore</span>
-        </div>
-        <div class="timeline-role">Instrument Reference Data Analyst</div>
-        <p class="timeline-desc">Fixed Income and Equities data — process improvement and strategic change, working across business and technology teams. Where I learned to ask uncomfortable questions about processes that had <em>"always been done this way."</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Commerzbank</span>
-          <span class="timeline-period">2014 — 2016 · Singapore</span>
-        </div>
-        <div class="timeline-role">Trader Assistant, EMTN Private Placement</div>
-        <p class="timeline-desc">Advisory, pricing and execution of notes for short-term funding for banks and supranationals across Asia. My first real taste of the trading floor. <em>Buzzing, fast, and completely unlike anything I'd imagined.</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Credit Suisse</span>
-          <span class="timeline-period">May — Jul 2013 · Singapore</span>
-        </div>
-        <div class="timeline-role">Summer Analyst, eFX IT</div>
-        <p class="timeline-desc">Where I first saw what technology looks like inside financial services. Brief, <em>but gave me a better idea about the world of banking.</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Frost &amp; Sullivan</span>
-          <span class="timeline-period">Jul — Dec 2012 · Singapore</span>
-        </div>
-        <div class="timeline-role">Intern Analyst</div>
-        <p class="timeline-desc">Market research across topics as wildly different as geology and economic liberalisation. My first lesson in <em>learning to think about things I knew nothing about.</em></p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-
-    <!-- Education -->
-    <h2 class="section-heading" style="margin-bottom:1.5rem;">Education.</h2>
-
-    <div class="edu-card">
-      <div class="edu-label">University</div>
-      <div class="edu-school">Nanyang Technological University</div>
-      <div class="edu-degree">B.Eng. Engineering<br>Minor in Entrepreneurship</div>
-      <div class="edu-year">Singapore · 2010 — 2014</div>
-    </div>
-
-    <!-- Featured In -->
-    <div class="featured-section">
-      <div class="sidebar-label">Featured in</div>
-
-      <div class="podcast-item">
-        <div class="podcast-ep">Indie Founder · #160</div>
-        <div class="podcast-title">Interviewing Kavya who quit her job to build a pro resume builder</div>
-        <div class="podcast-meta">Oct 28, 2024 · 🎧 Spotify</div>
-      </div>
-
-      <div class="podcast-item">
-        <div class="podcast-ep">Indie Founder · #237</div>
-        <div class="podcast-title">It's been one year. Where are they now?</div>
-        <div class="podcast-meta">Jul 21, 2025 · 🎧 Spotify</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- SKILLS SECTION -->
-<div class="skills-section">
-  <div class="skills-inner">
-
-    <div class="skills-header">
-      <h2 class="skills-title">Things I'm <em>good at.</em></h2>
-      <span class="skills-note">hover to explore</span>
+    <div class="exp-skills-header">
+      <h2 class="exp-skills-title">Things I'm <em>good at.</em></h2>
+      <span class="exp-skills-note">hover to explore</span>
     </div>
 
     <div class="skill-filters">
@@ -721,9 +674,7 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
       }
     });
   }, { threshold: 0.15 });
@@ -737,7 +688,6 @@
     btn.addEventListener('click', () => {
       filters.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const filter = btn.dataset.filter;
       tags.forEach(tag => {
         if (filter === 'all' || tag.dataset.cat === filter) {
@@ -753,6 +703,4 @@
     });
   });
 </script>
-
-</body>
-</html>
+{{ end }}
