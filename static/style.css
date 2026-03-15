@@ -456,7 +456,9 @@ header.visible {
     }
 
     .about-text-content {
-        padding: 3rem 1.5rem 3rem;
+        padding: 2.5rem 1rem 3rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .about-photo-container {
@@ -464,7 +466,7 @@ header.visible {
     }
 
     .about-photo-mobile {
-        display: flex;
+        display: flex !important;
         justify-content: center;
         margin: 1.5rem 0 2rem;
     }
@@ -475,7 +477,7 @@ header.visible {
         border-radius: 50%;
         object-fit: cover;
         object-position: 50% 8%;
-        display: block;
+        display: block !important;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
@@ -487,6 +489,13 @@ header.visible {
         font-size: 1rem;
         line-height: 1.75;
         margin-bottom: 1.25rem;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .about-photo-mobile {
+        display: none;
     }
 }
 
@@ -556,13 +565,6 @@ section {
     color: var(--black);
 }
 
-.about-photo-mobile {
-    display: none;
-}
-
-.about-photo-circle {
-    display: none;
-}
 
 
 
