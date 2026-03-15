@@ -7,15 +7,14 @@
     padding: 0 3rem 6rem;
   }
 
-  /* Page Header */
+  /* Account for fixed nav (~65px) */
   .exp-page-header {
-    padding: 5rem 0 3.5rem;
+    padding: calc(4.5rem + 65px) 0 3.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: end;
     border-bottom: 1px solid var(--gray-divider);
-    margin-bottom: 0;
   }
 
   .exp-page-label {
@@ -54,7 +53,7 @@
   .exp-narrative p + p { margin-top: 1rem; }
   .exp-narrative strong { color: var(--gray-dark); font-weight: 500; }
 
-  /* Tooltip */
+  /* ── TOOLTIP ── */
   .tooltip-trigger {
     position: relative;
     display: inline;
@@ -64,9 +63,11 @@
     font-weight: 500;
   }
 
+  /* Default: appears above */
   .tooltip-box {
     position: absolute;
     bottom: calc(100% + 10px);
+    top: auto;
     left: 50%;
     transform: translateX(-50%) translateY(4px);
     background: var(--black);
@@ -76,11 +77,11 @@
     font-weight: 300;
     padding: 1rem 1.25rem;
     border-radius: 4px;
-    width: 300px;
+    width: 280px;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s, transform 0.2s;
-    z-index: 10;
+    z-index: 999;
     font-style: normal;
     font-family: 'DM Sans', sans-serif;
   }
@@ -89,18 +90,40 @@
     content: '';
     position: absolute;
     top: 100%;
+    bottom: auto;
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
     border-top-color: var(--black);
+    border-bottom-color: transparent;
   }
 
-  .tooltip-trigger:hover .tooltip-box {
+  .tooltip-trigger:hover .tooltip-box,
+  .tooltip-trigger.tip-open .tooltip-box {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
 
-  /* Main two-column layout */
+  /* Below variant — added via JS when not enough space above */
+  .tooltip-trigger.tooltip-below .tooltip-box {
+    top: calc(100% + 10px);
+    bottom: auto;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  .tooltip-trigger.tooltip-below:hover .tooltip-box,
+  .tooltip-trigger.tooltip-below.tip-open .tooltip-box {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .tooltip-trigger.tooltip-below .tooltip-box::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--black);
+  }
+
+  /* ── MAIN LAYOUT ── */
   .exp-main {
     display: grid;
     grid-template-columns: 1fr 360px;
@@ -108,10 +131,7 @@
     align-items: start;
   }
 
-  /* Left column */
-  .exp-left { padding-top: 4rem; }
-
-  /* Right column / sidebar */
+  .exp-left  { padding-top: 4rem; }
   .exp-sidebar { padding-top: 4rem; }
 
   /* Section headings */
@@ -130,7 +150,7 @@
     color: var(--primary-pink);
   }
 
-  /* Timeline */
+  /* ── TIMELINE ── */
   .timeline {
     position: relative;
     padding-left: 1.5rem;
@@ -222,7 +242,7 @@
     color: var(--gray-dark);
   }
 
-  /* Education card */
+  /* ── SIDEBAR ── */
   .edu-card {
     background: var(--gray-light);
     border-radius: 4px;
@@ -265,7 +285,7 @@
     font-family: 'DM Sans', sans-serif;
   }
 
-  /* Featured in */
+  /* ── FEATURED IN ── */
   .featured-section { margin-top: 2rem; }
 
   .sidebar-label {
@@ -283,36 +303,26 @@
     border-bottom: 1px solid var(--gray-divider);
   }
 
-  .podcast-item:last-child { border-bottom: none; }
+  .podcast-item:last-child { border-bottom: none; padding-bottom: 0; }
 
   .podcast-ep {
     font-size: 0.78rem;
     color: var(--primary-pink);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
     font-weight: 600;
     font-family: 'DM Sans', sans-serif;
   }
 
-  .podcast-title {
-    font-size: 0.88rem;
-    color: var(--gray-dark);
-    line-height: 1.45;
-    font-weight: 400;
-    margin-bottom: 0.25rem;
-    font-family: 'DM Sans', sans-serif;
+  .podcast-item iframe {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
   }
 
-  .podcast-meta {
-    font-size: 0.72rem;
-    color: var(--gray-medium);
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  /* Skills section */
+  /* ── SKILLS SECTION ── */
   .exp-skills-section {
     background: var(--black);
     padding: 5rem 0;
-    margin-top: 0;
   }
 
   .exp-skills-inner {
@@ -326,6 +336,8 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .exp-skills-title {
@@ -337,10 +349,7 @@
     text-transform: none;
   }
 
-  .exp-skills-title em {
-    font-style: italic;
-    color: var(--primary-pink);
-  }
+  .exp-skills-title em { font-style: italic; color: var(--primary-pink); }
 
   .exp-skills-note {
     font-size: 0.8rem;
@@ -396,53 +405,17 @@
     font-family: 'DM Sans', sans-serif;
   }
 
-  .skill-tag.cat-marketing {
-    background: rgba(253,81,131,0.1);
-    color: rgba(253,81,131,0.9);
-    border-color: rgba(253,81,131,0.2);
-  }
-  .skill-tag.cat-marketing:hover {
-    background: var(--primary-pink);
-    color: var(--white);
-    border-color: var(--primary-pink);
-    transform: translateY(-2px);
-  }
+  .skill-tag.cat-marketing { background: rgba(253,81,131,0.1); color: rgba(253,81,131,0.9); border-color: rgba(253,81,131,0.2); }
+  .skill-tag.cat-marketing:hover { background: var(--primary-pink); color: var(--white); border-color: var(--primary-pink); transform: translateY(-2px); }
 
-  .skill-tag.cat-product {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.7);
-    border-color: rgba(255,255,255,0.12);
-  }
-  .skill-tag.cat-product:hover {
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
-    border-color: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
+  .skill-tag.cat-product { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.12); }
+  .skill-tag.cat-product:hover { background: rgba(255,255,255,0.15); color: var(--white); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
 
-  .skill-tag.cat-finance {
-    background: rgba(104,105,87,0.15);
-    color: rgba(180,181,160,0.9);
-    border-color: rgba(104,105,87,0.25);
-  }
-  .skill-tag.cat-finance:hover {
-    background: rgba(104,105,87,0.35);
-    color: var(--white);
-    border-color: rgba(104,105,87,0.5);
-    transform: translateY(-2px);
-  }
+  .skill-tag.cat-finance { background: rgba(104,105,87,0.15); color: rgba(180,181,160,0.9); border-color: rgba(104,105,87,0.25); }
+  .skill-tag.cat-finance:hover { background: rgba(104,105,87,0.35); color: var(--white); border-color: rgba(104,105,87,0.5); transform: translateY(-2px); }
 
-  .skill-tag.cat-creative {
-    background: rgba(253,81,131,0.05);
-    color: rgba(253,81,131,0.6);
-    border-color: rgba(253,81,131,0.1);
-  }
-  .skill-tag.cat-creative:hover {
-    background: rgba(253,81,131,0.15);
-    color: rgba(253,81,131,1);
-    border-color: rgba(253,81,131,0.3);
-    transform: translateY(-2px);
-  }
+  .skill-tag.cat-creative { background: rgba(253,81,131,0.05); color: rgba(253,81,131,0.6); border-color: rgba(253,81,131,0.1); }
+  .skill-tag.cat-creative:hover { background: rgba(253,81,131,0.15); color: rgba(253,81,131,1); border-color: rgba(253,81,131,0.3); transform: translateY(-2px); }
 
   .traits-row {
     display: flex;
@@ -472,13 +445,60 @@
     flex-shrink: 0;
   }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    .exp-page { padding: 0 1.5rem 4rem; }
-    .exp-page-header { grid-template-columns: 1fr; padding: 3rem 0 2rem; gap: 2rem; }
-    .exp-main { grid-template-columns: 1fr; gap: 0; }
-    .exp-sidebar { padding-top: 0; border-top: 1px solid var(--gray-divider); margin-top: 1rem; padding-top: 3rem; }
-    .exp-skills-inner { padding: 0 1.5rem; }
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .exp-page { padding: 0 1.25rem 4rem; }
+
+    .exp-page-header {
+      grid-template-columns: 1fr;
+      padding: calc(3rem + 65px) 0 2rem;
+      gap: 1.75rem;
+    }
+
+    .exp-main {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .exp-left { padding-top: 2.5rem; }
+
+    .exp-sidebar {
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--gray-divider);
+      margin-top: 1rem;
+    }
+
+    .exp-section-heading { font-size: 1.5rem; margin-bottom: 1.75rem; }
+
+    .timeline { padding-left: 1.25rem; }
+    .timeline-item { padding: 0 0 2rem 1.5rem; }
+
+    /* Tooltip: always below on mobile/touch */
+    .tooltip-box {
+      width: calc(100vw - 3rem);
+      left: 0;
+      transform: translateX(0) translateY(-4px);
+      top: calc(100% + 10px);
+      bottom: auto;
+    }
+
+    .tooltip-box::after {
+      top: auto;
+      bottom: 100%;
+      border-top-color: transparent;
+      border-bottom-color: var(--black);
+    }
+
+    .tooltip-trigger:hover .tooltip-box,
+    .tooltip-trigger.tip-open .tooltip-box {
+      transform: translateX(0) translateY(0);
+    }
+
+    .exp-skills-inner { padding: 0 1.25rem; }
+    .exp-skills-title { font-size: 1.8rem; }
+
+    .skills-grid { gap: 0.5rem; }
+    .skill-tag { font-size: 0.8rem; padding: 0.45rem 0.9rem; }
   }
 </style>
 {{ end }}
@@ -600,14 +620,24 @@
 
         <div class="podcast-item">
           <div class="podcast-ep">Indie Founder · #160</div>
-          <div class="podcast-title">Interviewing Kavya who quit her job to build a pro resume builder</div>
-          <div class="podcast-meta">Oct 28, 2024 · 🎧 Spotify</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/6a8xc0uIUHsJk1YSm2Q8fE?utm_source=generator&theme=0"
+            height="152"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
         </div>
 
         <div class="podcast-item">
           <div class="podcast-ep">Indie Founder · #237</div>
-          <div class="podcast-title">It's been one year. Where are they now?</div>
-          <div class="podcast-meta">Jul 21, 2025 · 🎧 Spotify</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/0PjhP3sKa3a8sr0ra83BxS?utm_source=generator&theme=0"
+            height="152"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
         </div>
       </div>
 
@@ -616,7 +646,7 @@
 
 </div>
 
-<!-- Skills section — full bleed black, outside the padded container -->
+<!-- Skills section — full bleed black -->
 <div class="exp-skills-section">
   <div class="exp-skills-inner">
 
@@ -667,29 +697,64 @@
 
   </div>
 </div>
+{{ end }}
 
+{{ define "scripts" }}
 <script>
-  // Timeline scroll reveal
-  const items = document.querySelectorAll('.timeline-item');
-  const observer = new IntersectionObserver((entries) => {
+  // ── Make header immediately visible on this page ──
+  (function() {
+    const header = document.querySelector('header');
+    if (header) header.classList.add('visible');
+  })();
+
+  // ── Timeline scroll reveal ──
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const tlObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), i * 80);
       }
     });
   }, { threshold: 0.15 });
-  items.forEach(el => observer.observe(el));
+  timelineItems.forEach(el => tlObserver.observe(el));
 
-  // Skills filter
-  const filters = document.querySelectorAll('.filter-btn');
-  const tags = document.querySelectorAll('.skill-tag');
+  // ── Smart tooltip: above or below based on viewport space ──
+  document.querySelectorAll('.tooltip-trigger').forEach(trigger => {
+    const show = () => {
+      const rect = trigger.getBoundingClientRect();
+      // Need ~180px above for tooltip + arrow; if not enough, show below
+      if (rect.top < 200) {
+        trigger.classList.add('tooltip-below');
+      } else {
+        trigger.classList.remove('tooltip-below');
+      }
+    };
+    trigger.addEventListener('mouseenter', show);
+    // Touch support: tap to toggle
+    trigger.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      show();
+      trigger.classList.toggle('tip-open');
+    }, { passive: false });
+  });
 
-  filters.forEach(btn => {
+  // Close tooltip on outside tap (mobile)
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.tooltip-trigger')) {
+      document.querySelectorAll('.tooltip-trigger').forEach(t => t.classList.remove('tip-open'));
+    }
+  });
+
+  // ── Skills filter ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const skillTags = document.querySelectorAll('.skill-tag');
+
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filters.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.dataset.filter;
-      tags.forEach(tag => {
+      skillTags.forEach(tag => {
         if (filter === 'all' || tag.dataset.cat === filter) {
           tag.style.opacity = '1';
           tag.style.transform = 'scale(1)';
