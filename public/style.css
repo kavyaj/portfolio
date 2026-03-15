@@ -447,17 +447,15 @@ header.visible {
 
     /* About Section Mobile */
     .about-section {
+        display: block !important;
+        grid-template-columns: none !important;
+        min-height: auto !important;
         padding: 3rem 20px 3.5rem !important;
         overflow: visible;
     }
 
-    .about-content {
-        display: block;
-        min-height: auto;
-    }
-
     .about-text-content {
-        padding: 0;
+        padding: 0 !important;
         width: 100%;
     }
 
@@ -524,21 +522,15 @@ section {
 
 /* About Section */
 .about-section {
+    display: grid !important;
+    grid-template-columns: 55% 45% !important;
     max-width: none !important;
     padding: 0 !important;
     margin: 0 !important;
+    min-height: 80vh;
+    align-items: center;
     overflow: hidden;
     background: white;
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 55% 45%;
-    min-height: 80vh;
-    max-width: none;
-    margin: 0;
-    gap: 0;
-    align-items: center;
 }
 
 .about-text-content {
