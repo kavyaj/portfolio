@@ -588,10 +588,14 @@ section {
     align-items: start;
     padding: 2.2rem 0;
     border-bottom: 1px solid var(--gray-divider);
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     position: relative;
     transition: background 0.2s;
+}
+
+.project-row:hover {
+    text-decoration: none !important;
 }
 
 .project-row::before {
