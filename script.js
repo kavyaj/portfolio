@@ -240,7 +240,39 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleMobileMenu();
     initSmoothScrolling();
     initHeaderScrollEffect();
+    initScrollHide();
 });
+
+function initScrollHide() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                const delta = currentScrollY - lastScrollY;
+
+                if (header.classList.contains('visible')) {
+                    if (delta > 5) {
+                        header.classList.add('scroll-hidden');
+                    } else if (delta < -5) {
+                        header.classList.remove('scroll-hidden');
+                    }
+                } else {
+                    header.classList.remove('scroll-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
 
 // Refresh ScrollTrigger on window resize
 window.addEventListener('resize', () => {
