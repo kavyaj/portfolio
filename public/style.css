@@ -447,18 +447,18 @@ header.visible {
 
     /* About Section Mobile */
     .about-section {
+        padding: 3rem 20px 3.5rem !important;
         overflow: visible;
     }
 
     .about-content {
-        grid-template-columns: 1fr;
+        display: block;
         min-height: auto;
     }
 
     .about-text-content {
-        padding: 2rem 20px 2.5rem;
+        padding: 0;
         width: 100%;
-        box-sizing: border-box;
     }
 
     .about-photo-container {
@@ -489,7 +489,6 @@ header.visible {
         font-size: 1rem;
         line-height: 1.75;
         margin-bottom: 1.25rem;
-        width: 100%;
     }
 
     .scroll-indicator {
