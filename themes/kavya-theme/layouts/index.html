@@ -126,22 +126,26 @@
 
     <!-- Writing Section -->
     <section id="writing" class="writing-section">
-        <h2 class="section-title">Writing</h2>
-        <div class="writing-content">
-            <div class="writing-grid" id="writing-grid">
-                {{ range first 3 (where .Site.RegularPages "Section" "writing") }}
-                <article class="blog-post">
-                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                    <p class="post-date">{{ .Date.Format "January 2, 2006" }}</p>
-                    <p>{{ .Summary }}</p>
-                </article>
-                {{ end }}
-            </div>
+        <div class="writing-header">
+            <h2 class="writing-section-title">
+                Things I've written down<span class="writing-annotation">✦</span>
+            </h2>
+            <a href="{{ "/writing/" | relURL }}" class="writing-see-all">See the full notebook →</a>
+        </div>
 
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="{{ "/writing/" | relURL }}" class="cta-button">View All Posts</a>
-            </div>
+        <div class="notebook-stack">
+            {{ range first 3 (where .Site.RegularPages "Section" "writing") }}
+            <a href="{{ .Permalink }}" class="paper-card">
+                <div class="card-date">{{ .Date.Format "January 2, 2006" }}</div>
+                <h3 class="card-title">{{ .Title }}</h3>
+                <p class="card-excerpt">{{ .Summary }}</p>
+                <span class="card-read-more">Read →</span>
+            </a>
+            {{ end }}
+        </div>
 
+        <div class="writings-footer">
+            <a href="{{ "/writing/" | relURL }}" class="btn-notebook">open the full notebook →</a>
         </div>
     </section>
 </div>
