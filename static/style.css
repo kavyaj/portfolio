@@ -879,53 +879,6 @@ section {
     letter-spacing: 0.5px;
 }
 
-/* Featured Section */
-.featured-section {
-    margin-top: 4rem;
-}
-
-.featured-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-}
-
-.podcast-embeds {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.podcast-item {
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    background-color: var(--gray-light);
-}
-
-.podcast-item h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.podcast-show {
-    color: var(--gray-medium);
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-}
-
-.podcast-placeholder {
-    padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    text-align: center;
-    color: var(--gray-medium);
-    font-size: 1.1rem;
-}
-
-
-
 /* Footer - Modular Component */
 .main-footer {
     background-color: var(--black);
