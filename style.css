@@ -830,53 +830,191 @@ section {
     font-size: 1rem;
 }
 
-/* Writing Section */
-.writing-content {
-    max-width: 800px;
+/* Writing Section — Notebook redesign */
+.writing-section {
+    background: var(--gray-light);
 }
 
-.writing-grid {
+.writing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.writing-section-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    line-height: 1;
+    text-transform: none;
+}
+
+.writing-annotation {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--primary-pink);
+    opacity: 0.7;
+    display: inline-block;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+.writing-see-all {
+    font-size: 0.82rem;
+    color: var(--gray-medium);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--gray-divider);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.writing-see-all:hover {
+    color: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+/* Notebook stack */
+.notebook-stack {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 4rem;
 }
 
-.writing-item {
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Paper card */
+.paper-card {
+    position: relative;
+    background: #faf9f6;
+    border-radius: 2px;
+    padding: 2.5rem 2.5rem 2.5rem 4rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: -1rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 8px 16px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.06);
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        rgba(0,0,0,0.04) 27px,
+        rgba(0,0,0,0.04) 28px
+    );
+    background-size: 100% 28px;
+    background-position: 0 1.5rem;
 }
 
-.writing-item:hover {
-    background-color: rgba(253, 81, 131, 0.05);
-    margin: 0 -1rem;
-    padding: 2rem 1rem;
-    border-radius: 8px;
+.paper-card:nth-child(1) { transform: rotate(-0.4deg); z-index: 3; }
+.paper-card:nth-child(2) { transform: rotate(0.6deg);  z-index: 2; }
+.paper-card:nth-child(3) { transform: rotate(-0.3deg); z-index: 1; }
+
+.paper-card:hover {
+    transform: rotate(0deg) translateY(-6px) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+    z-index: 10 !important;
+    text-decoration: none;
 }
 
-.writing-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+/* Left margin line */
+.paper-card::before {
+    content: '';
+    position: absolute;
+    left: 2.5rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(253,81,131,0.2);
 }
 
-.writing-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
+/* Folded corner */
+.paper-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 1.5rem 1.5rem;
+    border-color: transparent transparent #ede9e0 transparent;
 }
 
-.writing-date {
-    color: var(--gray-medium);
-}
-
-.writing-category {
+.card-date {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
     color: var(--primary-pink);
+    opacity: 0.8;
+    margin-bottom: 0.6rem;
+}
+
+.card-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--black);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+    text-transform: none;
+}
+
+.paper-card:hover .card-title { color: var(--primary-pink); }
+
+.card-excerpt {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--gray-medium);
+    font-weight: 300;
+    max-width: 65ch;
+}
+
+.card-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray-medium);
+    letter-spacing: 0.04em;
+    transition: color 0.2s, gap 0.2s;
+}
+
+.paper-card:hover .card-read-more {
+    color: var(--primary-pink);
+    gap: 0.65rem;
+}
+
+/* Footer CTA */
+.writings-footer {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-notebook {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.1rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
+    color: var(--gray-medium);
+    text-decoration: none;
+    border-bottom: 1.5px dashed var(--gray-divider);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+    text-transform: none;
+}
+
+.btn-notebook:hover {
+    color: var(--primary-pink);
+    border-color: var(--primary-pink);
 }
 
 /* Footer - Modular Component */
