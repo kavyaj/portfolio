@@ -1000,14 +1000,16 @@ section {
 }
 
 .btn-notebook {
-    font-family: 'Caveat', cursive;
-    font-size: 1.2rem;
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
     color: var(--gray-medium);
     text-decoration: none;
     border-bottom: 1.5px dashed var(--gray-divider);
     padding-bottom: 3px;
     transition: color 0.2s, border-color 0.2s;
-    letter-spacing: 0.02em;
+    text-transform: none;
 }
 
 .btn-notebook:hover {
