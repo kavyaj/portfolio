@@ -24,16 +24,16 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.126.1'
+          hugo-version: 'latest'
           extended: true
 
       - name: Build site
-        # baseURL is set to the custom domain. Update this if the domain changes.
-        # For a plain GitHub Pages URL it would be: https://<username>.github.io/<repo>/
-        run: hugo --minify --baseURL "https://kavya.wiki/"
+        # Update the --baseURL value to match your GitHub Pages URL:
+        # https://<your-username>.github.io/<your-repo-name>/
+        run: hugo --minify --baseURL "${{ vars.HUGO_BASE_URL || '/' }}"
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
