@@ -751,6 +751,38 @@ section {
     }
 }
 
+/* Values Banner */
+.values-section {
+    margin: 4rem 0;
+    overflow: hidden;
+}
+
+.values-banner {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.values-content {
+    display: inline-flex;
+    gap: 3rem;
+    animation: scroll-horizontal 30s linear infinite;
+}
+
+.values-content span {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--primary-pink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* Education Section */
 .education-section {
     background-color: var(--gray-light);
