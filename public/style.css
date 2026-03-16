@@ -953,9 +953,9 @@ section {
     margin-bottom: 0.6rem;
 }
 
-.card-title {
+.paper-card .card-title {
     font-family: 'Big Shoulders Display', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.2;
     color: var(--black);

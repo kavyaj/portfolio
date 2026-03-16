@@ -138,7 +138,7 @@
             <a href="{{ .Permalink }}" class="paper-card">
                 <div class="card-date">{{ .Date.Format "January 2, 2006" }}</div>
                 <h3 class="card-title">{{ .Title }}</h3>
-                <p class="card-excerpt">{{ .Summary }}</p>
+                <p class="card-excerpt">{{ if .Params.excerpt }}{{ .Params.excerpt }}{{ else }}{{ .Summary | truncate 140 "…" }}{{ end }}</p>
                 <span class="card-read-more">Read →</span>
             </a>
             {{ end }}
