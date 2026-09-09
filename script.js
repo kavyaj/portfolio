@@ -174,10 +174,14 @@ function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = link.getAttribute('href');
+
+            // Let normal page links such as /quotes/ navigate as usual.
+            if (!href || !href.startsWith('#')) return;
+
+            const targetSection = document.querySelector(href);
             if (targetSection) {
+                e.preventDefault();
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
