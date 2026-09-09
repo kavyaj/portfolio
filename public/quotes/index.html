@@ -226,6 +226,37 @@
             margin-bottom: 2rem;
         }
 
+        .modal-quote-details {
+            display: none;
+            margin-bottom: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .modal-quote-details.active {
+            display: block;
+        }
+
+        .modal-detail-block + .modal-detail-block {
+            margin-top: 1.25rem;
+        }
+
+        .modal-detail-title {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.35rem;
+        }
+
+        .modal-detail-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #555;
+            white-space: pre-line;
+        }
+
         .modal-personal-note {
             background: #f8f9fa;
             border-radius: 12px;
@@ -336,6 +367,16 @@
             <div class="modal-quote-text" id="modal-quote-text"></div>
             <div class="modal-quote-author" id="modal-quote-author"></div>
             <div class="modal-quote-source" id="modal-quote-source"></div>
+            <div class="modal-quote-details" id="modal-quote-details">
+                <div class="modal-detail-block">
+                    <div class="modal-detail-title">Transliteration</div>
+                    <div class="modal-detail-text" id="modal-transliteration"></div>
+                </div>
+                <div class="modal-detail-block">
+                    <div class="modal-detail-title">Translation</div>
+                    <div class="modal-detail-text" id="modal-translation"></div>
+                </div>
+            </div>
             <div class="modal-personal-note" id="modal-personal-note">
                 <div class="modal-personal-note-title">Why this resonates with me</div>
                 <div class="modal-personal-note-text" id="modal-personal-note-text"></div>
@@ -346,6 +387,16 @@
     <script>
         // Sample quotes data with different importance levels
         const quotesData = [
+            {
+                text: "ಪೆಣ್ಣು ಪೆಣ್ಣೆಂದೇತಕೆ ಬೀಳುಗಳೆವರು?\nಕಣ್ಣು ಕಾಣದ ಗಾವಿಲರು!\nಪೆಣ್ಣಲ್ಲವೇ ನಮ್ಮನೆಲ್ಲ ಪಡೆದ ತಾಯಿ?",
+                author: "Sanchi Honnamma (ಸಂಚಿ ಹೊನ್ನಮ್ಮ)",
+                source: "17th-century Kannada poetry",
+                transliteration: "Pennu pennendethake beelugalevaru?\nKannu kaanada gaavilaru!\nPennallave nammanella padeda taayi?",
+                translation: "Why do people look down upon a woman with such contempt?\nThey are blind fools who cannot see!\nIs not a woman the mother who gave birth to us all?",
+                importance: "large",
+                personalNote: "While this reflects the reality of many cultures, it is a reminder for us to pause and reflect the strength and power of women. I find it impressive how this 17th century Kannada poem addresses gender equality and the dignity of women.",
+                position: { top: "8%", left: "48%" }
+            },
             {
                 text: "The best time to plant a tree was 20 years ago. The second best time is now.",
                 author: "Chinese Proverb",
@@ -443,11 +494,17 @@
             const modalText = document.getElementById('modal-quote-text');
             const modalAuthor = document.getElementById('modal-quote-author');
             const modalSource = document.getElementById('modal-quote-source');
+            const modalDetails = document.getElementById('modal-quote-details');
+            const modalTransliteration = document.getElementById('modal-transliteration');
+            const modalTranslation = document.getElementById('modal-translation');
             const modalNote = document.getElementById('modal-personal-note-text');
             
             modalText.textContent = `"${quote.text}"`;
             modalAuthor.textContent = `— ${quote.author}`;
             modalSource.textContent = quote.source;
+            modalTransliteration.textContent = quote.transliteration || "";
+            modalTranslation.textContent = quote.translation || "";
+            modalDetails.classList.toggle('active', Boolean(quote.transliteration || quote.translation));
             modalNote.textContent = quote.personalNote;
             
             modal.classList.add('active');
