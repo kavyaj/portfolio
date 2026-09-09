@@ -7,9 +7,10 @@ channel = "stable-24_05"
 packages = ["hugo"]
 
 [deployment]
-deploymentTarget = "autoscale"
-build = ["npm", "run", "build"]
+deploymentTarget = "static"
+build = ["hugo", "--minify", "--cleanDestinationDir"]
 run = ["npm", "run", "start"]
+publicDir = "public"
 
 [[ports]]
 localPort = 5000
